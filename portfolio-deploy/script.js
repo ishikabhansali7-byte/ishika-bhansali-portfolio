@@ -5,7 +5,7 @@
   var PROJECTS = [
     {
       id: "01", name: "Knoki Console", tag: "Physical Computing", span: "span-2x1",
-      thumb: "knoki-thumbnail.png",
+      thumb: "knoki-thumbnail.png", ar: "1672 / 941",
       wordmark: "Knoki",
       heroImage: "knoki-thumbnail.png",
       tagline: "A knock-based interactive gaming console designed to bring tactile rhythm, pattern, and sensory play into a premium physical product experience.",
@@ -21,7 +21,7 @@
     },
     {
       id: "02", name: "Red Spire", tag: "Logo Design", span: "span-2x1",
-      thumb: "redspire-banner.png",
+      thumb: "redspire-banner.png", ar: "1983 / 793",
       wordmark: "Red Spire",
       heroImage: "redspire-banner.png",
       tagline: "A mascot logo and brand identity built around a croissant character — with purple, a client requirement, used as the sole brand color across packaging, apparel, and signage.",
@@ -36,7 +36,25 @@
         { num: "04", heading: "Final Outcome", body: "The finished identity applied across the logo lockup, packaging, staff apparel, and signage.", image: "redspire-outcome.jpg", imageAlt: "Red Spire brand identity — logo lockup, mascot, packaging bags, silhouette color variations, box and apron applications, and signage", span: "span-4" }
       ]
     },
-    { id: "03", name: "BookMyShow Redesign",  tag: "UI/UX Design",       span: "span-2x1" },
+    {
+      id: "03", name: "BookMyShow Redesign", tag: "UI/UX Design", span: "span-2x1",
+      thumb: "bookmyshow-banner.png", ar: "1366 / 768",
+      wordmark: "BookMyShow",
+      heroImage: "bookmyshow-banner.png",
+      sections: [
+        { num: "01", heading: "Project Overview", body: "A UI/UX redesign of the BookMyShow homepage focused on improving usability, reducing clutter, and creating a more visually structured browsing experience.", span: "span-4" },
+        { num: "02", heading: "Problems Identified", tags: ["Visual overload", "Inconsistent hierarchy", "Difficult scanning", "Overwhelming banners", "Cluttered navigation", "Poor spacing"], span: "span-2" },
+        { num: "03", heading: "Design Goals", tags: ["Cleaner navigation", "Improved hierarchy", "Easier event discovery", "Modern UI", "Stronger readability"], span: "span-2" },
+        { num: "04", heading: "Redesign Approach", tags: ["Wireframes", "Grids", "Typography improvements", "Spacing system", "CTA refinement"], span: "span-4" },
+        { num: "05", heading: "Final UI Showcase", tags: ["Redesigned homepage", "Event discovery", "Movie listings", "Trending section", "Booking flow"],
+          images: [
+            { src: "bookmyshow-ui-1.webp", alt: "Redesigned BookMyShow homepage shown on three phone screens" },
+            { src: "bookmyshow-ui-2.png", alt: "Redesigned BookMyShow homepage on a tilted phone" },
+            { src: "bookmyshow-ui-3.webp", alt: "Six views of the redesigned BookMyShow homepage on phones" }
+          ], span: "span-4" },
+        { num: "06", heading: "Conclusion", body: "The redesign improves usability and creates a cleaner, more engaging entertainment browsing experience.", span: "span-4" }
+      ]
+    },
     { id: "04", name: "Spotify Data Universe", tag: "Data Visualization", span: "span-2x1", soon: true },
     { id: "05", name: "Smart Plant", tag: "Augmented Reality", span: "span-2x1", soon: true }
   ];
@@ -334,7 +352,7 @@
             '<img class="illus-default" src="character-default.png" alt="Illustrated portrait of Ishika">' +
             '<img class="illus-hover" src="character-hover.png" alt="Illustrated portrait of Ishika, waving">' +
           '</div>' +
-          '<p class="hero-illus-hint">hover around to say hi</p>' +
+          '<p class="hero-illus-hint"><span class="hint-hover">hover around to say hi</span><span class="hint-touch">tap the illustration to say hi</span></p>' +
         '</div>' +
         '<div class="scroll-indicator"><span>Scroll</span><span class="line"></span></div>' +
       '</section>'
@@ -346,7 +364,7 @@
       var thumbHtml = p.thumb ? '<img class="tile-thumb" src="' + p.thumb + '" alt="">' : '';
       var thumbClass = p.thumb ? ' has-thumb' : '';
       return (
-        '<div class="work-tile reveal ' + p.span + thumbClass + (p.soon ? ' is-soon' : '') + '"' + (p.soon ? ' aria-disabled="true"' : ' data-id="' + p.id + '"') + '>' +
+        '<div class="work-tile reveal ' + p.span + thumbClass + (p.soon ? ' is-soon' : '') + '"' + (p.soon ? ' aria-disabled="true"' : ' data-id="' + p.id + '"') + (p.ar ? ' style="--ar:' + p.ar + '"' : '') + '>' +
           thumbHtml +
           '<span class="index">' + p.id + '</span>' +
           (p.soon ? '<span class="soon-badge">Coming soon</span>' : '') +
@@ -571,10 +589,13 @@
             var imageHtml = s.image
               ? '<img class="case-image" src="' + s.image + '" alt="' + (s.imageAlt || s.heading) + '">'
               : '';
+            var imagesHtml = s.images
+              ? s.images.map(function(im){ return '<img class="case-image" src="' + im.src + '" alt="' + im.alt + '">'; }).join('')
+              : '';
             return (
               '<div class="case-section reveal ' + (s.span || '') + '">' +
                 '<span class="case-num">' + s.num + '</span>' +
-                '<div class="case-section-body"><h4>' + s.heading + '</h4>' + bodyHtml + listHtml + imageHtml + tagsHtml + '</div>' +
+                '<div class="case-section-body"><h4>' + s.heading + '</h4>' + bodyHtml + listHtml + imageHtml + imagesHtml + tagsHtml + '</div>' +
               '</div>'
             );
           }).join('') +
@@ -1121,26 +1142,7 @@
   window.addEventListener("popstate", function(){ render(); });
 
 
-  /* ---------- loading screen ---------- */
-  var loadingMark = document.getElementById("loadingMark");
-  var markText = "name.";
-  markText.split("").forEach(function(ch, i){
-    var span = document.createElement("span");
-    span.textContent = ch === " " ? "\u00A0" : ch;
-    span.style.animationDelay = (i * 0.05) + "s";
-    loadingMark.appendChild(span);
-  });
-
-  function finishLoading(){
-    render();
-    var loading = document.getElementById("loading");
-    setTimeout(function(){
-      loading.classList.add("hidden");
-      window.__portfolioReady = true;
-      document.dispatchEvent(new Event("portfolio:ready"));
-    }, reduceMotion ? 0 : 650);
-  }
-  setTimeout(finishLoading, reduceMotion ? 0 : 1100);
+  render();
 
   document.getElementById("year").textContent = new Date().getFullYear();
 })();

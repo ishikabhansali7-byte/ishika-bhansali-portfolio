@@ -165,10 +165,10 @@
     startLoop();
 
     /* typing waits for the loading screen to finish */
-    if (window.__portfolioReady){
+    if (window.__loaderDone){
       beginTyping();
     } else {
-      on(document, "portfolio:ready", beginTyping);
+      on(document, "loader:done", beginTyping);
     }
   }
 
