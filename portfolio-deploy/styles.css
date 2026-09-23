@@ -736,22 +736,28 @@
   .detail-body .cat{ font-size: 13px; color: var(--muted); margin-bottom: 10px; }
   .detail-body h1{ font-size: clamp(32px, 5vw, 52px); margin-bottom: 16px; }
   .detail-body p{ color: var(--muted); font-size: 15px; margin-bottom: 16px; }
-  .case-tagline{ font-size: 16px; color: var(--ink); line-height: 1.6; margin: 0 0 40px; max-width: 720px; }
+  .case-tagline{ font-size: 16px; color: var(--ink); line-height: 1.6; margin: 0 0 24px; max-width: 720px; }
+
+  .detail-meta-row{ display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 40px; }
+  .detail-meta-box{
+    border: 1px solid var(--line);
+    padding: 10px 18px;
+    display: flex; flex-direction: column; gap: 4px;
+    min-width: 120px;
+  }
+  .detail-meta-label{ font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .detail-meta-value{ font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); }
 
   .case-sections{
-    display: flex; flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 28px;
-    position: relative;
   }
   .case-section{
     border: 1px solid var(--line);
     padding: 32px;
     display: flex; flex-direction: column; gap: 12px;
     background: var(--surface);
-    position: sticky;
-    top: var(--stack-top, 120px);
-    box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.04);
-    z-index: 10;
   }
   .case-section.span-2{ grid-column: span 2; }
   .case-section.span-4{ grid-column: span 4; }
@@ -767,17 +773,27 @@
   .case-tags{ display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .case-image{ width: 100%; display: block; margin-top: 14px; border: 1px solid var(--line); }
   .case-tags span{ border: 1px solid var(--line); padding: 6px 14px; font-size: 12px; color: var(--muted); }
+  /* marks where a real image/clip goes once the asset is ready — swap for a <img> then */
+  .case-image-placeholders{ display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .case-image-placeholder{
+    flex: 1 1 220px;
+    min-height: 120px;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    border: 1px dashed var(--line);
+    padding: 14px;
+    font-size: 12px; color: var(--muted); font-style: italic;
+  }
 
   @media (max-width: 900px){
     .case-sections{ grid-template-columns: repeat(2, 1fr); }
     .case-section.span-2, .case-section.span-4{ grid-column: span 2; }
   }
+  @media (max-width: 760px){
+    .case-section{ padding: 24px; }
+  }
   @media (max-width: 560px){
     .case-sections{ grid-template-columns: 1fr; }
     .case-section.span-2, .case-section.span-4{ grid-column: span 1; }
-  }
-  @media (max-width: 760px){
-    .case-section{ position: static; padding: 24px; box-shadow: none; }
   }
 
   .detail-nav{

@@ -8,6 +8,7 @@
       thumb: "knoki-thumbnail.png", ar: "1672 / 941",
       wordmark: "Knoki",
       heroImage: "knoki-thumbnail.png",
+      meta: { team: "7 members", timeline: "3 weeks", tools: "Arduino IDE, AutoCAD, Blender, SketchUp" },
       tagline: "A knock-based interactive gaming console designed to bring tactile rhythm, pattern, and sensory play into a premium physical product experience.",
       sections: [
         { num: "01", heading: "Overview", body: "Knoki is a tactile product design project that turns knock patterns into playful digital interactions, rhythm games, and sensory feedback." },
@@ -24,6 +25,7 @@
       thumb: "redspire-banner.png", ar: "1983 / 793",
       wordmark: "Red Spire",
       heroImage: "redspire-banner.png",
+      meta: { team: "Individual", timeline: "4 days", tools: "Illustrator, Photoshop" },
       tagline: "A mascot logo and brand identity built around a croissant character — with purple, a client requirement, used as the sole brand color across packaging, apparel, and signage.",
       sections: [
         { num: "01", heading: "Concept", body: "The mascot is a croissant — a direct nod to the product that makes the brand instantly recognizable. Purple, a client requirement, is used as the sole brand color throughout, applied consistently across packaging, apparel, and signage so the identity feels cohesive rather than decorative.", span: "span-2" },
@@ -55,16 +57,82 @@
         { num: "06", heading: "Conclusion", body: "The redesign improves usability and creates a cleaner, more engaging entertainment browsing experience.", span: "span-4" }
       ]
     },
-    { id: "04", name: "Spotify Data Universe", tag: "Data Visualization", span: "span-2x1", soon: true },
-    { id: "05", name: "Smart Plant", tag: "Augmented Reality", span: "span-2x1", soon: true }
+    {
+      id: "04", name: "Lost History of Adalaj", tag: "VR Experience", span: "span-2x1",
+      thumb: "adalaj-banner.webp", ar: "1366 / 768",
+      wordmark: "Lost History of Adalaj",
+      heroImage: "adalaj-banner.webp",
+      tagline: "A VR experience set in Adalaj Stepwell, 1498. This story is imagined — Adalaj and Dada Harir ni Vav were built around the same period by different patrons; their link here is a creative premise, not a historical claim.",
+      meta: { team: "5", timeline: "3 weeks", tools: "SketchUp, Blender, Unity" },
+      sections: [
+        { num: "01", heading: "Overview", body: [
+          "Lost History of Adalaj puts you inside the stepwell at night, as a 15th-century royal architect (a Rajmistry). You have already studied the building in daylight. Tonight you return with a lantern, a compass, and a toolbox to see what only the dark can show you.",
+          "There is no tutorial or intro screen. You arrive confused, find your lantern, and the story unfolds as you explore."
+        ], imagePlaceholder: "Gameplay clip or GIF of the full descent, night to dawn", span: "span-4" },
+        { num: "02", heading: "Concept", list: [
+          "The question: What can you learn about a building when you can only see what your lantern shows?",
+          "The theme: Great buildings are learned, not invented from nothing. The architect’s night of careful observation becomes the seed of the next stepwell, Dada Harir ni Vav.",
+          "Why night: Daylight shows a building’s surface. At night you notice shadow, depth, silence, and how the stone feels. Darkness forces slower, more deliberate looking."
+        ], span: "span-2" },
+        { num: "03", heading: "Narrative", list: [
+          "You play the role. You use the same tools and face the same limits as the original architect.",
+          "Night is the lens. Shadow, silence, and isolation teach what daylight hides.",
+          "Discovery through action. Nothing is handed to you up front. The Farman reveals who you are only as you act, and the shift from night to dawn shows time passing."
+        ], span: "span-2" },
+        { num: "04", heading: "Gameplay", body: "Goal: Descend from the entrance to the water level, making discoveries along the way, until dawn breaks. Each action copies something a real architect would do:", list: [
+          "Roaming the space: Lets you study depth, structure, and detail at your own pace.",
+          "Opening the toolbox: Sets the role. You are a working craftsman, not a tourist.",
+          "Holding the lantern: Gives you control over what is seen. Exploring becomes a choice about what to light and what to leave dark.",
+          "Using the compass: Lets you check symmetry and scale up close, so you notice how carefully the structure was planned."
+        ], imagePlaceholder: "Close-up of the lantern, compass, and toolbox, ideally in hand", span: "span-4" },
+        { num: "05", heading: "Walkthrough", list: [
+          "Arrival: You enter the stepwell with no explanation. The dark is disorienting on purpose.",
+          "Discovery: You find the lantern. A royal Farman (a decree) begins to play, slowly revealing who you are and why you’re here.",
+          "Study: You go deeper, using your tools to examine carvings, structure, and proportions.",
+          "Dawn: As you reach the lowest level, morning light arrives. Time itself tells you the night’s work is done.",
+          "Ending: You close the toolbox. The Farman’s final words point to Dada Harir ni Vav, the building this night will shape."
+        ], imagePlaceholders: ["Arrival (dark)", "Discovery (lantern)", "Study (tools in use)", "Dawn (light reaching the bottom)"], span: "span-4" },
+        { num: "06", heading: "Why Multisensory", list: [
+          "Depth over flatness: Adalaj is about depth, and a screen flattens it. In VR you feel the drop as you descend.",
+          "Touch and control: Holding the lantern in your own hand means what you see depends on your choices, not the camera’s.",
+          "Looking as doing: The architect’s job is looking closely. VR lets the player do the same thing physically, not just watch it happen."
+        ], imagePlaceholder: "Your 3D stepwell next to a real Adalaj photo, side by side", span: "span-4" },
+        { num: "07", heading: "Design Process", list: [
+          "Block-out: I built the base structure in SketchUp to get proportions and depth right across every level.",
+          "Detail pass: I refined geometry and carved detail in Blender.",
+          "Texturing and lighting: I applied and tuned stone textures in Unity, then balanced lighting between the lantern and natural darkness.",
+          "Interaction and VR testing: The team layered in tool interactions and tested the space at human scale in VR, iterating on what felt right."
+        ], span: "span-2" },
+        { num: "08", heading: "Environment Building", body: "The stepwell is deep and multi-layered, so the build had to hold together as one continuous space rather than a series of disconnected rooms. Level proportions were blocked out first, then carved detail, worn stone, and age marks were added to give each surface its own character without breaking consistency across walls, pillars, and smaller assets. Because the space plays out mostly by lantern light, every texture was checked under low, moving light rather than flat daylight, since that is the only condition players actually see it in.", imagePlaceholders: ["SketchUp block-out beside the final Blender model", "Raw texture beside the applied texture in Unity"], span: "span-4" },
+        { num: "09", heading: "What Failed (and How We Fixed It)", list: [
+          "Modelling a deep, multi-level structure — Problem: early passes felt disconnected between levels, with proportions that didn’t read as one structure. Fix: base geometry blocked out in SketchUp first for proportion, then detailed in Blender. Result: the player can descend through a space that feels continuous and real.",
+          "Getting the stone to look right — Problem: generic textures broke immersion up close and didn’t respond well to lantern light. Fix: repeated texture baking and UV adjustments, tested specifically under lantern light rather than daylight. Result: walls, pillars, and small assets share one consistent look.",
+          "Keeping the environment light enough for VR — Problem: dense geometry and detailed textures slowed performance. Fix: cut unnecessary geometry and balanced texture quality against performance. Result: the space stays detailed but runs smoothly.",
+          "Making interactions feel real — Problem: early tool pickups felt clunky and accidental. Fix: tested Unity physics, colliders, and custom scripts, then tuned object weight, grip points, and animation triggers. Result: the lantern, compass, and toolbox behave consistently, so players can focus on exploring.",
+          "Lighting a night-time heritage site — Problem: too dark and the site was unplayable, too bright and the mood disappeared. Fix: iterated on ambient light, point lights, light baking, falloff values, and post-processing. Result: the lantern makes the space feel quietly alive without losing visibility."
+        ], imagePlaceholders: ["Wireframe or before/after performance comparison", "Too-dark, too-bright, and final lighting comparison"], span: "span-4" },
+        { num: "10", heading: "Experience", body: "Playing it feels solitary at first — an unfamiliar space, one small light, no instructions. That unease gives way to curiosity as the tools and the Farman slowly explain what you’re doing there. By the time dawn breaks, the quiet, patient pace of the night has turned into something closer to accomplishment: a night of looking that earns you a small piece of history.", span: "span-2" },
+        { num: "11", heading: "My Role", list: [
+          "Built the environment: I modelled the stepwell in SketchUp and Blender, working out its depth, levels, pillars, and carved details.",
+          "Textured it in Unity: I applied the stone textures and adjusted them so the worn surfaces, age marks, and colour variation felt true to Adalaj.",
+          "Helped set up VR: I worked with the team to get the environment running in VR, so the space felt right at human scale."
+        ], body: "Environment work matters most here, because the stepwell is the main character of the experience.", span: "span-2" },
+        { num: "12", heading: "Learning", list: [
+          "Small details like weight, grip, and light falloff decide whether a VR world feels believable.",
+          "Good atmosphere comes from restraint. Removing light and explanation made the experience stronger.",
+          "Building an environment for VR means designing for how a space feels at human scale, not just how it looks on screen."
+        ], imagePlaceholder: "Final wide shot of the stepwell at dawn", span: "span-4" }
+      ]
+    },
+    { id: "05", name: "Spotify Data Universe", tag: "Data Visualization", span: "span-2x1", soon: true },
+    { id: "06", name: "Smart Plant", tag: "Augmented Reality", span: "span-2x1", soon: true }
   ];
   var OPEN_PROJECTS = PROJECTS.filter(function(p){ return !p.soon; });
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- theme (with View Transitions API animation) ---------- */
-  var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  var theme = prefersDark ? "dark" : "light";
+  var theme = "light";
   var themeToggleBtn = document.getElementById("themeToggle");
 
   function applyTheme(){
@@ -237,8 +305,10 @@
     });
   }
 
+  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
   function initScrambleHover(el, reverse){
-    if (reduceMotion){
+    if (reduceMotion || !canHover){
       el.setAttribute("aria-label", el.textContent);
       return;
     }
@@ -573,16 +643,32 @@
       ? '<span class="hero-wordmark">' + project.wordmark + '</span>'
       : 'Hero media placeholder';
 
+    var taglineHtml = project.tagline ? '<p class="case-tagline">' + project.tagline + '</p>' : '';
+
+    var meta = project.meta || {};
+    var metaFields = [
+      { label: "Type", value: project.tag },
+      { label: "Team", value: meta.team || "[team size]" },
+      { label: "Timeline", value: meta.timeline || "[duration]" },
+      { label: "Tools", value: meta.tools || "[tools]" }
+    ];
+    var metaRowHtml =
+      '<div class="detail-meta-row reveal">' +
+        metaFields.map(function(f){
+          return '<div class="detail-meta-box"><span class="detail-meta-label">' + f.label + '</span><span class="detail-meta-value">' + f.value + '</span></div>';
+        }).join('') +
+      '</div>';
+
     var bodyContent;
     if (project.sections){
       bodyContent =
-        (project.tagline ? '<p class="case-tagline">' + project.tagline + '</p>' : '') +
         '<div class="case-sections">' +
           project.sections.map(function(s){
             var tagsHtml = s.tags
               ? '<div class="case-tags">' + s.tags.map(function(t){ return '<span>' + t + '</span>'; }).join('') + '</div>'
               : '';
-            var bodyHtml = s.body ? '<p>' + s.body + '</p>' : '';
+            var bodyParas = s.body ? (Array.isArray(s.body) ? s.body : [s.body]) : [];
+            var bodyHtml = bodyParas.map(function(p){ return '<p>' + p + '</p>'; }).join('');
             var listHtml = s.list
               ? '<ul class="case-list">' + s.list.map(function(li){ return '<li>' + li + '</li>'; }).join('') + '</ul>'
               : '';
@@ -592,10 +678,19 @@
             var imagesHtml = s.images
               ? s.images.map(function(im){ return '<img class="case-image" src="' + im.src + '" alt="' + im.alt + '">'; }).join('')
               : '';
+            // no asset yet — a labeled dashed box marking where the real image goes
+            var placeholders = s.imagePlaceholder
+              ? [s.imagePlaceholder]
+              : (s.imagePlaceholders || []);
+            var placeholderHtml = placeholders.length
+              ? '<div class="case-image-placeholders">' +
+                  placeholders.map(function(t){ return '<div class="case-image-placeholder">' + t + '</div>'; }).join('') +
+                '</div>'
+              : '';
             return (
               '<div class="case-section reveal ' + (s.span || '') + '">' +
                 '<span class="case-num">' + s.num + '</span>' +
-                '<div class="case-section-body"><h4>' + s.heading + '</h4>' + bodyHtml + listHtml + imageHtml + imagesHtml + tagsHtml + '</div>' +
+                '<div class="case-section-body"><h4>' + s.heading + '</h4>' + bodyHtml + listHtml + imageHtml + imagesHtml + tagsHtml + placeholderHtml + '</div>' +
               '</div>'
             );
           }).join('') +
@@ -619,6 +714,8 @@
       '<div class="detail-body">' +
         '<div class="cat">' + project.tag + '</div>' +
         '<h1>' + project.name + '</h1>' +
+        taglineHtml +
+        metaRowHtml +
         bodyContent +
       '</div>' +
       '<div class="detail-nav">' +
@@ -846,7 +943,6 @@
       updateHeader();
       if (routeBase === "/about") bindPageInteractions();
       if (routeBase === "/contact") bindPageInteractions();
-      if (routeBase === "/work" && parts[1]) initStacking();
       if (routeBase === "/"){
         initHeroDots();
         if (window.HeroIntro) window.HeroIntro.init();
@@ -910,15 +1006,6 @@
     }
   }
   
-  function initStacking(){
-    var sections = document.querySelectorAll('.case-section');
-    var baseTop = 100;
-    var step = 24;
-    sections.forEach(function(sec, i){
-      sec.style.setProperty('--stack-top', (baseTop + i * step) + 'px');
-    });
-  }
-
   /* ---------- scroll interactions: parallax ---------- */
   function updateParallax(){
     if (reduceMotion) return;
