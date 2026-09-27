@@ -8,7 +8,7 @@
       thumb: "knoki-thumbnail.png", ar: "1672 / 941",
       wordmark: "Knoki",
       heroImage: "knoki-thumbnail.png",
-      meta: { team: "7 members", timeline: "3 weeks", tools: "Arduino IDE, AutoCAD, Blender, SketchUp" },
+      meta: { team: "7+", timeline: "3 weeks", tools: "Arduino IDE, AutoCAD, Blender, SketchUp" },
       tagline: "A knock-based interactive gaming console designed to bring tactile rhythm, pattern, and sensory play into a premium physical product experience.",
       sections: [
         { num: "01", heading: "Overview", body: "Knoki is a tactile product design project that turns knock patterns into playful digital interactions, rhythm games, and sensory feedback." },
@@ -68,7 +68,7 @@
         { num: "01", heading: "Overview", body: [
           "Lost History of Adalaj puts you inside the stepwell at night, as a 15th-century royal architect (a Rajmistry). You have already studied the building in daylight. Tonight you return with a lantern, a compass, and a toolbox to see what only the dark can show you.",
           "There is no tutorial or intro screen. You arrive confused, find your lantern, and the story unfolds as you explore."
-        ], imagePlaceholder: "Gameplay clip or GIF of the full descent, night to dawn", span: "span-4" },
+        ], span: "span-4" },
         { num: "02", heading: "Concept", list: [
           "The question: What can you learn about a building when you can only see what your lantern shows?",
           "The theme: Great buildings are learned, not invented from nothing. The architect’s night of careful observation becomes the seed of the next stepwell, Dada Harir ni Vav.",
@@ -84,33 +84,47 @@
           "Opening the toolbox: Sets the role. You are a working craftsman, not a tourist.",
           "Holding the lantern: Gives you control over what is seen. Exploring becomes a choice about what to light and what to leave dark.",
           "Using the compass: Lets you check symmetry and scale up close, so you notice how carefully the structure was planned."
-        ], imagePlaceholder: "Close-up of the lantern, compass, and toolbox, ideally in hand", span: "span-4" },
+        ], images: [
+          { src: "adalaj-gameplay-lantern.jpg", alt: "The lantern the player carries through the stepwell" },
+          { src: "adalaj-gameplay-toolbox.png", alt: "The craftsman's toolbox" },
+          { src: "adalaj-gameplay-compass.png", alt: "The compass used to check symmetry and scale" },
+          { src: "adalaj-gameplay-book.jpg", alt: "The royal Farman, closed" },
+          { src: "adalaj-gameplay-farman-open.jpg", alt: "The Farman open, revealing the tale of Ruda Bai" }
+        ], span: "span-4" },
         { num: "05", heading: "Walkthrough", list: [
           "Arrival: You enter the stepwell with no explanation. The dark is disorienting on purpose.",
           "Discovery: You find the lantern. A royal Farman (a decree) begins to play, slowly revealing who you are and why you’re here.",
           "Study: You go deeper, using your tools to examine carvings, structure, and proportions.",
           "Dawn: As you reach the lowest level, morning light arrives. Time itself tells you the night’s work is done.",
           "Ending: You close the toolbox. The Farman’s final words point to Dada Harir ni Vav, the building this night will shape."
-        ], imagePlaceholders: ["Arrival (dark)", "Discovery (lantern)", "Study (tools in use)", "Dawn (light reaching the bottom)"], span: "span-4" },
+        ], video: "adalaj-walkthrough.mp4", videoLabel: "the walkthrough video", span: "span-4" },
         { num: "06", heading: "Why Multisensory", list: [
           "Depth over flatness: Adalaj is about depth, and a screen flattens it. In VR you feel the drop as you descend.",
           "Touch and control: Holding the lantern in your own hand means what you see depends on your choices, not the camera’s.",
           "Looking as doing: The architect’s job is looking closely. VR lets the player do the same thing physically, not just watch it happen."
-        ], imagePlaceholder: "Your 3D stepwell next to a real Adalaj photo, side by side", span: "span-4" },
+        ], span: "span-2" },
         { num: "07", heading: "Design Process", list: [
           "Block-out: I built the base structure in SketchUp to get proportions and depth right across every level.",
           "Detail pass: I refined geometry and carved detail in Blender.",
           "Texturing and lighting: I applied and tuned stone textures in Unity, then balanced lighting between the lantern and natural darkness.",
           "Interaction and VR testing: The team layered in tool interactions and tested the space at human scale in VR, iterating on what felt right."
         ], span: "span-2" },
-        { num: "08", heading: "Environment Building", body: "The stepwell is deep and multi-layered, so the build had to hold together as one continuous space rather than a series of disconnected rooms. Level proportions were blocked out first, then carved detail, worn stone, and age marks were added to give each surface its own character without breaking consistency across walls, pillars, and smaller assets. Because the space plays out mostly by lantern light, every texture was checked under low, moving light rather than flat daylight, since that is the only condition players actually see it in.", imagePlaceholders: ["SketchUp block-out beside the final Blender model", "Raw texture beside the applied texture in Unity"], span: "span-4" },
+        { num: "08", heading: "Environment Building", body: "The stepwell is deep and multi-layered, so the build had to hold together as one continuous space rather than a series of disconnected rooms. Level proportions were blocked out first, then carved detail, worn stone, and age marks were added to give each surface its own character without breaking consistency across walls, pillars, and smaller assets. Because the space plays out mostly by lantern light, every texture was checked under low, moving light rather than flat daylight, since that is the only condition players actually see it in.", images: [
+          { src: "adalaj-env-plan.jpg", alt: "Top-down floor plan of the stepwell's levels" },
+          { src: "adalaj-env-columns-wide.jpg", alt: "Wide cutaway view of the pillared levels" },
+          { src: "adalaj-env-columns-angle.jpg", alt: "Angled interior view of the stone pillars and carved bands" },
+          { src: "adalaj-env-arch-closeup.jpg", alt: "Close-up of a carved archway and pillar detail" },
+          { src: "adalaj-env-vr-daylight.jpg", alt: "The finished stepwell in daylight, seen in VR" },
+          { src: "adalaj-env-vr-underwater.jpg", alt: "Looking down into the water from the stepwell entrance, in VR" },
+          { src: "adalaj-env-vr-compass.jpg", alt: "Using the compass among the underwater pillars, in VR" }
+        ], span: "span-4" },
         { num: "09", heading: "What Failed (and How We Fixed It)", list: [
           "Modelling a deep, multi-level structure — Problem: early passes felt disconnected between levels, with proportions that didn’t read as one structure. Fix: base geometry blocked out in SketchUp first for proportion, then detailed in Blender. Result: the player can descend through a space that feels continuous and real.",
           "Getting the stone to look right — Problem: generic textures broke immersion up close and didn’t respond well to lantern light. Fix: repeated texture baking and UV adjustments, tested specifically under lantern light rather than daylight. Result: walls, pillars, and small assets share one consistent look.",
           "Keeping the environment light enough for VR — Problem: dense geometry and detailed textures slowed performance. Fix: cut unnecessary geometry and balanced texture quality against performance. Result: the space stays detailed but runs smoothly.",
           "Making interactions feel real — Problem: early tool pickups felt clunky and accidental. Fix: tested Unity physics, colliders, and custom scripts, then tuned object weight, grip points, and animation triggers. Result: the lantern, compass, and toolbox behave consistently, so players can focus on exploring.",
           "Lighting a night-time heritage site — Problem: too dark and the site was unplayable, too bright and the mood disappeared. Fix: iterated on ambient light, point lights, light baking, falloff values, and post-processing. Result: the lantern makes the space feel quietly alive without losing visibility."
-        ], imagePlaceholders: ["Wireframe or before/after performance comparison", "Too-dark, too-bright, and final lighting comparison"], span: "span-4" },
+        ], span: "span-4" },
         { num: "10", heading: "Experience", body: "Playing it feels solitary at first — an unfamiliar space, one small light, no instructions. That unease gives way to curiosity as the tools and the Farman slowly explain what you’re doing there. By the time dawn breaks, the quiet, patient pace of the night has turned into something closer to accomplishment: a night of looking that earns you a small piece of history.", span: "span-2" },
         { num: "11", heading: "My Role", list: [
           "Built the environment: I modelled the stepwell in SketchUp and Blender, working out its depth, levels, pillars, and carved details.",
@@ -121,13 +135,20 @@
           "Small details like weight, grip, and light falloff decide whether a VR world feels believable.",
           "Good atmosphere comes from restraint. Removing light and explanation made the experience stronger.",
           "Building an environment for VR means designing for how a space feels at human scale, not just how it looks on screen."
-        ], imagePlaceholder: "Final wide shot of the stepwell at dawn", span: "span-4" }
+        ], span: "span-4" }
       ]
     },
     { id: "05", name: "Spotify Data Universe", tag: "Data Visualization", span: "span-2x1", soon: true },
     { id: "06", name: "Smart Plant", tag: "Augmented Reality", span: "span-2x1", soon: true }
   ];
   var OPEN_PROJECTS = PROJECTS.filter(function(p){ return !p.soon; });
+
+  // Playground (the tulip garden) is built but switched off for now. Set to true to bring back the page and its nav link.
+  var PLAYGROUND_ENABLED = true;
+  if (!PLAYGROUND_ENABLED){
+    var pgLink = document.querySelector('nav.primary a[data-route="/playground"]');
+    if (pgLink) pgLink.remove();
+  }
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -394,35 +415,22 @@
     return (
       '<section class="hero">' +
         '<canvas class="hero-dots-canvas" id="heroDotsCanvas" aria-hidden="true"></canvas>' +
-        '<div class="hero-left">' +
-          '<div class="hero-badge-row">' +
-            '<div class="hero-badge">' +
-              heroBadgeSvg() +
-              '<div class="hero-badge-center">IB</div>' +
-            '</div>' +
-            '<div>' +
-              '<div class="hero-est">Est. 2026</div>' +
-              '<div class="hero-journal">a curated digital journal</div>' +
-            '</div>' +
-          '</div>' +
-          '<div class="hero-intro" data-hero-intro>' +
-            '<div class="hi-hello">' +
-              '<div class="hi-g">hi,</div>' +
-              '<div class="hi-n">I’m Ishika</div>' +
-            '</div>' +
-            '<p class="hi-line">I design things that ' +
-              '<span class="hi-w" data-w="moves">move</span>, ' +
-              '<span class="hi-w" data-w="reacts">react</span>, and ' +
-              '<span class="hi-w hi-sp" data-w="surprises">surprise</span>.' +
-            '</p>' +
-          '</div>' +
+        '<div class="hero-intro" data-hero-intro>' +
+          '<h1 class="hi-name" aria-label="hi, I’m Ishika"><span class="hi-g"></span><span class="hi-n"></span></h1>' +
+          '<p class="hi-line">I design things that ' +
+            '<span class="hi-w" data-w="moves">move</span>, ' +
+            '<span class="hi-w" data-w="reacts">react</span>, and ' +
+            '<span class="hi-w hi-sp" data-w="surprises">surprise</span>.' +
+          '</p>' +
         '</div>' +
-        '<div class="hero-right">' +
-          '<div class="hero-illustration">' +
-            '<img class="illus-default" src="character-default.png" alt="Illustrated portrait of Ishika">' +
-            '<img class="illus-hover" src="character-hover.png" alt="Illustrated portrait of Ishika, waving">' +
-          '</div>' +
-          '<p class="hero-illus-hint"><span class="hint-hover">hover around to say hi</span><span class="hint-touch">tap the illustration to say hi</span></p>' +
+        '<div class="hero-illustration">' +
+          '<img class="illus-default" src="character-default.png" alt="Illustrated portrait of Ishika">' +
+          '<img class="illus-hover" src="character-hover.png" alt="Illustrated portrait of Ishika, waving">' +
+        '</div>' +
+        '<div class="hero-keys">' +
+          '<span class="keys-string" aria-hidden="true"></span>' +
+          '<img class="keys-img" src="keychain.png" alt="A keychain of things Ishika loves: a tulip, Kinder Joy, an I charm, sunglasses, coffee, lip balm and a waffle">' +
+          '<p class="keys-label">Things I love</p>' +
         '</div>' +
         '<div class="scroll-indicator"><span>Scroll</span><span class="line"></span></div>' +
       '</section>'
@@ -570,6 +578,27 @@
     );
   }
 
+  function playgroundTemplate(){
+    return (
+      '<section class="pg-full">' +
+        '<div class="pg-garden" id="pgGarden" role="img" aria-label="A grassy garden where visitors plant tulips">' +
+          '<div class="pg-flowers" id="pgFlowers"></div>' +
+          '<img class="pg-ghost" id="pgGhost" alt="" hidden>' +
+        '</div>' +
+        '<div class="pg-badge">playground</div>' +
+        '<div class="pg-status" id="pgCount"></div>' +
+        '<p class="pg-toast" id="pgToast" role="status" aria-live="polite"></p>' +
+        '<div class="pg-dock">' +
+          '<div class="pg-palette" id="pgPalette"></div>' +
+          '<span class="pg-dock-divider" aria-hidden="true"></span>' +
+          '<button class="pg-btn" id="pgUndo" type="button" disabled>Undo</button>' +
+        '</div>' +
+        '<p class="pg-hint" id="pgHint">Pick a tulip, then click the grass.</p>' +
+        '<p class="pg-note" id="pgNote"></p>' +
+      '</section>'
+    );
+  }
+
   function contactTemplate(){
     var noteCard = (
       '<div class="note-card reveal">' +
@@ -578,17 +607,19 @@
           '<span class="note-check">✓</span>' +
         '</div>' +
         '<h2 class="note-heading">Drop a note <span class="spark">✦</span></h2>' +
-        '<form class="note-form" onsubmit="return false;">' +
+        '<form class="note-form" id="noteForm" novalidate>' +
           '<div class="note-row">' +
-            '<div class="note-field"><label>- name -</label><input type="text"></div>' +
-            '<div class="note-field"><label>- email -</label><input type="email"></div>' +
+            '<div class="note-field"><label for="nf-name">- name -</label><input id="nf-name" name="name" type="text" autocomplete="name" maxlength="80"></div>' +
+            '<div class="note-field"><label for="nf-email">- email -</label><input id="nf-email" name="email" type="email" autocomplete="email" maxlength="120" required></div>' +
           '</div>' +
           '<div class="note-row">' +
-            '<div class="note-field"><label>- phone -</label><input type="text"></div>' +
-            '<div class="note-field"><label>- company -</label><input type="text"></div>' +
+            '<div class="note-field"><label for="nf-phone">- phone -</label><input id="nf-phone" name="phone" type="text" autocomplete="tel" maxlength="30"></div>' +
+            '<div class="note-field"><label for="nf-company">- company -</label><input id="nf-company" name="company" type="text" autocomplete="organization" maxlength="80"></div>' +
           '</div>' +
-          '<div class="note-field note-field--full"><label>- message -</label><textarea rows="4"></textarea></div>' +
+          '<div class="note-field note-field--full"><label for="nf-message">- message -</label><textarea id="nf-message" name="message" rows="4" maxlength="2000" required></textarea></div>' +
+          '<input class="note-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">' +
           '<button class="note-send" type="submit">Send letter →</button>' +
+          '<p class="note-status" id="noteStatus" role="status" aria-live="polite"></p>' +
         '</form>' +
         '<div class="note-rev">rev · 2026-001</div>' +
       '</div>'
@@ -676,7 +707,21 @@
               ? '<img class="case-image" src="' + s.image + '" alt="' + (s.imageAlt || s.heading) + '">'
               : '';
             var imagesHtml = s.images
-              ? s.images.map(function(im){ return '<img class="case-image" src="' + im.src + '" alt="' + im.alt + '">'; }).join('')
+              ? (s.images.length > 1
+                  ? '<div class="case-image-gallery">' +
+                      s.images.map(function(im){ return '<img class="case-image" src="' + im.src + '" alt="' + im.alt + '">'; }).join('') +
+                    '</div>'
+                  : s.images.map(function(im){ return '<img class="case-image" src="' + im.src + '" alt="' + im.alt + '">'; }).join(''))
+              : '';
+            var videoHtml = s.video
+              ? '<div class="case-video-wrap">' +
+                  '<video class="case-video" preload="none" playsinline controls' + (s.videoPoster ? ' poster="' + s.videoPoster + '"' : '') + '>' +
+                    '<source src="' + s.video + '" type="video/mp4">' +
+                  '</video>' +
+                  '<button class="case-video-play" type="button" aria-label="Play ' + (s.videoLabel || s.heading) + '">' +
+                    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.5"/><path d="M9.5 7.5l8 4.5-8 4.5z"/></svg>' +
+                  '</button>' +
+                '</div>'
               : '';
             // no asset yet — a labeled dashed box marking where the real image goes
             var placeholders = s.imagePlaceholder
@@ -690,7 +735,7 @@
             return (
               '<div class="case-section reveal ' + (s.span || '') + '">' +
                 '<span class="case-num">' + s.num + '</span>' +
-                '<div class="case-section-body"><h4>' + s.heading + '</h4>' + bodyHtml + listHtml + imageHtml + imagesHtml + tagsHtml + placeholderHtml + '</div>' +
+                '<div class="case-section-body"><h4>' + s.heading + '</h4>' + bodyHtml + listHtml + imageHtml + imagesHtml + videoHtml + tagsHtml + placeholderHtml + '</div>' +
               '</div>'
             );
           }).join('') +
@@ -928,6 +973,8 @@
       html = detailTemplate(parts[1]); routeBase = "/work";
     } else if (parts[0] === "work"){
       html = workTemplate(); routeBase = "/work";
+    } else if (parts[0] === "playground" && PLAYGROUND_ENABLED){
+      html = playgroundTemplate(); routeBase = "/playground";
     } else if (parts[0] === "contact"){
       html = contactTemplate(); routeBase = "/contact";
     } else {
@@ -937,23 +984,27 @@
     function updateDOM(){
       if (heroDotsCleanup) heroDotsCleanup();
       if (window.HeroIntro) window.HeroIntro.destroy();
+      if (window.Playground) window.Playground.destroy();
       app.innerHTML = html;
       setActiveNav(routeBase);
+      document.body.classList.toggle("figma-bg", routeBase !== "/");
       window.scrollTo(0, 0);
       updateHeader();
       if (routeBase === "/about") bindPageInteractions();
       if (routeBase === "/contact") bindPageInteractions();
+      if (routeBase === "/playground" && window.Playground) window.Playground.init();
       if (routeBase === "/"){
         initHeroDots();
         if (window.HeroIntro) window.HeroIntro.init();
       }
       bindWorkTiles();
+      bindCaseVideos();
       initScrollReveal();
     }
 
     // "panel" = ink curtain sweeps up, swaps the page, sweeps away; "dolly" = the earlier zoom-and-fade
     var PAGE_TRANSITION = "panel";
-    var PAGE_LABELS = { "/": "Home", "/about": "About", "/work": "Work", "/contact": "Contact" };
+    var PAGE_LABELS = { "/": "Home", "/about": "About", "/work": "Work", "/playground": "Playground", "/contact": "Contact" };
     if (PAGE_TRANSITION === "panel") playPanelTransition(updateDOM, PAGE_LABELS[routeBase] || "");
     else playDollyTransition(updateDOM);
   }
@@ -996,8 +1047,75 @@
     el.addEventListener("pointercancel", stop);
   }
 
+  /* ---------- contact form: delivers each note to my inbox via FormSubmit ---------- */
+  var NOTE_ENDPOINT = "https://formsubmit.co/ajax/ishikabhansali7@gmail.com";
+  var NOTE_COOLDOWN_MS = 30000;
+
+  function bindContactForm(){
+    var form = document.getElementById("noteForm");
+    if (!form) return;
+    var status = document.getElementById("noteStatus");
+    var sendBtn = form.querySelector(".note-send");
+    var check = document.querySelector(".note-check");
+    var busy = false;
+
+    function say(msg){ status.textContent = msg; }
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      if (busy) return;
+
+      var email = form.elements.email.value.trim();
+      var message = form.elements.message.value.trim();
+      if (!/^[^s@]+@[^s@]+.[^s@]+$/.test(email)){ say("Please add a valid email so I can reply."); form.elements.email.focus(); return; }
+      if (!message){ say("Write a message first."); form.elements.message.focus(); return; }
+      if (form.elements._honey.value) return;
+
+      var last = 0;
+      try { last = Number(localStorage.getItem("noteSentAt")) || 0; } catch (err) {}
+      if (Date.now() - last < NOTE_COOLDOWN_MS){ say("You just sent one. Give it a moment before sending another."); return; }
+
+      busy = true;
+      sendBtn.disabled = true;
+      sendBtn.textContent = "Sending…";
+      say("");
+
+      fetch(NOTE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          name: form.elements.name.value.trim(),
+          email: email,
+          phone: form.elements.phone.value.trim(),
+          company: form.elements.company.value.trim(),
+          message: message,
+          _subject: "New note from your portfolio",
+          _replyto: email,
+          _template: "table",
+          _captcha: "false"
+        })
+      }).then(function(r){
+        if (!r.ok) throw new Error("send failed");
+        return r.json();
+      }).then(function(data){
+        if (data && String(data.success) === "false") throw new Error(data.message || "send failed");
+        try { localStorage.setItem("noteSentAt", String(Date.now())); } catch (err) {}
+        form.reset();
+        if (check) check.classList.add("is-sent");
+        say("Sent. Thank you, I read every message.");
+      }).catch(function(){
+        say("Couldn’t send right now. You can email me at ishikabhansali7@gmail.com.");
+      }).then(function(){
+        busy = false;
+        sendBtn.disabled = false;
+        sendBtn.textContent = "Send letter →";
+      });
+    });
+  }
+
   function bindPageInteractions(){
     document.querySelectorAll("#app .draggable").forEach(makeDraggable);
+    bindContactForm();
     var cvBtn = document.getElementById("cvBtn");
     if (cvBtn){
       cvBtn.addEventListener("click", function(){
@@ -1024,6 +1142,22 @@
       t.addEventListener("click", function(e){
         navigate("#/work/" + t.getAttribute("data-id"));
       });
+    });
+  }
+
+  // a case-study video: native controls, plus a big custom play button over the
+  // top until it's first played (the video itself only loads once played, so a
+  // large file never downloads unless the visitor actually presses play)
+  function bindCaseVideos(){
+    var wraps = document.querySelectorAll(".case-video-wrap");
+    wraps.forEach(function(wrap){
+      var video = wrap.querySelector(".case-video");
+      var btn = wrap.querySelector(".case-video-play");
+      if (!video || !btn) return;
+      btn.addEventListener("click", function(){ video.play(); });
+      video.addEventListener("play", function(){ wrap.classList.add("is-playing"); });
+      video.addEventListener("pause", function(){ wrap.classList.remove("is-playing"); });
+      video.addEventListener("ended", function(){ wrap.classList.remove("is-playing"); });
     });
   }
 

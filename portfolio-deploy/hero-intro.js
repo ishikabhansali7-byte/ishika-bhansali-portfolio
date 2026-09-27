@@ -5,7 +5,7 @@
   "use strict";
 
   /* ---------- easy-to-edit settings ---------- */
-  var PALETTE = ['#FF3D2E', '#1E5BFF', '#00A86B', '#FFB000', '#B14CFF'];
+  var PALETTE = ['#E4474F', '#2FA294', '#F2B632', '#8A5FBF', '#F08A4B'];
   var TYPE_MS = 110; // typewriter speed per character
   var IDLE_AFTER_MS = 4000;
   // true = follow the OS "reduce motion" setting (instant name swap, no wave/repel/idle/pop).
@@ -28,29 +28,61 @@
       s.cleanups.push(function(){ target.removeEventListener(type, fn, opts); });
     }
 
-    /* ---------- 1. typewriter name ---------- */
-    var nameEl = root.querySelector(".hi-n");
-    var FULL = "I’m Ishika";
-    nameEl.setAttribute("aria-label", FULL);
-    nameEl.textContent = "";
-    var typed = document.createElement("span");
-    typed.setAttribute("aria-hidden", "true");
-    var caret = document.createElement("span");
-    caret.className = "hi-caret"; caret.setAttribute("aria-hidden", "true");
-    nameEl.appendChild(typed); nameEl.appendChild(caret);
-    var ti = 0;
-    function typeNext(){
-      if (!s.alive) return;
-      ti++;
-      typed.textContent = FULL.slice(0, ti);
-      if (ti < FULL.length) later(typeNext, TYPE_MS + Math.random() * 70);
-      else caret.classList.add("done");
+    /* ---------- 1. two typed texts: the big name, then the typewriter line ---------- */
+    var keyEls = root.querySelectorAll(".tw-key");
+    function pressKey(){
+      if (!keyEls.length) return;
+      var k = keyEls[Math.floor(Math.random() * keyEls.length)];
+      k.classList.add("down");
+      later(function(){ k.classList.remove("down"); }, 90);
     }
+    // types LINES into lineEls one after another; withKeys makes the typewriter keys press
+    function makeTyper(lineEls, LINES, withKeys, onDone){
+      lineEls.forEach(function(l){ l.textContent = ""; });
+      var typedEl = document.createElement("span");
+      var caret = document.createElement("span");
+      caret.className = "tw-caret"; caret.setAttribute("aria-hidden", "true");
+      var li = 0, ci = 0;
+      function start(){
+        lineEls[0].appendChild(typedEl); lineEls[0].appendChild(caret);
+        if (reduce){
+          LINES.forEach(function(t, i){ lineEls[i].textContent = t; });
+          lineEls[LINES.length - 1].appendChild(caret);
+          if (onDone) onDone();
+          return;
+        }
+        later(typeNext, 250);
+      }
+      function typeNext(){
+        if (!s.alive) return;
+        ci++;
+        typedEl.textContent = LINES[li].slice(0, ci);
+        if (withKeys) pressKey();
+        if (ci < LINES[li].length){
+          later(typeNext, TYPE_MS + Math.random() * 70);
+        } else if (li < LINES.length - 1){
+          li++; ci = 0;
+          later(function(){
+            if (!s.alive) return;
+            typedEl = document.createElement("span");
+            lineEls[li].appendChild(typedEl);
+            lineEls[li].appendChild(caret);
+            if (withKeys) pressKey();
+            later(typeNext, TYPE_MS);
+          }, 380);
+        } else {
+          if (!withKeys) caret.remove();
+          if (onDone) onDone();
+        }
+      }
+      return start;
+    }
+    var nameEl = root.querySelector(".hi-name");
+    var startName = makeTyper([nameEl.querySelector(".hi-g"), nameEl.querySelector(".hi-n")], ["hi,", "I’m Ishika"], false);
     function beginTyping(){
       if (!s.alive || s.typing) return;
       s.typing = true;
-      if (reduce){ typed.textContent = FULL; caret.classList.add("done"); return; }
-      later(typeNext, 250);
+      startName();
     }
 
     /* ---------- 2. the three words ---------- */
