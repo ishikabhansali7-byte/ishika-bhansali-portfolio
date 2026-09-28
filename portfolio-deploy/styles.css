@@ -341,6 +341,13 @@
   @keyframes keysSway{ 0%,100%{ transform: rotate(-3deg); } 50%{ transform: rotate(3deg); } }
   @media (prefers-reduced-motion: reduce){ .keys-img{ animation-duration: 5s !important; animation-iteration-count: infinite !important; } }
 
+  /* in-between widths: scale the side art down so it never crowds the centred greeting */
+  @media (min-width: 861px) and (max-width: 1100px){
+    .hero-illustration{ width: 22vw; left: 2vw; }
+    .hero-keys{ width: 19vw; right: 3vw; }
+    .hi-name{ font-size: 4.4vw; }
+    .hi-line{ font-size: clamp(14px, 1.7vw, 18px); }
+  }
   @media (max-width: 860px){
     .hero{ min-height: 100svh; padding-top: 90px; padding-bottom: 40px; }
     .hi-name{ font-size: clamp(2rem, 9vw, 3rem); }
@@ -553,6 +560,7 @@
   .tl-date{
     flex-shrink: 0; border: 1px solid var(--line); border-radius: 999px;
     padding: 4px 12px; font-size: 12px; color: var(--muted); white-space: nowrap;
+    min-width: 132px; text-align: center; /* one width for every date so the titles beside them line up */
   }
   .timeline li strong{ display: block; font-size: 14px; font-weight: 600; }
   .timeline li span.tl-detail{ display:block; font-size: 13px; color: var(--muted); line-height: 1.5; margin-top: 2px; }
@@ -564,7 +572,7 @@
   .pill{ border: 1px solid var(--line); border-radius: 999px; padding: 9px 18px; font-size: 13px; }
   .pill.filled{ background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
-  .sw-card{ border: 1px solid var(--line); overflow: hidden; }
+  .sw-card{ border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent); background: var(--surface); overflow: hidden; }
   .sw-head{
     background: var(--ink); color: var(--bg);
     font-family: var(--font-display); font-weight: 600;
@@ -572,7 +580,7 @@
   }
   .sw-grid{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 26px; }
   .sw-icon{
-    width: 60px; height: 60px; margin: 0 auto;
+    width: 100%; max-width: 60px; aspect-ratio: 1; margin: 0 auto;
     border-radius: 14px;
     background: #FFFFFF;
     border: 1.5px solid var(--ink);
@@ -621,6 +629,7 @@
     width: 30px; height: 30px; border-radius: 50%;
     border: 1px solid var(--line); color: var(--ink);
     display: flex; align-items: center; justify-content: center; font-size: 12px;
+    opacity: .35; transition: opacity .3s ease; /* dim until the note is actually sent */
   }
   .note-heading{
     font-family: var(--font-display); font-weight: 600;
@@ -658,7 +667,7 @@
   .note-honey{ position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
   .note-send:disabled{ opacity: .6; cursor: default; }
   .note-status{ margin: 0; min-height: 1.4em; font-size: 13px; color: var(--ink); }
-  .note-check.is-sent{ background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .note-check.is-sent{ background: var(--ink); color: var(--bg); border-color: var(--ink); opacity: 1; }
   .note-rev{ margin-top: 20px; text-align: right; font-size: 12px; color: var(--muted); }
 
   /* -- CV banner + stamp cards -- */
@@ -739,12 +748,12 @@
   .detail-body p{ color: var(--muted); font-size: 15px; margin-bottom: 16px; }
   .case-tagline{ font-size: 16px; color: var(--ink); line-height: 1.6; margin: 0 0 24px; max-width: 720px; }
 
-  .detail-meta-row{ display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 40px; }
+  .detail-meta-row{ display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 14px 0 40px; max-width: 900px; }
   .detail-meta-box{
-    border: 1px solid var(--line);
-    padding: 10px 18px;
+    border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+    background: var(--surface);
+    padding: 12px 18px;
     display: flex; flex-direction: column; gap: 4px;
-    min-width: 120px;
   }
   .detail-meta-label{ font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
   .detail-meta-value{ font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); }
@@ -768,6 +777,7 @@
   }
   .case-section-body h4{ font-family: var(--font-display); font-weight: 600; font-size: 19px; margin: 0 0 10px; }
   .case-section-body p{ margin: 0; }
+  .case-section-body p + p{ margin-top: 12px; }
   .case-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
   .case-list li{ position: relative; padding-left: 18px; color: var(--muted); font-size: 15px; line-height: 1.5; }
   .case-list li::before{ content: "—"; position: absolute; left: 0; color: var(--accent); }
@@ -979,7 +989,7 @@
   .pg-pop-plant{ background: var(--ink); color: var(--bg); }
   .pg-pop-cancel{ background: transparent; color: var(--ink); }
   .pg-note{
-    position: absolute; left: 24px; bottom: 88px; z-index: 1000; max-width: min(320px, 60vw);
+    position: absolute; left: 24px; bottom: 100px; z-index: 1000; max-width: min(320px, 60vw);
     margin: 0; padding: 8px 16px; border-radius: 14px;
     font-size: 12px; color: var(--muted); font-style: italic;
     background: var(--surface); box-shadow: 0 6px 18px rgba(0,0,0,.12);

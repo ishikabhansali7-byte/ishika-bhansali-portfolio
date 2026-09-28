@@ -453,7 +453,7 @@
     return twoColShell(
       "work.",
       "A small collection of ideas I had to build.",
-      "3 selected projects, more coming soon.",
+      OPEN_PROJECTS.length + " selected projects, more coming soon.",
       '<div class="work-grid">' + tiles + '</div>'
     );
   }
@@ -560,7 +560,6 @@
         '<div class="section-block reveal">' +
           '<h3>software</h3>' +
           '<div class="sw-card">' +
-            '<div class="sw-head">software</div>' +
             '<div class="sw-grid">' + swIcons + '</div>' +
           '</div>' +
         '</div>' +

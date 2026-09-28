@@ -25,7 +25,7 @@
 (function(){
   "use strict";
 
-  var DB_URL = ""; // <- paste your Firebase Realtime Database URL here
+  var DB_URL = "https://ishika-bhansali-portfolio-default-rtdb.firebaseio.com"; // <- paste your Firebase Realtime Database URL here
 
   var TULIPS = [
     { name: "pink",   src: "tulip-1.png?v=5" },
@@ -39,7 +39,7 @@
   var GRASS_BOTTOM = 99;
   var TULIP_MAX_PCT = 15;  // a planted tulip's height, as % of the garden's own height, at its largest (closest to the viewer)
   var MAX_FLOWERS = 500;
-  var POLL_MS = 30000;
+  var POLL_MS = 15000;
   var LOCAL_KEY = "gardenFlowers";
   var MINE_KEY = "gardenPlanted";
   var HIDDEN_KEY = "gardenHidden"; // ids this browser has "cleared" — the shared DB's write rules don't allow real deletes, so a cleared tulip is just hidden from this browser
@@ -212,6 +212,12 @@
     }
     if (s.planted) setPlantedUI();
     if (undoBtn) undoBtn.disabled = !s.planted;
+    // in the shared garden a planted tulip stays for good, so there is nothing to undo
+    if (base() && undoBtn){
+      undoBtn.hidden = true;
+      var divider = undoBtn.parentNode.querySelector(".pg-dock-divider");
+      if (divider) divider.hidden = true;
+    }
 
     /* "Undo" removes your tulip (whenever you have one) so you can plant a different one. The shared
        garden's write rules don't allow real deletes, so once a tulip is saved to the shared database
@@ -264,20 +270,28 @@
       count.textContent = n === 0 ? "No tulips yet. Be the first." : n + (n === 1 ? " tulip" : " tulips") + " planted";
     }
 
+    var firstLoad = true;
     function refresh(){
       loadFlowers().then(function(list){
         if (!s.alive) return;
         var hidden = getHidden();
         list.sort(function(a, b){ return a.ts - b.ts; }).slice(-MAX_FLOWERS).forEach(function(f){
-          if (hidden.indexOf(f.id) === -1) addFlower(f);
+          // tulips other visitors plant while this page is open grow into place; the ones already there just appear
+          if (hidden.indexOf(f.id) === -1) addFlower(f, { grow: !firstLoad });
         });
+        firstLoad = false;
         updateCount();
+        if (base()) note.textContent = "";
       }).catch(function(){
         if (s.alive) note.textContent = "Couldn’t reach the garden right now. Try again in a moment.";
       });
     }
     refresh();
-    if (base()) s.poll = setInterval(refresh, POLL_MS);
+    if (base()){
+      // shared garden: keep it fresh while the page is open, and again whenever the tab comes back into view
+      s.poll = setInterval(refresh, POLL_MS);
+      on(document, "visibilitychange", function(){ if (!document.hidden) refresh(); });
+    }
 
     /* planting */
     function point(e){
