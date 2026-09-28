@@ -15,7 +15,12 @@
          ".read": true,
          "$id": {
            ".write": "!data.exists()",
-           ".validate": "newData.hasChildren(['t','x','y','ts']) && newData.child('t').isNumber() && newData.child('t').val() >= 0 && newData.child('t').val() <= 5 && newData.child('x').isNumber() && newData.child('y').isNumber() && (!newData.hasChild('n') || (newData.child('n').isString() && newData.child('n').val().length <= 20)) && newData.child('ts').isNumber()",
+           ".validate": "newData.hasChildren(['t','x','y','ts'])",
+           "t":  { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 5" },
+           "x":  { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100" },
+           "y":  { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100" },
+           "n":  { ".validate": "newData.isString() && newData.val().length <= 20" },
+           "ts": { ".validate": "newData.isNumber()" },
            "$other": { ".validate": false }
          }
        }
@@ -91,7 +96,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       }).then(function(r){
-        if (!r.ok) throw new Error("save failed");
+        if (!r.ok){ console.warn("Garden save failed: HTTP " + r.status + " (check the Firebase Rules tab)"); throw new Error("save failed"); }
         return r.json();
       }).then(function(res){ return res && res.name ? res.name : f.id; });
     }
@@ -103,7 +108,14 @@
   }
 
   function alreadyPlanted(){
-    try { return !!localStorage.getItem(MINE_KEY); } catch (e) { return false; }
+    try {
+      var id = localStorage.getItem(MINE_KEY);
+      if (!id) return false;
+      // a tulip planted back when the garden was still in preview mode only ever lived in that
+      // browser ("l0", "l1"…). Once the shared garden is on it doesn't count, so the visitor can plant a real one.
+      if (base() && id.charAt(0) !== "-"){ localStorage.removeItem(MINE_KEY); return false; }
+      return true;
+    } catch (e) { return false; }
   }
   function markPlanted(id){
     try { localStorage.setItem(MINE_KEY, String(id)); } catch (e) {}
