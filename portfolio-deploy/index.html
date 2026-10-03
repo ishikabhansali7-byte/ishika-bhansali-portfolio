@@ -7,7 +7,7 @@
 <title>Ishika Bhansali — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Special+Elite&family=Italianno&family=Mrs+Saint+Delafield&family=Silkscreen&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Special+Elite&family=Noto+Rashi+Hebrew:wght@400..700&family=Italianno&family=Mrs+Saint+Delafield&family=Silkscreen&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>try{if(sessionStorage.getItem("loaderSeen")==="1"&&!/[?&]loader=1(&|$)/.test(location.search))document.documentElement.classList.add("loader-skip")}catch(e){}</script>
 </head>
@@ -19,7 +19,7 @@
 
   <header class="site" id="siteHeader">
     <div class="logo roll-hover">ishika</div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" data-bubble="menu">☰</button>
     <nav class="primary" id="primaryNav">
       <a href="#/" data-route="/">Home</a>
       <a href="#/about" data-route="/about">About</a>
@@ -28,8 +28,8 @@
       <a href="#/contact" data-route="/contact">Contact</a>
     </nav>
     <div class="header-right">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">◐</button>
-      <button class="btn-resume roll-hover" id="resumeBtn">Resume</button>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" data-bubble="dark mode">◐</button>
+      <button class="btn-resume roll-hover" id="resumeBtn" data-bubble="download">Resume</button>
     </div>
   </header>
 
@@ -46,8 +46,11 @@
     <a href="#top" class="top" id="backToTop">Back to top</a>
   </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/embla-carousel@8/embla-carousel.umd.js"></script>
 <script src="hero-intro.js"></script>
 <script src="playground.js"></script>
+<script src="cursor-bubble.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

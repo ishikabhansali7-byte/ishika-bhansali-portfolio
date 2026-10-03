@@ -8,7 +8,7 @@
       thumb: "knoki-thumbnail.png", ar: "1672 / 941",
       wordmark: "Knoki",
       heroImage: "knoki-thumbnail.png",
-      meta: { team: "7+", timeline: "3 weeks", tools: "Arduino IDE, AutoCAD, Blender, SketchUp" },
+      meta: { team: "8", timeline: "3 weeks", tools: "Arduino IDE, AutoCAD, Blender, SketchUp" },
       tagline: "A knock-based interactive gaming console designed to bring tactile rhythm, pattern, and sensory play into a premium physical product experience.",
       sections: [
         { num: "01", heading: "Overview", body: "Knoki is a tactile product design project that turns knock patterns into playful digital interactions, rhythm games, and sensory feedback." },
@@ -43,6 +43,7 @@
       thumb: "bookmyshow-banner.png", ar: "1366 / 768",
       wordmark: "BookMyShow",
       heroImage: "bookmyshow-banner.png",
+      meta: { team: "Individual", timeline: "1 week", tools: "Figma" },
       sections: [
         { num: "01", heading: "Project Overview", body: "A UI/UX redesign of the BookMyShow homepage focused on improving usability, reducing clutter, and creating a more visually structured browsing experience.", span: "span-4" },
         { num: "02", heading: "Problems Identified", tags: ["Visual overload", "Inconsistent hierarchy", "Difficult scanning", "Overwhelming banners", "Cluttered navigation", "Poor spacing"], span: "span-2" },
@@ -158,8 +159,11 @@
 
   function applyTheme(){
     document.documentElement.setAttribute("data-theme", theme);
-    // icon shows the mode you'd switch TO next
-    if (themeToggleBtn) themeToggleBtn.textContent = theme === "dark" ? "☀" : "☾";
+    // icon (and cursor-bubble label) show the mode you'd switch TO next
+    if (themeToggleBtn){
+      themeToggleBtn.textContent = theme === "dark" ? "☀" : "☾";
+      themeToggleBtn.setAttribute("data-bubble", theme === "dark" ? "light mode" : "dark mode");
+    }
   }
   applyTheme();
 
@@ -288,59 +292,6 @@
     toggleThemeAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
   });
 
-  /* ---------- random-letter-swap hover on header text ---------- */
-  var SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-  function randomScrambleChar(){
-    return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-  }
-
-  function wrapScrambleChars(el){
-    var text = el.textContent;
-    el.setAttribute("aria-label", text);
-    el.innerHTML = "";
-    var spans = [];
-    text.split("").forEach(function(ch){
-      var span = document.createElement("span");
-      span.className = "scramble-char";
-      span.textContent = ch === " " ? "\u00A0" : ch;
-      span.setAttribute("data-final", ch === " " ? "\u00A0" : ch);
-      el.appendChild(span);
-      spans.push(span);
-    });
-    return spans;
-  }
-
-  // reverse=true sweeps the flicker right-to-left instead of left-to-right,
-  // mirroring the `reverse` prop on RandomLetterSwapForward.
-  function scrambleReveal(spans, reverse){
-    var order = reverse ? spans.slice().reverse() : spans;
-    order.forEach(function(span, i){
-      var finalChar = span.getAttribute("data-final");
-      if (finalChar === "\u00A0") return;
-      var flickers = 3;
-      var stagger = i * 30;
-      for (var k = 0; k < flickers; k++){
-        setTimeout(function(){ span.textContent = randomScrambleChar(); }, stagger + k * 40);
-      }
-      setTimeout(function(){ span.textContent = finalChar; }, stagger + flickers * 40);
-    });
-  }
-
-  var canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-  function initScrambleHover(el, reverse){
-    if (reduceMotion || !canHover){
-      el.setAttribute("aria-label", el.textContent);
-      return;
-    }
-    var spans = wrapScrambleChars(el);
-    el.addEventListener("mouseenter", function(){ scrambleReveal(spans, reverse); });
-  }
-
-  document.querySelectorAll("nav.primary a, .roll-hover").forEach(function(el){
-    initScrambleHover(el, false);
-  });
-
   /* ---------- mobile nav ---------- */
   var navToggle = document.getElementById("navToggle");
   var primaryNav = document.getElementById("primaryNav");
@@ -418,9 +369,9 @@
         '<div class="hero-intro" data-hero-intro>' +
           '<h1 class="hi-name" aria-label="hi, I’m Ishika"><span class="hi-g"></span><span class="hi-n"></span></h1>' +
           '<p class="hi-line">I design things that ' +
-            '<span class="hi-w" data-w="moves">move</span>, ' +
-            '<span class="hi-w" data-w="reacts">react</span>, and ' +
-            '<span class="hi-w hi-sp" data-w="surprises">surprise</span>.' +
+            '<span class="hi-w" data-w="moves" data-bubble="move">move</span>, ' +
+            '<span class="hi-w" data-w="reacts" data-bubble="react">react</span>, and ' +
+            '<span class="hi-w hi-sp" data-w="surprises" data-bubble="surprise">surprise</span>.' +
           '</p>' +
         '</div>' +
         '<div class="hero-illustration">' +
@@ -442,7 +393,7 @@
       var thumbHtml = p.thumb ? '<img class="tile-thumb" src="' + p.thumb + '" alt="">' : '';
       var thumbClass = p.thumb ? ' has-thumb' : '';
       return (
-        '<div class="work-tile reveal ' + p.span + thumbClass + (p.soon ? ' is-soon' : '') + '"' + (p.soon ? ' aria-disabled="true"' : ' data-id="' + p.id + '"') + (p.ar ? ' style="--ar:' + p.ar + '"' : '') + '>' +
+        '<div class="work-tile reveal ' + p.span + thumbClass + (p.soon ? ' is-soon' : '') + '"' + (p.soon ? ' aria-disabled="true"' : ' data-id="' + p.id + '" data-bubble="view project"') + (p.ar ? ' style="--ar:' + p.ar + '"' : '') + '>' +
           thumbHtml +
           '<span class="index">' + p.id + '</span>' +
           (p.soon ? '<span class="soon-badge">Coming soon</span>' : '') +
@@ -466,12 +417,12 @@
       { cls: "trait-4", label: "Management Skills" },
       { cls: "trait-5", label: "Digital Marketing" }
     ].map(function(t){
-      return '<div class="trait ' + t.cls + ' draggable">' + t.label + '</div>';
+      return '<div class="trait ' + t.cls + ' draggable" data-bubble="drag">' + t.label + '</div>';
     }).join("");
 
     var top = (
       '<div class="about-top">' +
-        '<div class="photo-card draggable">' +
+        '<div class="photo-card draggable" data-bubble="drag">' +
           '<div class="pc-head">' +
             '<div class="pc-avatar"></div>' +
             '<div><div class="pc-name">Ishika Bhansali</div></div>' +
@@ -602,48 +553,46 @@
     var noteCard = (
       '<div class="note-card reveal">' +
         '<div class="note-top">' +
-          '<span>form · 001</span>' +
           '<span class="note-check">✓</span>' +
         '</div>' +
         '<h2 class="note-heading">Drop a note <span class="spark">✦</span></h2>' +
         '<form class="note-form" id="noteForm" novalidate>' +
           '<div class="note-row">' +
-            '<div class="note-field"><label for="nf-name">- name -</label><input id="nf-name" name="name" type="text" autocomplete="name" maxlength="80"></div>' +
-            '<div class="note-field"><label for="nf-email">- email -</label><input id="nf-email" name="email" type="email" autocomplete="email" maxlength="120" required></div>' +
+            '<div class="note-field"><label for="nf-name">- name -</label><input id="nf-name" name="name" type="text" autocomplete="name" maxlength="80" data-bubble="type"></div>' +
+            '<div class="note-field"><label for="nf-email">- email -</label><input id="nf-email" name="email" type="email" autocomplete="email" maxlength="120" required data-bubble="type"></div>' +
           '</div>' +
           '<div class="note-row">' +
-            '<div class="note-field"><label for="nf-phone">- phone -</label><input id="nf-phone" name="phone" type="text" autocomplete="tel" maxlength="30"></div>' +
-            '<div class="note-field"><label for="nf-company">- company -</label><input id="nf-company" name="company" type="text" autocomplete="organization" maxlength="80"></div>' +
+            '<div class="note-field"><label for="nf-phone">- phone -</label><input id="nf-phone" name="phone" type="text" autocomplete="tel" maxlength="30" data-bubble="type"></div>' +
+            '<div class="note-field"><label for="nf-company">- company -</label><input id="nf-company" name="company" type="text" autocomplete="organization" maxlength="80" data-bubble="type"></div>' +
           '</div>' +
-          '<div class="note-field note-field--full"><label for="nf-message">- message -</label><textarea id="nf-message" name="message" rows="4" maxlength="2000" required></textarea></div>' +
+          '<div class="note-field note-field--full"><label for="nf-message">- message -</label><textarea id="nf-message" name="message" rows="4" maxlength="2000" required data-bubble="type"></textarea></div>' +
           '<input class="note-honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">' +
-          '<button class="note-send" type="submit">Send letter →</button>' +
+          '<button class="note-send" type="submit" data-bubble="send">Send letter →</button>' +
           '<p class="note-status" id="noteStatus" role="status" aria-live="polite"></p>' +
         '</form>' +
-        '<div class="note-rev">rev · 2026-001</div>' +
       '</div>'
     );
 
     var links = (
       '<div class="contact-links">' +
         '<div class="finder-label">or find me here — drag these</div>' +
-        '<button class="cv-banner reveal" id="cvBtn" type="button">' +
+        '<button class="cv-banner reveal" id="cvBtn" type="button" data-bubble="download">' +
           '<span class="cv-label">- resume -</span>' +
           '<span class="cv-title">Download resume</span>' +
           '<span class="cv-arrow">↓</span>' +
         '</button>' +
         '<div class="stamp-box">' +
-          '<div class="stamp-card stamp-1 draggable" data-href="https://mail.google.com/mail/?view=cm&fs=1&to=ishikabhansali7@gmail.com">' +
+          '<div class="stamp-card stamp-1 draggable" data-href="https://mail.google.com/mail/?view=cm&fs=1&to=ishikabhansali7@gmail.com" data-bubble="drag">' +
             '<span class="stamp-index">- 01 -</span>' +
             '<strong>Email</strong>' +
             '<a class="stamp-detail" href="https://mail.google.com/mail/?view=cm&fs=1&to=ishikabhansali7@gmail.com" target="_blank" rel="noopener">ishikabhansali7@gmail.com</a>' +
           '</div>' +
-          '<div class="stamp-card stamp-2 draggable" data-href="https://www.linkedin.com/in/ishika-bhansali-7b424b262">' +
+          '<div class="stamp-card stamp-2 draggable" data-href="https://www.linkedin.com/in/ishika-bhansali-7b424b262" data-bubble="drag">' +
             '<span class="stamp-index">- 02 -</span>' +
             '<strong>LinkedIn</strong>' +
             '<a class="stamp-detail" href="https://www.linkedin.com/in/ishika-bhansali-7b424b262" target="_blank" rel="noopener">linkedin.com/in/ishika-bhansali-7b424b262</a>' +
           '</div>' +
-          '<div class="stamp-card stamp-3 draggable" data-href="https://www.behance.net/ishikabhansali17">' +
+          '<div class="stamp-card stamp-3 draggable" data-href="https://www.behance.net/ishikabhansali17" data-bubble="drag">' +
             '<span class="stamp-index">- 03 -</span>' +
             '<strong>Behance</strong>' +
             '<a class="stamp-detail" href="https://www.behance.net/ishikabhansali17" target="_blank" rel="noopener">behance.net/ishikabhansali17</a>' +
@@ -707,17 +656,36 @@
               : '';
             var imagesHtml = s.images
               ? (s.images.length > 1
-                  ? '<div class="case-image-gallery">' +
-                      s.images.map(function(im){ return '<img class="case-image" src="' + im.src + '" alt="' + im.alt + '">'; }).join('') +
+                  ? '<div class="vcarousel" data-vcarousel' + (s.images.length >= 6 ? ' data-loop' : '') + ' role="region" aria-label="Project images" tabindex="0">' +
+                      '<button type="button" class="vcarousel-arrow vcarousel-up" aria-label="Previous image" data-bubble="up">' +
+                        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg>' +
+                      '</button>' +
+                      '<div class="vcarousel-viewport draggable" data-bubble="drag">' +
+                        '<div class="vcarousel-container">' +
+                          s.images.map(function(im, i){
+                            return (
+                              '<div class="vcarousel-slide">' +
+                                '<button type="button" class="vcarousel-img-btn" data-index="' + i + '" data-src="' + im.src + '" data-alt="' + im.alt + '" aria-label="Open ' + im.alt + '" data-bubble="expand">' +
+                                  '<img class="vcarousel-img" src="' + im.src + '" alt="' + im.alt + '" loading="lazy">' +
+                                '</button>' +
+                              '</div>'
+                            );
+                          }).join('') +
+                        '</div>' +
+                      '</div>' +
+                      '<button type="button" class="vcarousel-arrow vcarousel-down" aria-label="Next image" data-bubble="down">' +
+                        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>' +
+                      '</button>' +
                     '</div>'
                   : s.images.map(function(im){ return '<img class="case-image" src="' + im.src + '" alt="' + im.alt + '">'; }).join(''))
               : '';
+            var hasCarousel = s.images && s.images.length > 1;
             var videoHtml = s.video
               ? '<div class="case-video-wrap">' +
                   '<video class="case-video" preload="none" playsinline controls' + (s.videoPoster ? ' poster="' + s.videoPoster + '"' : '') + '>' +
                     '<source src="' + s.video + '" type="video/mp4">' +
                   '</video>' +
-                  '<button class="case-video-play" type="button" aria-label="Play ' + (s.videoLabel || s.heading) + '">' +
+                  '<button class="case-video-play" type="button" aria-label="Play ' + (s.videoLabel || s.heading) + '" data-bubble="play">' +
                     '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.5"/><path d="M9.5 7.5l8 4.5-8 4.5z"/></svg>' +
                   '</button>' +
                 '</div>'
@@ -734,7 +702,11 @@
             return (
               '<div class="case-section reveal ' + (s.span || '') + '">' +
                 '<span class="case-num">' + s.num + '</span>' +
-                '<div class="case-section-body"><h4>' + s.heading + '</h4>' + bodyHtml + listHtml + imageHtml + imagesHtml + videoHtml + tagsHtml + placeholderHtml + '</div>' +
+                '<div class="case-section-body' + (hasCarousel ? ' has-vcarousel' : '') + '">' +
+                  (hasCarousel
+                    ? '<div class="case-section-text"><h4>' + s.heading + '</h4>' + bodyHtml + listHtml + tagsHtml + placeholderHtml + '</div>' + imagesHtml
+                    : '<h4>' + s.heading + '</h4>' + bodyHtml + listHtml + imageHtml + imagesHtml + videoHtml + tagsHtml + placeholderHtml) +
+                '</div>' +
               '</div>'
             );
           }).join('') +
@@ -763,8 +735,8 @@
         bodyContent +
       '</div>' +
       '<div class="detail-nav">' +
-        '<a href="#/work/' + prev.id + '" class="prev">' + prev.name + '</a>' +
-        '<a href="#/work/' + next.id + '" class="next">' + next.name + '</a>' +
+        '<a href="#/work/' + prev.id + '" class="prev" data-bubble="open">' + prev.name + '</a>' +
+        '<a href="#/work/' + next.id + '" class="next" data-bubble="open">' + next.name + '</a>' +
       '</div>'
     );
   }
@@ -802,158 +774,41 @@
   // delayed callbacks have fired) leaving a stale timer that later swaps in
   // the wrong content or cancels the wrong animations — each run tags its
   // callbacks with the token that was current when it started, and any
-  // in-flight overlay from a previous run is discarded immediately
-  var panelToken = 0;
-  var panelOverlay = null;
-  var panelFirstRender = true;
-
-  // ink-coloured curtain with a curved leading edge: rises to cover the page, the
-  // new page is swapped in while covered, then the curtain lifts off the top
-  function playPanelTransition(updateDOM, label){
-    var myToken = ++panelToken;
-    if (panelOverlay){ panelOverlay.remove(); panelOverlay = null; }
-    if (panelFirstRender){ panelFirstRender = false; updateDOM(); return; }
-
-    var COVER_MS = 600, HOLD_MS = 120, REVEAL_MS = 700;
-    var OPEN_BOTTOM = "inset(100% 0 0 0 round 50% 50% 0 0 / 14vh 14vh 0 0)";
-    var CLOSED = "inset(0 0 0 0 round 0 0 0 0 / 0 0 0 0)";
-    var OPEN_TOP = "inset(0 0 100% 0 round 0 0 50% 50% / 0 0 14vh 14vh)";
-
-    var overlay = document.createElement("div");
-    overlay.className = "page-panel";
-    overlay.innerHTML = "<span class=\"page-panel-label\"></span>";
-    overlay.firstChild.textContent = label;
-    overlay.style.clipPath = OPEN_BOTTOM;
-    document.body.appendChild(overlay);
-    panelOverlay = overlay;
-
-    var labelEl = overlay.firstChild;
-    var cover = overlay.animate(
-      { clipPath: [OPEN_BOTTOM, CLOSED] },
-      { duration: COVER_MS, easing: "cubic-bezier(.7,0,.2,1)", fill: "forwards" }
-    );
-    labelEl.animate(
-      [{ opacity: 0, transform: "translateY(24px)" }, { opacity: 1, transform: "translateY(0)" }],
-      { duration: COVER_MS * 0.7, delay: COVER_MS * 0.35, easing: "cubic-bezier(.2,.7,.2,1)", fill: "both" }
-    );
-
-    cover.onfinish = function(){
-      if (myToken !== panelToken) return;
-      updateDOM();
-      setTimeout(function(){
-        if (myToken !== panelToken) return;
-        var lift = overlay.animate(
-          { clipPath: [CLOSED, OPEN_TOP] },
-          { duration: REVEAL_MS, easing: "cubic-bezier(.7,0,.2,1)", fill: "forwards" }
-        );
-        lift.onfinish = function(){
-          overlay.remove();
-          if (panelOverlay === overlay) panelOverlay = null;
-        };
-      }, HOLD_MS);
-    };
-  }
-
-  var dollyToken = 0;
-  var dollyOverlay = null;
+  // in-flight animation from a previous run is superseded immediately
+  var fadeToken = 0;
+  var fadeFirstRender = true;
 
   // torn down at the top of every render() so a stale rAF loop from a
   // previous visit to the home page never keeps animating a detached canvas
   var heroDotsCleanup = null;
 
-  function playDollyTransition(updateDOM){
-    var myToken = ++dollyToken;
-    if (dollyOverlay){ dollyOverlay.remove(); dollyOverlay = null; }
+  // quick crossfade: the outgoing page fades up and out, the page swaps
+  // underneath, then the incoming page fades up and in from just below
+  function playFadeTransition(updateDOM){
+    var myToken = ++fadeToken;
+    if (fadeFirstRender){ fadeFirstRender = false; updateDOM(); return; }
 
-    var EXIT_MS = 1000;
-    var SWAP_AT_MS = 550;
-    var ENTER_MS = 1000;
-    var EXIT_EASE = "cubic-bezier(.4,0,.2,1)";
-    var ENTER_EASE = "cubic-bezier(.2,.7,.2,1)";
+    var OUT_MS = 180, IN_MS = 260;
+    var OUT_EASE = "cubic-bezier(.4,0,1,1)";
+    var IN_EASE = "cubic-bezier(0,0,.2,1)";
 
-    // clone the outgoing page into a fixed overlay positioned exactly over
-    // the live #app, then hide the live one — the clone is what actually
-    // plays the exit animation, so the real DOM swap underneath is invisible
-    var rect = app.getBoundingClientRect();
-    var clone = app.cloneNode(true);
-    clone.removeAttribute("id");
-    var overlay = document.createElement("div");
-    overlay.className = "dolly-exit-layer";
-    overlay.style.cssText =
-      "position:fixed; left:" + rect.left + "px; top:" + rect.top + "px;" +
-      "width:" + rect.width + "px; height:" + rect.height + "px;" +
-      "overflow:hidden; pointer-events:none; z-index:500;";
-    overlay.appendChild(clone);
-    document.body.appendChild(overlay);
-    dollyOverlay = overlay;
-    app.style.visibility = "hidden";
-
-    clone.animate(
-      [
-        { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
-        { transform: "scale(1.15)", opacity: 0, filter: "blur(2px)" }
-      ],
-      { duration: EXIT_MS, easing: EXIT_EASE, fill: "forwards" }
+    var out = app.animate(
+      [{ opacity: 1, transform: "translateY(0)" }, { opacity: 0, transform: "translateY(-10px)" }],
+      { duration: OUT_MS, easing: OUT_EASE, fill: "forwards" }
     );
-
-    // decorative shapes drift upward and scale up slightly, on a slightly
-    // different timing than the main content, to fake depth/parallax
-    clone.querySelectorAll(".deco").forEach(function(shape){
-      var dy = -(15 + Math.random() * 10); // -15 to -25, varies per shape
-      shape.animate(
-        [
-          { transform: "translateY(0) scale(1)" },
-          { transform: "translateY(" + dy.toFixed(1) + "px) scale(1.1)" }
-        ],
-        { duration: Math.round(EXIT_MS * 0.9), delay: Math.round(EXIT_MS * 0.05), easing: EXIT_EASE, fill: "forwards" }
-      );
-    });
-
-    // the swap happens before the exit finishes, so the incoming page's
-    // enter overlaps the tail of the outgoing clone's exit
-    setTimeout(function(){
-      if (myToken !== dollyToken) return; // superseded by a newer navigation
+    out.onfinish = function(){
+      if (myToken !== fadeToken) return;
+      out.cancel();
       updateDOM();
-      app.style.visibility = "";
-
-      var mainEnter = app.animate(
-        [
-          { transform: "scale(.92)", opacity: 0, filter: "blur(2px)" },
-          { transform: "scale(1)", opacity: 1, filter: "blur(0px)" }
-        ],
-        { duration: ENTER_MS, easing: ENTER_EASE, fill: "both" }
+      var into = app.animate(
+        [{ opacity: 0, transform: "translateY(10px)" }, { opacity: 1, transform: "translateY(0)" }],
+        { duration: IN_MS, easing: IN_EASE, fill: "both" }
       );
-
-      // bigger shapes = more delay, so they feel farther back / slower to arrive
-      var newDecos = Array.prototype.slice.call(app.querySelectorAll(".deco"));
-      newDecos.sort(function(a, b){
-        return (a.offsetWidth * a.offsetHeight) - (b.offsetWidth * b.offsetHeight);
-      });
-      var decoAnims = newDecos.map(function(shape, i){
-        var dy = 10 + Math.random() * 5; // 10 to 15
-        return shape.animate(
-          [
-            { transform: "translateY(" + dy.toFixed(1) + "px) scale(.95)" },
-            { transform: "translateY(0) scale(1)" }
-          ],
-          { duration: ENTER_MS, delay: Math.round(i * (50 + Math.random() * 30)), easing: ENTER_EASE, fill: "both" }
-        );
-      });
-
-      // cleanup: drop every inline effect once it's done so nothing lingers
-      // on the DOM — elements fall back to their authored CSS state
-      mainEnter.onfinish = function(){
-        mainEnter.cancel();
-        decoAnims.forEach(function(a){ a.cancel(); });
+      into.onfinish = function(){
+        if (myToken !== fadeToken) return;
+        into.cancel(); // let the authored CSS take back over once it's settled
       };
-    }, SWAP_AT_MS);
-
-    // once the clone's own exit has fully played out, discard the overlay
-    setTimeout(function(){
-      if (myToken !== dollyToken) return; // a newer run already replaced/removed it
-      overlay.remove();
-      if (dollyOverlay === overlay) dollyOverlay = null;
-    }, EXIT_MS + 30);
+    };
   }
 
   // routeParts, when passed, is rendered directly instead of trusting location.hash —
@@ -984,9 +839,13 @@
       if (heroDotsCleanup) heroDotsCleanup();
       if (window.HeroIntro) window.HeroIntro.destroy();
       if (window.Playground) window.Playground.destroy();
+      closeLightbox(); // the page behind it is about to be replaced
+      if (window.CursorBubble) window.CursorBubble.reset(); // the hovered element is about to be removed without a pointerout
       app.innerHTML = html;
       setActiveNav(routeBase);
       document.body.classList.toggle("figma-bg", routeBase !== "/");
+      // the playground is a single pinned screen, not a scrolling page — the shared site footer would otherwise add extra height below it
+      document.body.classList.toggle("no-footer", routeBase === "/playground");
       window.scrollTo(0, 0);
       updateHeader();
       if (routeBase === "/about") bindPageInteractions();
@@ -998,14 +857,11 @@
       }
       bindWorkTiles();
       bindCaseVideos();
+      initVerticalCarousels();
       initScrollReveal();
     }
 
-    // "panel" = ink curtain sweeps up, swaps the page, sweeps away; "dolly" = the earlier zoom-and-fade
-    var PAGE_TRANSITION = "panel";
-    var PAGE_LABELS = { "/": "Home", "/about": "About", "/work": "Work", "/playground": "Playground", "/contact": "Contact" };
-    if (PAGE_TRANSITION === "panel") playPanelTransition(updateDOM, PAGE_LABELS[routeBase] || "");
-    else playDollyTransition(updateDOM);
+    playFadeTransition(updateDOM);
   }
 
   /* ---------- draggable elements (About page: photo card + trait badges) ---------- */
@@ -1160,6 +1016,203 @@
     });
   }
 
+  // ---------- expandable hover gallery + shared lightbox ----------
+  // every .xg-gallery (data-gallery) on the page shares ONE lightbox element,
+  // appended once to <body> so it survives route swaps of #app
+  var xg = { open: false, images: [], index: 0, triggerEl: null, prevOverflow: "", touchStartX: null };
+
+  function xgReduceMotion(){ return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }
+
+  function ensureLightbox(){
+    var el = document.getElementById("xgLightbox");
+    if (el) return el;
+    el = document.createElement("div");
+    el.id = "xgLightbox";
+    el.className = "xg-lightbox";
+    el.setAttribute("role", "dialog");
+    el.setAttribute("aria-modal", "true");
+    el.setAttribute("aria-label", "Image viewer");
+    el.hidden = true;
+    el.innerHTML =
+      '<button type="button" class="xg-close" aria-label="Close" data-bubble="close">' +
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+      '</button>' +
+      '<button type="button" class="xg-nav xg-prev" aria-label="Previous image" data-bubble="prev">' +
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>' +
+      '</button>' +
+      '<div class="xg-stage"><img class="xg-stage-img" alt=""></div>' +
+      '<button type="button" class="xg-nav xg-next" aria-label="Next image" data-bubble="next">' +
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>' +
+      '</button>' +
+      '<div class="xg-counter" aria-hidden="true"></div>';
+    document.body.appendChild(el);
+
+    var stage = el.querySelector(".xg-stage");
+    var prevBtn = el.querySelector(".xg-prev");
+    var nextBtn = el.querySelector(".xg-next");
+
+    el.addEventListener("click", closeLightbox); // backdrop (and the close button, which bubbles here)
+    stage.addEventListener("click", function(e){ e.stopPropagation(); }); // clicking the image itself shouldn't close it
+    prevBtn.addEventListener("click", function(e){ e.stopPropagation(); xgStep(-1); });
+    nextBtn.addEventListener("click", function(e){ e.stopPropagation(); xgStep(1); });
+
+    // swipe to navigate on touch devices
+    el.addEventListener("touchstart", function(e){
+      xg.touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    el.addEventListener("touchend", function(e){
+      if (xg.touchStartX === null) return;
+      var dx = e.changedTouches[0].clientX - xg.touchStartX;
+      xg.touchStartX = null;
+      if (Math.abs(dx) > 40) xgStep(dx < 0 ? 1 : -1);
+    }, { passive: true });
+
+    document.addEventListener("keydown", function(e){
+      if (!xg.open) return;
+      if (e.key === "Escape"){ closeLightbox(); }
+      else if (e.key === "ArrowLeft"){ xgStep(-1); }
+      else if (e.key === "ArrowRight"){ xgStep(1); }
+      else if (e.key === "Tab"){
+        // a minimal focus trap: cycle between the lightbox's own controls
+        var focusable = Array.prototype.filter.call(el.querySelectorAll("button"), function(b){ return !b.hidden; });
+        if (!focusable.length) return;
+        var i = focusable.indexOf(document.activeElement);
+        e.preventDefault();
+        var next = e.shiftKey ? (i <= 0 ? focusable.length - 1 : i - 1) : (i === focusable.length - 1 ? 0 : i + 1);
+        focusable[next].focus();
+      }
+    });
+
+    return el;
+  }
+
+  function xgRender(){
+    var el = document.getElementById("xgLightbox");
+    if (!el) return;
+    var img = xg.images[xg.index];
+    var imgEl = el.querySelector(".xg-stage-img");
+    var multi = xg.images.length > 1;
+    function swapImage(){
+      imgEl.src = img.src;
+      imgEl.alt = img.alt || "";
+    }
+    if (xgReduceMotion()){
+      swapImage();
+    } else {
+      imgEl.classList.remove("is-settled");
+      swapImage();
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ imgEl.classList.add("is-settled"); }); });
+    }
+    el.querySelector(".xg-counter").textContent = (xg.index + 1) + " / " + xg.images.length;
+    el.querySelector(".xg-prev").hidden = !multi;
+    el.querySelector(".xg-next").hidden = !multi;
+  }
+
+  function xgStep(dir){
+    if (xg.images.length < 2) return;
+    xg.index = (xg.index + dir + xg.images.length) % xg.images.length;
+    xgRender();
+  }
+
+  function openLightbox(images, index, triggerEl){
+    var el = ensureLightbox();
+    xg.images = images; xg.index = index; xg.triggerEl = triggerEl || null; xg.open = true;
+    el.hidden = false;
+    xgRender();
+    xg.prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    requestAnimationFrame(function(){ el.classList.add("is-open"); });
+    el.querySelector(".xg-close").focus();
+  }
+
+  function closeLightbox(){
+    if (!xg.open) return;
+    var el = document.getElementById("xgLightbox");
+    xg.open = false;
+    if (el){
+      el.classList.remove("is-open");
+      var done = function(){ el.hidden = true; };
+      if (xgReduceMotion()) done(); else setTimeout(done, 220);
+    }
+    document.body.style.overflow = xg.prevOverflow || "";
+    var toFocus = xg.triggerEl;
+    xg.triggerEl = null;
+    if (toFocus && document.body.contains(toFocus)) toFocus.focus();
+  }
+
+  // builds every [data-vcarousel] on the current page: a vertical Embla carousel
+  // (drag/swipe/wheel/arrow-key all native to the axis:"y" instance), up/down
+  // arrow buttons, and click/Enter on a slide opens the shared lightbox
+  function initVerticalCarousels(){
+    if (typeof EmblaCarousel === "undefined") return;
+    var reduce = xgReduceMotion();
+
+    document.querySelectorAll("[data-vcarousel]").forEach(function(root){
+      var viewport = root.querySelector(".vcarousel-viewport");
+      var upBtn = root.querySelector(".vcarousel-up");
+      var downBtn = root.querySelector(".vcarousel-down");
+      var slides = Array.prototype.slice.call(root.querySelectorAll(".vcarousel-slide"));
+      var buttons = Array.prototype.slice.call(root.querySelectorAll(".vcarousel-img-btn"));
+      var images = buttons.map(function(btn){ return { src: btn.getAttribute("data-src"), alt: btn.getAttribute("data-alt") }; });
+      var loop = root.hasAttribute("data-loop");
+
+      function layout(){
+        var mobile = window.matchMedia("(max-width: 768px)").matches;
+        var visible = mobile ? 1.5 : 2;
+        var gap = 8;
+        var slideH = viewport.clientWidth / 2; // slides default to a 2:1 landscape ratio
+        viewport.style.height = Math.round(slideH * visible + gap * (visible - 1)) + "px";
+        slides.forEach(function(s){ s.style.flexBasis = (100 / visible) + "%"; });
+      }
+      layout();
+
+      var api = EmblaCarousel(viewport, { axis: "y", align: "start", loop: loop, duration: reduce ? 1 : 20 });
+
+      function updateArrows(){
+        if (loop) return;
+        upBtn.disabled = !api.canScrollPrev();
+        downBtn.disabled = !api.canScrollNext();
+      }
+      updateArrows();
+      api.on("select", updateArrows);
+      api.on("reInit", updateArrows);
+
+      upBtn.addEventListener("click", function(){ api.scrollPrev(reduce); });
+      downBtn.addEventListener("click", function(){ api.scrollNext(reduce); });
+
+      root.addEventListener("keydown", function(e){
+        if (e.key === "ArrowDown"){ e.preventDefault(); api.scrollNext(reduce); }
+        else if (e.key === "ArrowUp"){ e.preventDefault(); api.scrollPrev(reduce); }
+      });
+
+      // step one slide per wheel tick, but release to normal page scroll once
+      // the first/last slide is reached instead of hijacking the scroll
+      var wheelLock = false;
+      viewport.addEventListener("wheel", function(e){
+        var goingDown = e.deltaY > 0;
+        if (!loop){
+          if (goingDown && !api.canScrollNext()) return;
+          if (!goingDown && !api.canScrollPrev()) return;
+        }
+        e.preventDefault();
+        if (wheelLock) return;
+        wheelLock = true;
+        if (goingDown) api.scrollNext(reduce); else api.scrollPrev(reduce);
+        setTimeout(function(){ wheelLock = false; }, 250);
+      }, { passive: false });
+
+      buttons.forEach(function(btn, i){
+        btn.addEventListener("click", function(){ openLightbox(images, i, btn); });
+      });
+
+      if ("ResizeObserver" in window){
+        new ResizeObserver(function(){ layout(); api.reInit(); }).observe(root);
+      }
+    });
+  }
+
+  // the prev/next project links at the bottom of a case study: a small "Open"
+  // tag follows the cursor while it's over either title
   // fade + rise each .reveal block into place as it scrolls into view,
   // staggering the first few by index so a row/column cascades in together
   function initScrollReveal(){
