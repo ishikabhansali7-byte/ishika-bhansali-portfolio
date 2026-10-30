@@ -1126,6 +1126,120 @@
   @media (max-width: 760px){ .rs-mosaic{ column-count: 2; } }
   @media (max-width: 480px){ .rs-mosaic{ column-count: 1; } }
 
+  /* ============ SMART PLANT FRIEND: its own hand-fit case study ============ */
+  .sp-idea-lead{ font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.3; color: var(--ink); margin: 0 0 32px; max-width: 980px; }
+  .sp-modes{ display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .sp-mode-col{ border-top: 3px solid var(--line); padding-top: 18px; }
+  .sp-mode-col.is-book{ border-top-color: #F7BA3B; }
+  .sp-mode-col.is-plant{ border-top-color: var(--accent); }
+  .sp-mode-col h5{ font-family: var(--font-display); font-weight: 700; font-size: 19px; margin: 0 0 10px; color: var(--ink); }
+  .sp-mode-col p{ font-size: 14px; line-height: 1.6; color: var(--muted); margin: 0; }
+  @media (max-width: 760px){ .sp-modes{ grid-template-columns: 1fr; gap: 24px; } }
+
+  .sp-problem-head{ font-family: var(--font-display); font-weight: 500; font-size: clamp(26px, 3vw, 38px); line-height: 1.25; color: var(--ink); margin: 0 0 18px; max-width: 620px; }
+  .sp-problem-lead{ font-size: 14px; line-height: 1.7; color: var(--muted); max-width: 560px; margin: 0 0 48px; }
+  .sp-problem-cards{ display: flex; flex-wrap: wrap; justify-content: center; gap: 56px; margin-bottom: 48px; }
+  .sp-problem-card{ text-align: center; max-width: 220px; }
+  .sp-problem-num{
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 92px; height: 92px; border-radius: 58% 42% 50% 50% / 55% 50% 50% 45%;
+    font-family: var(--font-display); font-size: 22px; color: #1E2A23; margin-bottom: 16px;
+  }
+  .sp-problem-card h5{ font-family: var(--font-display); font-weight: 500; font-size: 22px; margin: 0 0 8px; color: var(--ink); }
+  .sp-problem-card p{ font-size: 13.5px; line-height: 1.55; color: var(--muted); margin: 0; }
+  .sp-problem-hmw{ font-family: var(--font-display); font-style: italic; font-size: clamp(18px, 2vw, 26px); line-height: 1.5; color: var(--ink); text-align: center; max-width: 720px; margin: 0 auto; }
+  @media (max-width: 700px){ .sp-problem-cards{ gap: 32px; } }
+
+  .sp-research{ margin-top: 24px; }
+  .sp-research-tabs{ display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 36px; }
+  .sp-research-tab{
+    font-family: var(--font-display); font-weight: 600; font-size: 14px;
+    padding: 11px 20px; border-radius: 999px; cursor: pointer;
+    background: transparent; color: var(--tc, var(--accent)); border: 1.5px solid var(--tc, var(--accent));
+    transition: background .2s ease, color .2s ease;
+  }
+  .sp-research-tab.is-active{ background: var(--tc, var(--accent)); color: #fff; }
+  .sp-research-panel{ display: flex; flex-wrap: wrap; align-items: baseline; gap: 28px; }
+  .sp-research-num{ font-family: var(--font-display); font-weight: 700; font-size: clamp(36px, 5vw, 64px); line-height: 1; color: var(--ink); margin: 0; flex-shrink: 0; }
+  .sp-research-text{ max-width: 560px; }
+  .sp-research-text p{ font-size: 15px; line-height: 1.6; color: var(--ink); margin: 0 0 8px; }
+  .sp-research-takeaway{ color: var(--accent) !important; font-weight: 700; }
+  .sp-research-source{ font-size: 12.5px !important; color: var(--muted) !important; font-weight: 400 !important; margin-top: 10px !important; }
+
+  .sp-studies{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .sp-study h5{ font-family: var(--font-display); font-weight: 600; font-size: 16px; margin: 0 0 8px; color: var(--ink); }
+  .sp-study p{ font-size: 13.5px; line-height: 1.6; color: var(--muted); margin: 0 0 10px; }
+  .sp-study-source{ font-size: 12px; color: var(--accent); font-weight: 600; }
+  @media (max-width: 760px){ .sp-studies{ grid-template-columns: 1fr; } }
+
+  .sp-who{ display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 24px; }
+  .sp-who-card h5{ font-family: var(--font-display); font-weight: 600; font-size: 19px; margin: 0 0 10px; color: var(--ink); }
+  .sp-who-card p{ font-size: 14px; line-height: 1.6; color: var(--muted); margin: 0 0 8px; }
+  .sp-who-card .sp-who-so{ color: var(--accent); font-weight: 600; margin-bottom: 0; }
+  @media (max-width: 760px){ .sp-who{ grid-template-columns: 1fr; gap: 24px; } }
+
+  .sp-flow-title{ font-family: var(--font-display); font-weight: 600; font-size: clamp(32px, 4vw, 48px); margin: 0 0 12px; color: var(--ink); }
+  .sp-flow-subtitle{ font-size: 16px; color: var(--muted); margin: 0 0 32px; }
+  .sp-flow-tabs{ display: flex; justify-content: center; gap: 12px; margin-bottom: 44px; }
+  .sp-flow-tab{
+    font-family: var(--font-display); font-weight: 600; font-size: 15px;
+    padding: 13px 26px; border-radius: 999px; cursor: pointer;
+    background: transparent; border: 1.5px solid var(--line); color: var(--muted);
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .sp-flow-tab.is-book.is-active{ background: #F7BA3B; border-color: #F7BA3B; color: #1E2A23; }
+  .sp-flow-tab.is-plant.is-active{ background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  .sp-flow-body{ display: grid; grid-template-columns: 170px 1fr; gap: 48px; align-items: start; text-align: left; }
+  .sp-flow-stage{ position: sticky; top: calc(var(--header-h) + 24px); }
+  .sp-flow-stage img{ width: 100%; height: auto; display: block; border-radius: var(--radius); box-shadow: 0 20px 44px rgba(0,0,0,.14); }
+  .sp-flow-lists{ position: relative; }
+  .sp-flow-steps{ list-style: none; margin: 0; padding: 0; display: none; }
+  .sp-flow-steps.is-active{ display: block; }
+  .sp-flow-steps li{ border-top: 1px solid var(--line); }
+  .sp-flow-steps li:first-child{ border-top: none; }
+  .sp-flow-step-btn{
+    display: flex; align-items: baseline; gap: 18px; width: 100%;
+    background: none; border: none; cursor: pointer; text-align: left;
+    padding: 18px 0; color: var(--muted); transition: color .2s ease;
+  }
+  .sp-flow-step-btn:hover{ color: var(--ink); }
+  .sp-flow-step-num{ font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--accent); flex-shrink: 0; }
+  .sp-flow-step-label{ font-family: var(--font-display); font-size: 19px; }
+  .sp-flow-steps li.is-active .sp-flow-step-btn{ color: var(--ink); }
+  .sp-flow-steps li.is-active .sp-flow-step-label{ font-weight: 600; }
+  .sp-flow-notes{ margin-top: 48px; text-align: left; }
+  @media (max-width: 700px){
+    .sp-flow-body{ grid-template-columns: 1fr; }
+    .sp-flow-stage{ position: static; max-width: 220px; margin: 0 auto; }
+  }
+
+  .sp-outcome-videos{ display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 24px; max-width: 640px; margin-left: auto; margin-right: auto; }
+  .case-video-wrap.sp-outcome-video{ aspect-ratio: 384 / 848; max-width: 280px; margin: 0 auto; }
+  .sp-outcome-video .case-video{ object-fit: contain; }
+  .sp-outcome-caption{ font-family: var(--font-display); font-weight: 600; font-size: 16px; color: var(--ink); text-align: center; margin: 14px 0 0; }
+  @media (max-width: 600px){ .sp-outcome-videos{ grid-template-columns: 1fr; gap: 40px; } }
+
+  .sp-next-box{ background: var(--surface); border-radius: var(--radius); padding: 28px; }
+  .sp-next-box h5{ font-family: var(--font-display); font-weight: 600; font-size: 19px; margin: 0 0 14px; color: var(--ink); }
+
+  /* Smart Plant Friend's own cream-and-leaf-green case study, echoing its
+     kids'-app branding, with the same fonts and sizes as every other
+     project's page */
+  body.theme-smartplant{
+    --bg: #FEF5E6;
+    --surface: #FFFFFF;
+    --ink: #1E2A23;
+    --muted: #6B7A70;
+    --line: #E2D9C6;
+    --accent: #1F6B33;
+    --accent-ink: #FFFFFF;
+    --header-bg: rgba(254,245,230,0.0);
+    --header-bg-solid: rgba(254,245,230,0.92);
+    --canvas: #FEF5E6;
+    --canvas-dot: #E2D9C6;
+  }
+
   /* ============ KNOKI: TECH HOTSPOTS ============ */
   .knoki-tech{ margin-top: 14px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 36px; align-items: start; }
   .kt-photo{ border-radius: var(--radius); background: var(--surface); overflow: hidden; }

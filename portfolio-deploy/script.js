@@ -62,7 +62,7 @@
       ]
     },
     {
-      id: "03", name: "BookMyShow Redesign", tag: "UI/UX Design",
+      id: "03", name: "BookMyShow Redesign", tag: "UI/UX Design", hidden: true,
       thumb: "bookmyshow-banner.png", ar: "1366 / 768",
       wordmark: "BookMyShow",
       heroImage: "bookmyshow-banner.png",
@@ -162,10 +162,120 @@
         ], span: "span-4" }
       ]
     },
-    { id: "05", name: "Spotify Data Universe", tag: "Data Visualization", soon: true },
-    { id: "06", name: "Smart Plant", tag: "Augmented Reality", soon: true }
+    {
+      id: "06", name: "Smart Plant Friend", tag: "Augmented Reality",
+      thumb: "smartplant-banner.webp", ar: "1672 / 941",
+      wordmark: "Smart Plant Friend",
+      heroImage: "smartplant-banner.webp",
+      meta: { team: "Individual", timeline: "Oct 2026", tools: "Unity 6, AR Foundation, Unity Sentis, TestFlight" },
+      tagline: "A new way for kids to learn about plants: point a phone at a book page and watch a 3D plant grow out of it, or point at a real plant and ask it questions.",
+      sections: [
+        {
+          num: "01", heading: "The Idea",
+          lead: "Plants are always doing something — drinking, growing, making food. Kids just can't see it. Smart Plant Friend makes that invisible work something you can watch, hear and tap.",
+          modes: [
+            { title: "Mode 1 · Scan my book", body: "Point the phone at a plant picture in a book. A 3D tomato plant grows out of it, stage by stage, with captions. Tap any part to learn what it does." },
+            { title: "Mode 2 · Scan a real plant", body: "Point the phone at any plant around you. Plant Buddy names it and answers kid-sized questions, by button or by voice." }
+          ]
+        },
+        {
+          num: "02", heading: "The Problem",
+          headline: "Kids pass the test on plants without ever connecting it to a real plant.",
+          lead: "Plant biology reaches children second-hand: a labelled diagram, a paragraph about the stem, a fact to recall. The process stays abstract because it is invisible, slow and never tied to anything the child actually watched happen.",
+          cards: [
+            { color: "#36B3EB", label: "Invisible", body: "Water moving up a stem can't be seen with the naked eye." },
+            { color: "#F7BA3B", label: "Slow", body: "Growth from seed to fruit takes weeks — far longer than a lesson." },
+            { color: "#F36056", label: "Flat", body: "A printed diagram can label parts, but can't show them working." }
+          ],
+          hmw: "How might we let a child see, hear and touch what a plant is really doing — using the book and the plants already around them?"
+        },
+        {
+          num: "03", heading: "Research",
+          stats: [
+            { color: "#36B3EB", stat: "g = 0.80", body: "Large effect of AR on K-12 students' motivation, across 45 experimental studies (2010–2022).", takeaway: "AR is worth it for engagement, not just novelty.", source: "Educational Technology Research & Development" },
+            { color: "#F7BA3B", stat: "+41.7%", body: "Learning efficiency with an AR education tool that engages sight, sound and touch together (plus +33% pronunciation, +16.7% interest).", takeaway: "Design for several senses at once; support the teacher, don't replace them.", source: "ARET study, IJETR" },
+            { color: "#1F6B33", stat: "Words + pictures", body: "Mayer's multimedia principles: people learn better from pictures with words than words alone, and spoken words beside visuals beat on-screen text.", takeaway: "Narrate each stage; keep captions to one short line.", source: "Digital Learning Institute" }
+          ],
+          studies: [
+            { title: "Rural students & AR", body: "Rural students enjoyed the AR app and felt positive about it → it can work beyond city schools.", source: "IEEE Xplore" },
+            { title: "AR manipulatives, primary school", body: "Handling AR objects raised young pupils' creative thinking and motivation → let kids tap and explore, not just watch.", source: "Journal of Computer Assisted Learning" },
+            { title: "Immersive media & environment", body: "Immersive media deepens understanding of environmental topics → nature content suits AR.", source: "SVU Press" }
+          ]
+        },
+        {
+          num: "04", heading: "Who It's For",
+          pair: [
+            { title: "The young learner", body: "Curious, but may not read confidently yet. Short attention span; loves pointing and tapping.", so: "So: narration carries the lesson, captions stay short, buttons are big and colour-coded." },
+            { title: "The parent or teacher", body: "Wants kids to learn by exploring, not memorising — using the books and plants they already have.", so: "So: the app adds to the book instead of replacing it — no extra materials." }
+          ]
+        },
+        {
+          num: "05", heading: "User Flow",
+          subtitle: "One home screen, two paths, no dead ends.",
+          home: "smartplant-home-screen.jpg",
+          flows: [
+            {
+              key: "book", label: "Scan my book",
+              steps: [
+                { label: "Point at the book page", img: "smartplant-stage1-seed.jpg" },
+                { label: "Plant grows in 5 stages", img: "smartplant-stage4-leaves.jpg" },
+                { label: "Tap a part", img: "smartplant-stage6-tomatoes.jpg" },
+                { label: "Info card", img: "smartplant-card-roots.jpg" },
+                { label: "“Tap anywhere to close”", img: "smartplant-card-fruit.jpg" }
+              ]
+            },
+            {
+              key: "plant", label: "Scan a real plant",
+              steps: [
+                { label: "Point & tap SCAN", img: "smartplant-scan-camera.jpg" },
+                { label: "Plant named", img: "smartplant-q-type.jpg" },
+                { label: "Ask: 4 buttons or mic", img: "smartplant-q-needs.jpg" },
+                { label: "Plant Buddy answers", img: "smartplant-q-eat.jpg" },
+                { label: "Scan again", img: "smartplant-q-funfact.jpg" }
+              ]
+            }
+          ],
+          notes: [
+            { label: "Setup", body: "A phone or tablet, plus a book or any plant. About 1 m × 1 m — wherever the child already is." },
+            { label: "Length", body: "The growth sequence runs in under a minute; kids can explore parts as long as they like." },
+            { label: "Reset", body: "Nothing is saved. “Home” or “Scan again” starts fresh for the next child." }
+          ]
+        },
+        {
+          num: "06", heading: "Final Outcome",
+          videos: [
+            { src: "smartplant-video-book.mp4", label: "Scan my book demo", caption: "Scan the book" },
+            { src: "smartplant-video-realplant.mp4", label: "Scan a real plant demo", caption: "Scan the real plant" }
+          ]
+        },
+        {
+          num: "07", heading: "Multisensory Design",
+          cards: [
+            { label: "See it grow", body: "A 3D plant grows in stages, anchored to the real page, with a label for each stage. Built with AR Foundation image tracking and Unity animation." },
+            { label: "Hear it explained", body: "Narration explains each stage in plain words, for kids who aren't reading confidently yet. The mic lets them ask out loud." },
+            { label: "Hold the real thing", body: "Holding the book or standing by a real plant, and tapping parts, keeps learning tied to something physical." }
+          ],
+          note: "Smell and taste were left out on purpose: adding props would break the “just point at what's already there” simplicity."
+        },
+        {
+          num: "08", heading: "Reflection & Next",
+          reflections: [
+            "Simpler beat smarter: each version removed something — sensors, logging, choosing up front — and each time the experience got easier for a child.",
+            "Add to how kids already learn: anchoring to a real book page made the app part of learning, not a detour from it.",
+            "Safety is a design decision: for kids, the answer to “can we eat it?” had to be written with care."
+          ],
+          next: [
+            "Process mode: show water travelling up the stem, glowing",
+            "Line-art redraw of the child's own plant",
+            "More books, topics and plant processes",
+            "Usability sessions with kids and a teacher"
+          ]
+        }
+      ]
+    },
+    { id: "05", name: "Spotify Data Universe", tag: "Data Visualization", soon: true }
   ];
-  var OPEN_PROJECTS = PROJECTS.filter(function(p){ return !p.soon; });
+  var OPEN_PROJECTS = PROJECTS.filter(function(p){ return !p.soon && !p.hidden; });
 
   // Playground (the tulip garden) is built but switched off for now. Set to true to bring back the page and its nav link.
   var PLAYGROUND_ENABLED = true;
@@ -268,7 +378,6 @@
         '<span class="lw a rv w2" style="--x:4.5%;--y:40%;--px:6%;--py:29%;--d:1.4s">things</span>' +
 
         '<div class="hi a rv" style="--x:52%;--y:24%;--px:56%;--py:17%;--d:1.5s"><span>Somewhere between</span><span>logic and</span><b>imagination.</b></div>' +
-        '<div class="cross a rv" id="cross" style="--x:68%;--y:30%;--px:74%;--py:8%;--d:1.7s"></div>' +
 
         '<div class="cred a rv" style="--x:52%;--y:48%;--px:54%;--py:36%;--d:1.9s">Ishika Bhansali — Interaction Design<br>Portfolio 2026</div>' +
 
@@ -290,7 +399,8 @@
   }
 
   function workTemplate(){
-    var entries = PROJECTS.map(function(p){
+    var entries = PROJECTS.filter(function(p){ return !p.hidden; }).map(function(p, i){
+      var displayNum = String(i + 1).padStart(2, "0");
       var note = p.tagline || (p.sections && p.sections[0] && p.sections[0].body) || "";
       var contentHtml = p.thumb
         ? (
@@ -306,7 +416,7 @@
         '<div class="work-tile tilt' + (p.soon ? ' is-soon' : '') + '"' +
           (p.soon ? ' aria-disabled="true"' : ' data-id="' + p.id + '" data-bubble="view project"') + '>' +
           '<div class="wl-row">' +
-            '<span class="wl-num">' + p.id + '</span>' +
+            '<span class="wl-num">' + displayNum + '</span>' +
             '<div class="wl-headline">' +
               '<h2 class="wl-name">' + p.name + '</h2>' +
               '<span class="wl-tag">' + p.tag + '</span>' +
@@ -814,6 +924,159 @@
     return r01 + r02 + r03 + r04;
   }
 
+  // Smart Plant Friend's own hand-fit layout: a stage-by-stage growth
+  // stepper for the book mode and a colour-coded Q&A demo for the real-
+  // plant mode, in the same fonts and sizes as every other project
+  function smartPlantRowsHtml(project){
+    var s = project.sections;
+    function fbId(num){ return "fb-" + project.id + "-" + num; }
+    function rowHead(num, label){
+      return '<div class="pd-row-head"><span class="pd-row-num">' + num + '</span><span class="pd-row-label">' + label + '</span></div>';
+    }
+    function splitLead(text){
+      var m = text.match(/^([^:.]*[:.])\s*([\s\S]*)$/);
+      return m ? { lead: m[1].replace(/[:.]$/, ""), rest: m[2] } : { lead: "", rest: text };
+    }
+    function leadListHtml(items){
+      return '<ol class="ad-lead-list">' +
+        items.map(function(t, i){
+          var p = splitLead(t);
+          return '<li><span class="ad-lead-num">0' + (i + 1) + '</span><div><strong>' + p.lead + ':</strong> ' + p.rest + '</div></li>';
+        }).join('') +
+      '</ol>';
+    }
+
+    var r01 =
+      '<div class="pd-row tilt" id="' + fbId("01") + '">' +
+        rowHead(s[0].num, s[0].heading) +
+        '<h3 class="sp-idea-lead">' + s[0].lead + '</h3>' +
+        '<div class="sp-modes">' +
+          s[0].modes.map(function(m, i){
+            return '<div class="sp-mode-col ' + (i === 0 ? 'is-book' : 'is-plant') + '"><h5>' + m.title + '</h5><p>' + m.body + '</p></div>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+
+    var r02 =
+      '<div class="pd-row tilt" id="' + fbId("02") + '">' +
+        rowHead(s[1].num, s[1].heading) +
+        '<h3 class="sp-problem-head">' + s[1].headline + '</h3>' +
+        '<p class="sp-problem-lead">' + s[1].lead + '</p>' +
+        '<div class="sp-problem-cards">' +
+          s[1].cards.map(function(c, i){
+            return '<div class="sp-problem-card"><span class="sp-problem-num" style="background:' + c.color + '">0' + (i + 1) + '</span><h5>' + c.label + '</h5><p>' + c.body + '</p></div>';
+          }).join('') +
+        '</div>' +
+        '<p class="sp-problem-hmw">' + s[1].hmw + '</p>' +
+      '</div>';
+
+    var r03 =
+      '<div class="pd-row tilt" id="' + fbId("03") + '">' +
+        rowHead(s[2].num, s[2].heading) +
+        '<div class="sp-research" id="spResearch">' +
+          s[2].stats.map(function(st){
+            return '<span class="sp-research-data" data-stat="' + st.stat + '" data-body="' + st.body + '" data-takeaway="' + st.takeaway + '" data-source="' + st.source + '" hidden></span>';
+          }).join('') +
+          '<div class="sp-research-tabs">' +
+            s[2].stats.map(function(st, i){
+              return '<button type="button" class="sp-research-tab' + (i === 0 ? ' is-active' : '') + '" data-index="' + i + '" style="--tc:' + st.color + '">' + st.stat + '</button>';
+            }).join('') +
+          '</div>' +
+          '<div class="sp-research-panel">' +
+            '<p class="sp-research-num" id="spResearchStat">' + s[2].stats[0].stat + '</p>' +
+            '<div class="sp-research-text">' +
+              '<p id="spResearchBody">' + s[2].stats[0].body + '</p>' +
+              '<p class="sp-research-takeaway" id="spResearchTakeaway">→ ' + s[2].stats[0].takeaway + '</p>' +
+              '<p class="sp-research-source" id="spResearchSource">' + s[2].stats[0].source + '</p>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="sp-studies">' +
+          s[2].studies.map(function(st){
+            return '<div class="sp-study"><h5>' + st.title + '</h5><p>' + st.body + '</p><span class="sp-study-source">' + st.source + '</span></div>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+
+    var r04 =
+      '<div class="pd-row tilt" id="' + fbId("04") + '">' +
+        rowHead(s[3].num, s[3].heading) +
+        '<div class="sp-who">' +
+          s[3].pair.map(function(p){
+            return '<div class="sp-who-card"><h5>' + p.title + '</h5><p>' + p.body + '</p><p class="sp-who-so">' + p.so + '</p></div>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+
+    var r05 =
+      '<div class="pd-row ad-centered tilt" id="' + fbId("05") + '">' +
+        rowHead(s[4].num, s[4].heading) +
+        '<h3 class="sp-flow-title">User Flow</h3>' +
+        '<p class="sp-flow-subtitle">' + s[4].subtitle + '</p>' +
+        '<div class="sp-flow-tabs">' +
+          s[4].flows.map(function(f, fi){
+            return '<button type="button" class="sp-flow-tab' + (fi === 0 ? ' is-active' : '') + ' is-' + f.key + '" data-flow="' + fi + '">' + f.label + '</button>';
+          }).join('') +
+        '</div>' +
+        '<div class="sp-flow-body" id="spFlow">' +
+          '<div class="sp-flow-stage"><img id="spFlowImg" src="' + s[4].home + '" alt="Smart Plant Friend home screen"></div>' +
+          '<div class="sp-flow-lists">' +
+            s[4].flows.map(function(f, fi){
+              return '<ol class="sp-flow-steps' + (fi === 0 ? ' is-active' : '') + '" data-flow="' + fi + '">' +
+                f.steps.map(function(st, si){
+                  return '<li><button type="button" class="sp-flow-step-btn" data-img="' + st.img + '" data-alt="' + st.label + '"><span class="sp-flow-step-num">' + (si + 1) + '</span><span class="sp-flow-step-label">' + st.label + '</span></button></li>';
+                }).join('') +
+              '</ol>';
+            }).join('') +
+          '</div>' +
+        '</div>' +
+        '<ul class="ad-bullet-list sp-flow-notes">' +
+          s[4].notes.map(function(n){
+            return '<li><span class="ad-bullet" aria-hidden="true"></span><div><h5>' + n.label + '</h5><p>' + n.body + '</p></div></li>';
+          }).join('') +
+        '</ul>' +
+      '</div>';
+
+    var r06 =
+      '<div class="pd-row tilt" id="' + fbId("06") + '">' +
+        rowHead(s[5].num, s[5].heading) +
+        '<div class="sp-outcome-videos">' +
+          s[5].videos.map(function(v){
+            return '<div class="sp-outcome-item">' +
+              '<div class="case-video-wrap sp-outcome-video">' +
+                '<video class="case-video" preload="none" playsinline controls><source src="' + v.src + '" type="video/mp4"></video>' +
+                '<button class="case-video-play" type="button" aria-label="Play ' + v.label + '" data-bubble="play"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.5"/><path d="M9.5 7.5l8 4.5-8 4.5z"/></svg></button>' +
+              '</div>' +
+              '<p class="sp-outcome-caption">' + v.caption + '</p>' +
+            '</div>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+
+    var r07 =
+      '<div class="pd-row tilt" id="' + fbId("07") + '">' +
+        rowHead(s[6].num, s[6].heading) +
+        '<div class="ad-grid">' +
+          s[6].cards.map(function(c, i){
+            return '<div class="ad-grid-item"><span class="ad-grid-num">0' + (i + 1) + '</span><h5>' + c.label + '</h5><p>' + c.body + '</p></div>';
+          }).join('') +
+        '</div>' +
+        '<div class="pd-row-text" style="margin-top:28px"><p>' + s[6].note + '</p></div>' +
+      '</div>';
+
+    var r08 =
+      '<div class="pd-row tilt" id="' + fbId("08") + '">' +
+        '<div class="ad-pair-grid">' +
+          '<div class="ad-pair-col">' + rowHead(s[7].num, s[7].heading) + leadListHtml(s[7].reflections) + '</div>' +
+          '<div class="ad-pair-col">' +
+            '<div class="sp-next-box"><h5>Next</h5><ul class="pd-list">' + s[7].next.map(function(n){ return '<li>' + n + '</li>'; }).join('') + '</ul></div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    return r01 + r02 + r03 + r04 + r05 + r06 + r07 + r08;
+  }
+
   function detailTemplate(id){
     var idx = OPEN_PROJECTS.findIndex(function(p){ return p.id === id; });
     if (idx === -1) idx = 0;
@@ -854,7 +1117,7 @@
     var rowSrc = sections.length
       ? sections
       : [{ num: "01", heading: "Overview", body: "Placeholder case-study paragraph. Describe the problem, approach, and outcome here once real content is ready." }];
-    var rowsHtml = project.id === "04" ? adalajRowsHtml(project) : project.id === "02" ? redSpireRowsHtml(project) : rowSrc.map(function(s){
+    var rowsHtml = project.id === "04" ? adalajRowsHtml(project) : project.id === "02" ? redSpireRowsHtml(project) : project.id === "06" ? smartPlantRowsHtml(project) : rowSrc.map(function(s){
       var tagsHtml = s.tags
         ? '<div class="pd-tags">' + s.tags.map(function(t){ return '<span>' + t + '</span>'; }).join('') + '</div>'
         : '';
@@ -1135,6 +1398,8 @@
       document.body.classList.toggle("theme-adalaj", routeBase === "/work" && parts[1] === "04");
       // Red Spire gets its own pale-lavender case study, distinct from the rest of the site
       document.body.classList.toggle("theme-redspire", routeBase === "/work" && parts[1] === "02");
+      // Smart Plant Friend gets its own cream-and-leaf-green case study, matching its kids'-app branding
+      document.body.classList.toggle("theme-smartplant", routeBase === "/work" && parts[1] === "06");
       window.scrollTo(0, 0);
       updateHeader();
       if (routeBase === "/about") { bindPageInteractions(); initAboutTools(); }
@@ -1153,6 +1418,8 @@
       initRedSpireMascot();
       initRedSpireScale();
       initRedSpireFilters();
+      initSmartPlantFlow();
+      initSmartPlantResearch();
       initTiltReveal();
     }
 
@@ -1594,6 +1861,64 @@
           tile.hidden = !(f === "all" || tile.getAttribute("data-cat") === f);
         });
       });
+    });
+  }
+
+  // Smart Plant Friend's user-flow widget: a Scan my book / Scan a real
+  // plant tab switches which five steps are listed, and tapping a step
+  // swaps the phone mockup to that step's screen
+  function initSmartPlantFlow(){
+    var root = document.getElementById("spFlow");
+    if (!root) return;
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".sp-flow-tab"));
+    var lists = Array.prototype.slice.call(root.querySelectorAll(".sp-flow-steps"));
+    var img = document.getElementById("spFlowImg");
+    var homeSrc = img.getAttribute("src");
+    var homeAlt = img.getAttribute("alt");
+
+    function showFlow(fi){
+      tabs.forEach(function(t, idx){ t.classList.toggle("is-active", idx === fi); });
+      lists.forEach(function(l, idx){ l.classList.toggle("is-active", idx === fi); });
+      img.src = homeSrc;
+      img.alt = homeAlt;
+    }
+    tabs.forEach(function(t, i){
+      t.addEventListener("click", function(){ showFlow(i); });
+    });
+    lists.forEach(function(list){
+      var btns = Array.prototype.slice.call(list.querySelectorAll(".sp-flow-step-btn"));
+      btns.forEach(function(b){
+        b.addEventListener("click", function(){
+          btns.forEach(function(x){ x.closest("li").classList.remove("is-active"); });
+          b.closest("li").classList.add("is-active");
+          img.src = b.getAttribute("data-img");
+          img.alt = b.getAttribute("data-alt");
+        });
+      });
+    });
+  }
+
+  // Smart Plant Friend's research tabs: g = 0.80 / +41.7% / Words + pictures
+  // swap the big stat, its write-up, takeaway, and source below
+  function initSmartPlantResearch(){
+    var root = document.getElementById("spResearch");
+    if (!root) return;
+    var items = Array.prototype.slice.call(root.querySelectorAll(".sp-research-data"));
+    var tabs = Array.prototype.slice.call(root.querySelectorAll(".sp-research-tab"));
+    var num = document.getElementById("spResearchStat");
+    var body = document.getElementById("spResearchBody");
+    var takeaway = document.getElementById("spResearchTakeaway");
+    var source = document.getElementById("spResearchSource");
+
+    function show(i){
+      tabs.forEach(function(t, idx){ t.classList.toggle("is-active", idx === i); });
+      num.textContent = items[i].getAttribute("data-stat");
+      body.textContent = items[i].getAttribute("data-body");
+      takeaway.textContent = "→ " + items[i].getAttribute("data-takeaway");
+      source.textContent = items[i].getAttribute("data-source");
+    }
+    tabs.forEach(function(t, i){
+      t.addEventListener("click", function(){ show(i); });
     });
   }
 
