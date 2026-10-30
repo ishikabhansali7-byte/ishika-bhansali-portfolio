@@ -4,24 +4,47 @@
   /* ---------- project data ---------- */
   var PROJECTS = [
     {
-      id: "01", name: "Knoki Console", tag: "Physical Computing", span: "span-2x1",
+      id: "01", name: "Knoki Console", tag: "Physical Computing",
       thumb: "knoki-thumbnail.png", ar: "1672 / 941",
       wordmark: "Knoki",
       heroImage: "knoki-thumbnail.png",
       meta: { team: "8", timeline: "3 weeks", tools: "Arduino IDE, AutoCAD, Blender, SketchUp" },
-      tagline: "A knock-based interactive gaming console designed to bring tactile rhythm, pattern, and sensory play into a premium physical product experience.",
+      tagline: "A knock-based interactive learning console for children that turns rhythmic knocking into playful mini-games — inspired by Morse code, built for hands-on learning through touch, sound, and visual feedback rather than screens.",
       sections: [
         { num: "01", heading: "Overview", body: "Knoki is a tactile product design project that turns knock patterns into playful digital interactions, rhythm games, and sensory feedback." },
         { num: "02", heading: "Concept", body: "A simple knock interface becomes a physical input system that transforms taps into sound, visuals, and learning-focused gameplay." },
         { num: "03", heading: "Problem Statement", body: "Passive screen-based learning often lacks tactile and sensory engagement. Many educational tools are expensive, solitary, or limited in interaction.", span: "span-2" },
-        { num: "04", heading: "Form Exploration", body: "A focused exploration of physical form, interface placement, and tactile product structure before the final direction.", image: "knoki-iterations.png", imageAlt: "Knoki form exploration, concept exploration, 3D exploration, and ideation sketches", span: "span-4" },
-        { num: "05", heading: "Prototype", body: "Testing the interaction concept through 3D modeling, physical mockups, and early tactile trials.", tags: ["3D Model", "Physical Prototype", "Interaction Testing"], span: "span-4" },
-        { num: "06", heading: "Final Product", body: "A premium physical console with a clean interface, strong proportions, and an approachable industrial aesthetic.", image: "knoki-final-product.png", imageAlt: "Knoki final product — four angles of the finished purple and gold console with its accompanying cards", span: "span-4" },
-        { num: "07", heading: "What I Did", body: "", tags: ["Research", "UX Design", "Interaction Design", "Concept Development", "Prototyping", "3D Modeling", "Final Product Design"], span: "span-4" }
+        { num: "04", heading: "User Flow", body: "Step through the console's own flow, in order.", span: "span-4", flow: [
+          { label: "Power On", body: "The user turns on the console." },
+          { label: "Game Menu", body: "The LCD displays the game selection menu." },
+          { label: "Select a Game", body: "The user rotates the encoder to browse games and presses it to select one." },
+          { label: "Play", body: "The selected game begins with instructions and audio-visual prompts." },
+          { label: "Game Over", body: "The console displays the end-of-game prompt." },
+          { label: "Continue", body: "The user chooses to continue or return to the game selection menu." }
+        ] },
+        { num: "05", heading: "Form Exploration", body: "A focused exploration of physical form, interface placement, and tactile product structure before the final direction.", image: "knoki-iterations.png", imageAlt: "Knoki form exploration, concept exploration, 3D exploration, and ideation sketches", span: "span-4" },
+        { num: "06", heading: "Prototype", body: "Testing the interaction concept through 3D modeling, physical mockups, and early tactile trials.", tags: ["3D Model", "Physical Prototype", "Interaction Testing"], span: "span-4" },
+        { num: "07", heading: "Tech", body: "The hardware behind every knock, screen, and sound. Click a pin on the console to see what it does.", span: "span-4", tech: [
+          { name: "Morse Code Table & Guidelines", x: 37, y: 30, body: "Engraved directly onto the console's panel, so the dot/dash reference for the Morse Code Game is always within reach, no screen required." },
+          { name: "LCD", x: 43, y: 55, body: "Displays the game menu, instructions, and real-time prompts — the same screen recreated in the User Flow simulation above." },
+          { name: "Rotary Encoder", x: 34, y: 70, body: "The physical dial used to browse the game menu and confirm a selection — the same rotate-and-press gesture recreated in the flow simulator above." },
+          { name: "Piezo Sensor", x: 57, y: 70, body: "Mounted beneath this knock surface, it senses the force and timing of every tap and converts it into the digital tap events each game runs on." },
+          { name: "LED", x: 74, y: 66, body: "Gives instant visual feedback for every tap, confirming a hit or signalling a miss, without needing to look away from your hands." },
+          { name: "Buzzer", x: 73, y: 83, body: "Plays the beep sequences for Beep Boop Counter and short confirmation tones across every game, so players can rely on sound as much as sight." }
+        ] },
+        { num: "08", heading: "Games", body: "Four knock-based mini-games, each teaching a different skill through the same single tap input.", span: "span-4", games: [
+          { name: "Red Light, Green Light", objective: "Improve attention and reaction time", body: "The LCD alternates between GREEN and RED. Players tap during GREEN and stop during RED. Tapping during RED ends the game." },
+          { name: "Math Knock", objective: "Practise basic arithmetic through taps", body: "The LCD displays a maths question. Players tap the number of times matching the answer. Correct answers lead to the next question, while incorrect answers trigger a retry or game over." },
+          { name: "Beep Boop Counter", objective: "Improve listening and counting skills", body: "The buzzer plays a sequence of beeps. Players count the beeps and tap the same number of times to match the sequence." },
+          { name: "Morse Code Game", objective: "Learn and reproduce Morse code patterns", body: "Players refer to the Morse code table and enter sequences using taps. A single tap represents a DOT, while a double tap represents a DASH." }
+        ] },
+        { num: "09", heading: "Try It — Red Light, Green Light", body: "A quick browser version of the first mini-game, built with the same single-tap rule as the console.", span: "span-4", demo: "rlgl" },
+        { num: "10", heading: "Final Product", body: "A premium physical console with a clean interface, strong proportions, and an approachable industrial aesthetic.", image: "knoki-final-product.png", imageAlt: "Knoki final product — four angles of the finished purple and gold console with its accompanying cards", span: "span-4" },
+        { num: "11", heading: "What I Did", body: "", tags: ["Research", "UX Design", "Interaction Design", "Concept Development", "Prototyping", "3D Modeling", "Final Product Design"], span: "span-4" }
       ]
     },
     {
-      id: "02", name: "Red Spire", tag: "Logo Design", span: "span-2x1",
+      id: "02", name: "Red Spire", tag: "Logo Design",
       thumb: "redspire-banner.png", ar: "1983 / 793",
       wordmark: "Red Spire",
       heroImage: "redspire-banner.png",
@@ -39,7 +62,7 @@
       ]
     },
     {
-      id: "03", name: "BookMyShow Redesign", tag: "UI/UX Design", span: "span-2x1",
+      id: "03", name: "BookMyShow Redesign", tag: "UI/UX Design",
       thumb: "bookmyshow-banner.png", ar: "1366 / 768",
       wordmark: "BookMyShow",
       heroImage: "bookmyshow-banner.png",
@@ -59,7 +82,7 @@
       ]
     },
     {
-      id: "04", name: "Lost History of Adalaj", tag: "VR Experience", span: "span-2x1",
+      id: "04", name: "Lost History of Adalaj", tag: "VR Experience",
       thumb: "adalaj-banner.webp", ar: "1366 / 768",
       wordmark: "Lost History of Adalaj",
       heroImage: "adalaj-banner.webp",
@@ -139,8 +162,8 @@
         ], span: "span-4" }
       ]
     },
-    { id: "05", name: "Spotify Data Universe", tag: "Data Visualization", span: "span-2x1", soon: true },
-    { id: "06", name: "Smart Plant", tag: "Augmented Reality", span: "span-2x1", soon: true }
+    { id: "05", name: "Spotify Data Universe", tag: "Data Visualization", soon: true },
+    { id: "06", name: "Smart Plant", tag: "Augmented Reality", soon: true }
   ];
   var OPEN_PROJECTS = PROJECTS.filter(function(p){ return !p.soon; });
 
@@ -152,145 +175,6 @@
   }
 
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* ---------- theme (with View Transitions API animation) ---------- */
-  var theme = "light";
-  var themeToggleBtn = document.getElementById("themeToggle");
-
-  function applyTheme(){
-    document.documentElement.setAttribute("data-theme", theme);
-    // icon (and cursor-bubble label) show the mode you'd switch TO next
-    if (themeToggleBtn){
-      themeToggleBtn.textContent = theme === "dark" ? "☀" : "☾";
-      themeToggleBtn.setAttribute("data-bubble", theme === "dark" ? "light mode" : "dark mode");
-    }
-  }
-  applyTheme();
-
-  // Available transition variants. Change the starting index below to set the
-  // default, or alt-click the toggle at runtime to cycle through them live.
-  var THEME_VARIANTS = ["circle", "circle-blur", "bottom-up", "gif"];
-  var themeVariantIndex = 0;
-  // Optional: point this at a real .gif/.webp to use it in the "gif" variant
-  // instead of the emoji placeholder.
-  var THEME_GIF_URL = "";
-
-  function updateToggleTitle(){
-    if (themeToggleBtn){
-      themeToggleBtn.title = "Toggle theme — transition: " + THEME_VARIANTS[themeVariantIndex] + " (alt-click to cycle)";
-    }
-  }
-  updateToggleTitle();
-
-  // toDark controls which layer animates and which direction it moves:
-  // switching TO dark grows the new (dark) layer outward from the click point;
-  // switching TO light shrinks the old (dark) layer away, revealing light underneath.
-  // Route/page transitions don't have a "theme direction" so they omit toDark,
-  // which defaults to the growing behaviour.
-  function animateClipVariant(variant, x, y, toDark){
-    if (toDark === undefined) toDark = true;
-    var root = document.documentElement;
-    var endRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    );
-    var target = toDark ? "::view-transition-new(root)" : "::view-transition-old(root)";
-
-    if (variant === "circle"){
-      var circleFrames = toDark
-        ? [
-            "circle(0px at " + x + "px " + y + "px)",
-            "circle(" + endRadius + "px at " + x + "px " + y + "px)"
-          ]
-        : [
-            "circle(" + endRadius + "px at " + x + "px " + y + "px)",
-            "circle(0px at " + x + "px " + y + "px)"
-          ];
-      root.animate(
-        { clipPath: circleFrames },
-        { duration: 550, easing: "cubic-bezier(.65,0,.35,1)", pseudoElement: target }
-      );
-
-    } else if (variant === "circle-blur"){
-      var blurFrames = toDark
-        ? [
-            { clipPath: "circle(0px at " + x + "px " + y + "px)", filter: "blur(14px)" },
-            { clipPath: "circle(" + (endRadius * 0.6) + "px at " + x + "px " + y + "px)", filter: "blur(4px)", offset: 0.7 },
-            { clipPath: "circle(" + endRadius + "px at " + x + "px " + y + "px)", filter: "blur(0px)" }
-          ]
-        : [
-            { clipPath: "circle(" + endRadius + "px at " + x + "px " + y + "px)", filter: "blur(0px)" },
-            { clipPath: "circle(" + (endRadius * 0.6) + "px at " + x + "px " + y + "px)", filter: "blur(4px)", offset: 0.3 },
-            { clipPath: "circle(0px at " + x + "px " + y + "px)", filter: "blur(14px)" }
-          ];
-      root.animate(blurFrames, { duration: 650, easing: "ease-out", pseudoElement: target });
-
-    } else if (variant === "bottom-up"){
-      var insetFrames = toDark
-        ? ["inset(100% 0 0 0)", "inset(0% 0 0 0)"]
-        : ["inset(0% 0 0 0)", "inset(100% 0 0 0)"];
-      root.animate(
-        { clipPath: insetFrames },
-        { duration: 500, easing: "cubic-bezier(.65,0,.35,1)", pseudoElement: target }
-      );
-    }
-  }
-
-  function playThemeVariant(variant, x, y, toDark){
-    if (variant === "gif"){
-      animateClipVariant("circle", x, y, toDark);
-      var icon = document.createElement("div");
-      icon.className = "theme-gif-overlay";
-      icon.style.left = x + "px";
-      icon.style.top = y + "px";
-      if (THEME_GIF_URL){
-        icon.style.backgroundImage = "url('" + THEME_GIF_URL + "')";
-      } else {
-        icon.textContent = theme === "dark" ? "🌙" : "☀️";
-      }
-      document.body.appendChild(icon);
-      icon.animate(
-        [
-          { transform: "translate(-50%,-50%) scale(0.4)", opacity: 0 },
-          { transform: "translate(-50%,-50%) scale(1.25)", opacity: 1, offset: 0.5 },
-          { transform: "translate(-50%,-50%) scale(0.4)", opacity: 0 }
-        ],
-        { duration: 600, easing: "ease-in-out" }
-      ).onfinish = function(){ icon.remove(); };
-    } else {
-      animateClipVariant(variant, x, y, toDark);
-    }
-  }
-
-  function toggleThemeAt(x, y){
-    var next = theme === "light" ? "dark" : "light";
-    var toDark = next === "dark";
-
-    if (!document.startViewTransition || reduceMotion){
-      theme = next;
-      applyTheme();
-      return;
-    }
-
-    document.documentElement.setAttribute("data-vt-dir", toDark ? "to-dark" : "to-light");
-    var transition = document.startViewTransition(function(){
-      theme = next;
-      applyTheme();
-    });
-    transition.ready.then(function(){
-      playThemeVariant(THEME_VARIANTS[themeVariantIndex], x, y, toDark);
-    }).catch(function(){ /* transition aborted — theme already applied */ });
-  }
-
-  themeToggleBtn.addEventListener("click", function(e){
-    if (e.altKey){
-      themeVariantIndex = (themeVariantIndex + 1) % THEME_VARIANTS.length;
-      updateToggleTitle();
-      return;
-    }
-    var rect = themeToggleBtn.getBoundingClientRect();
-    toggleThemeAt(rect.left + rect.width / 2, rect.top + rect.height / 2);
-  });
 
   /* ---------- mobile nav ---------- */
   var navToggle = document.getElementById("navToggle");
@@ -336,16 +220,19 @@
 
   /* ---------- templates ---------- */
   function twoColShell(title, desc, meta, rightHtml){
+    var drop = title.replace(/[^a-z0-9]/i, "").charAt(0).toUpperCase();
     return (
       '<div class="page-shell">' +
-        '<div class="col-left">' +
-          '<div>' +
-            '<h1 class="page-title">' + title + '</h1>' +
-            '<p class="page-desc">' + desc + '</p>' +
+        '<div class="page-head">' +
+          '<span class="ph-drop" aria-hidden="true">' + drop + '</span>' +
+          '<span class="ph-rule" aria-hidden="true"></span>' +
+          '<div class="ph-copy">' +
+            '<p class="ph-kicker">Ishika Bhansali — Portfolio</p>' +
+            '<h1 class="page-title tilt">' + title + '</h1>' +
+            '<p class="page-desc tilt">' + desc + '</p>' +
+            '<div class="meta-line tilt">' + meta + '</div>' +
           '</div>' +
-          '<div class="meta-line">' + meta + '</div>' +
         '</div>' +
-        '<div class="col-divider"></div>' +
         '<div class="col-right">' + rightHtml + '</div>' +
       '</div>'
     );
@@ -364,40 +251,71 @@
 
   function homeTemplate(){
     return (
-      '<section class="hero">' +
-        '<canvas class="hero-dots-canvas" id="heroDotsCanvas" aria-hidden="true"></canvas>' +
-        '<div class="hero-intro" data-hero-intro>' +
-          '<h1 class="hi-name" aria-label="hi, I’m Ishika"><span class="hi-g"></span><span class="hi-n"></span></h1>' +
-          '<p class="hi-line">I design things that ' +
-            '<span class="hi-w" data-w="moves" data-bubble="move">move</span>, ' +
-            '<span class="hi-w" data-w="reacts" data-bubble="react">react</span>, and ' +
-            '<span class="hi-w hi-sp" data-w="surprises" data-bubble="surprise">surprise</span>.' +
-          '</p>' +
+      '<section class="stage" id="st">' +
+        '<div class="fold f1"></div><div class="fold f2"></div>' +
+
+        '<div class="blob" data-f="0" style="--x:57%;--y:2%;--s:27cqw;--px:52%;--py:4%;--ps:42cqw;--ar:1/0.82;--b:22px;--d:.2s;--r:52% 48% 46% 54%/58% 52% 48% 42%"><i></i><b>AR / VR worlds</b></div>' +
+        '<div class="blob" data-f="1" style="--x:3%;--y:52%;--s:15cqw;--px:3%;--py:34%;--ps:26cqw;--ar:1/0.85;--b:16px;--d:.6s;--r:58% 42% 50% 50%/55% 45% 55% 45%"><i></i><b>UI / UX</b></div>' +
+        '<div class="blob" data-f="2" style="--x:23%;--y:47%;--s:10cqw;--px:33%;--py:37%;--ps:17cqw;--b:12px;--d:.9s;--r:50% 50% 46% 54%/60% 56% 44% 40%"><i></i><b>tiny games</b></div>' +
+        '<div class="blob" data-f="3" style="--x:31%;--y:37%;--s:6cqw;--px:46%;--py:32%;--ps:10cqw;--b:9px;--d:1.1s;--r:60% 40% 50% 50%"><i></i><b>creative code</b></div>' +
+        '<div class="blob" data-f="4" style="--x:33%;--y:62%;--s:6cqw;--px:40%;--py:46%;--ps:11cqw;--ar:1/0.8;--b:8px;--d:1.3s;--r:55% 45% 52% 48%/50% 50% 50% 50%"><i></i><b>installations</b></div>' +
+        '<div class="blob half" data-f="5" style="--x:46%;--y:71%;--s:5cqw;--px:58%;--py:48%;--ps:9cqw;--ar:.8/1;--b:5px;--d:1.5s"><i></i><b>physical things</b></div>' +
+        '<div class="blob" data-f="6" style="--x:88%;--y:57%;--s:7cqw;--px:84%;--py:50%;--ps:10cqw;--b:10px;--d:1.7s;--r:48% 52% 60% 40%/50% 46% 54% 50%"><i></i><b>play, always</b></div>' +
+
+        '<span class="lw a rv w1" style="--x:9%;--y:32.5%;--px:6%;--py:25%;--d:1.2s">people</span>' +
+        '<span class="pl a rv" style="--x:12.6%;--y:36.4%;--px:27%;--py:27%;--d:1.3s;translate:-50% -50%"></span>' +
+        '<span class="lw a rv" style="--x:18%;--y:35.2%;--px:35%;--py:26.3%;--d:1.35s;pointer-events:none">to</span>' +
+        '<span class="lw a rv w2" style="--x:4.5%;--y:40%;--px:6%;--py:29%;--d:1.4s">things</span>' +
+
+        '<div class="hi a rv" style="--x:52%;--y:24%;--px:56%;--py:17%;--d:1.5s"><span>Somewhere between</span><span>logic and</span><b>imagination.</b></div>' +
+        '<div class="cross a rv" id="cross" style="--x:68%;--y:30%;--px:74%;--py:8%;--d:1.7s"></div>' +
+
+        '<div class="cred a rv" style="--x:52%;--y:48%;--px:54%;--py:36%;--d:1.9s">Ishika Bhansali — Interaction Design<br>Portfolio 2026</div>' +
+
+        '<div class="ph a rv" id="ph" style="--x:52%;--y:60%;--px:6%;--py:55%;--d:2.1s">' +
+          '<div class="lay then"><img id="imThen" src="" alt="Ishika as a child"><em>your childhood photo</em></div>' +
+          '<div class="lay now"><img id="imNow" src="" alt="Ishika today"><em>you, now</em></div>' +
+          '<i class="sp"></i><span class="tl">then</span><span class="tr">now</span>' +
+          '<div class="up">preview yours: <label>then<input type="file" id="fThen" accept="image/*"></label> · <label>now<input type="file" id="fNow" accept="image/*"></label></div>' +
         '</div>' +
-        '<div class="hero-illustration">' +
-          '<img class="illus-default" src="character-default.png" alt="Illustrated portrait of Ishika">' +
-          '<img class="illus-hover" src="character-hover.png" alt="Illustrated portrait of Ishika, waving">' +
-        '</div>' +
-        '<div class="hero-keys">' +
-          '<span class="keys-string" aria-hidden="true"></span>' +
-          '<img class="keys-img" src="keychain.png" alt="A keychain of things Ishika loves: a tulip, Kinder Joy, an I charm, sunglasses, coffee, lip balm and a waffle">' +
-          '<p class="keys-label">Things I love</p>' +
-        '</div>' +
-        '<div class="scroll-indicator"><span>Scroll</span><span class="line"></span></div>' +
-      '</section>'
+
+        '<p class="nt a rv" style="--x:4%;--y:85%;--px:6%;--py:84%;--d:2.4s">est. 2023 · interaction designer</p>' +
+        '<p class="nt a rv" style="--x:24%;--y:79%;--px:52%;--py:86%;--d:2.6s">drag the shapes around</p>' +
+        '<p class="nt a rv" style="--x:40%;--y:89%;--px:6%;--py:92%;--d:2.8s">Made of maybes.</p>' +
+        '<a class="nt a rv" href="#/contact" style="--x:86%;--y:86%;--px:66%;--py:92%;--d:3s">say hi ↗</a>' +
+        '<div class="nav rv" style="--d:2.8s"><button id="snd" type="button">sound off</button></div>' +
+      '</section>' +
+      '<div class="cur" id="cur"><em></em></div>'
     );
   }
 
   function workTemplate(){
-    var tiles = PROJECTS.map(function(p){
-      var thumbHtml = p.thumb ? '<img class="tile-thumb" src="' + p.thumb + '" alt="">' : '';
-      var thumbClass = p.thumb ? ' has-thumb' : '';
+    var entries = PROJECTS.map(function(p){
+      var note = p.tagline || (p.sections && p.sections[0] && p.sections[0].body) || "";
+      var contentHtml = p.thumb
+        ? (
+            '<div class="wl-content">' +
+              '<div class="wl-media" style="--ar:' + p.ar + '"><img src="' + p.thumb + '" alt=""></div>' +
+              (note
+                ? '<div class="wl-note"><span class="wl-note-label">/ project notes /</span><p>' + note + '</p></div>'
+                : '') +
+            '</div>'
+          )
+        : '';
       return (
-        '<div class="work-tile reveal ' + p.span + thumbClass + (p.soon ? ' is-soon' : '') + '"' + (p.soon ? ' aria-disabled="true"' : ' data-id="' + p.id + '" data-bubble="view project"') + (p.ar ? ' style="--ar:' + p.ar + '"' : '') + '>' +
-          thumbHtml +
-          '<span class="index">' + p.id + '</span>' +
-          (p.soon ? '<span class="soon-badge">Coming soon</span>' : '') +
-          '<div class="tile-text"><div class="name">' + p.name + '</div><div class="tag">' + p.tag + '</div></div>' +
+        '<div class="work-tile tilt' + (p.soon ? ' is-soon' : '') + '"' +
+          (p.soon ? ' aria-disabled="true"' : ' data-id="' + p.id + '" data-bubble="view project"') + '>' +
+          '<div class="wl-row">' +
+            '<span class="wl-num">' + p.id + '</span>' +
+            '<div class="wl-headline">' +
+              '<h2 class="wl-name">' + p.name + '</h2>' +
+              '<span class="wl-tag">' + p.tag + '</span>' +
+            '</div>' +
+            (p.soon
+              ? '<span class="wl-soon">Coming soon</span>'
+              : '<span class="wl-arrow" aria-hidden="true">↗</span>') +
+          '</div>' +
+          contentHtml +
         '</div>'
       );
     }).join("");
@@ -405,126 +323,128 @@
       "work.",
       "A small collection of ideas I had to build.",
       OPEN_PROJECTS.length + " selected projects, more coming soon.",
-      '<div class="work-grid">' + tiles + '</div>'
+      '<div class="work-list">' + entries + '</div>'
     );
   }
 
+  // the pool of software logos the "tools i know (…)" badge cycles through —
+  // see initAboutTools for the swap timer
+  var ABOUT_TOOLS = [
+    { name: "Figma", logo: "sw-figma.png" },
+    { name: "Adobe Illustrator", logo: "sw-illustrator.png" },
+    { name: "Adobe Photoshop", logo: "sw-photoshop.png" },
+    { name: "Adobe InDesign", logo: "sw-indesign.png" },
+    { name: "DaVinci Resolve", logo: "sw-davinci.png" },
+    { name: "CorelDRAW", logo: "sw-coreldraw.jpg" },
+    { name: "Blender", logo: "sw-blender.png" },
+    { name: "SketchUp", logo: "sw-sketchup.jpg" },
+    { name: "Unity", logo: "sw-unity.png" },
+    { name: "TouchDesigner", logo: "sw-touchdesigner.png" }
+  ];
+
   function aboutTemplate(){
-    var traits = [
-      { cls: "trait-1", label: "Communication" },
-      { cls: "trait-2", label: "Critical Thinking" },
-      { cls: "trait-3", label: "Attention to Detail" },
-      { cls: "trait-4", label: "Management Skills" },
-      { cls: "trait-5", label: "Digital Marketing" }
-    ].map(function(t){
-      return '<div class="trait ' + t.cls + ' draggable" data-bubble="drag">' + t.label + '</div>';
-    }).join("");
-
-    var top = (
-      '<div class="about-top">' +
-        '<div class="photo-card draggable" data-bubble="drag">' +
-          '<div class="pc-head">' +
-            '<div class="pc-avatar"></div>' +
-            '<div><div class="pc-name">Ishika Bhansali</div></div>' +
+    var hero = (
+      '<div class="ab-hero">' +
+        '<div class="ab-intro">' +
+          '<p class="ab-bio tilt">I’m Ishika, an Interaction Design student exploring the relationship between people, technology, and experiences. My work moves between UI/UX, immersive experiences, creative technology, and physical interactions. I’m interested in creating experiences that feel intuitive, playful, and a little unexpected.</p>' +
+          '<div class="ab-contact tilt">' +
+            '<div class="ab-contact-label">contact</div>' +
+            '<a href="tel:+916377643638">+91 63776 43638</a>' +
+            '<a href="https://mail.google.com/mail/?view=cm&fs=1&to=ishikabhansali7@gmail.com" target="_blank" rel="noopener">ishikabhansali7@gmail.com</a>' +
           '</div>' +
-          '<div class="pc-image"><img src="about-photo.jpg" alt="Portrait of Ishika Bhansali"></div>' +
-          '<div class="pc-foot"><span>♡</span><span>Q</span><span>➤</span></div>' +
+          '<div class="ab-tools-row tilt">' +
+            '<span>tools i know</span>' +
+            '<span class="ab-paren" aria-hidden="true">(</span>' +
+            '<span class="ab-tool-badge" id="toolBadge" title="' + ABOUT_TOOLS[0].name + '"><img src="' + ABOUT_TOOLS[0].logo + '" alt="' + ABOUT_TOOLS[0].name + '"></span>' +
+            '<span class="ab-paren" aria-hidden="true">)</span>' +
+          '</div>' +
         '</div>' +
-        '<div class="about-right">' +
-          '<div class="about-bio">' +
-            '<p>I design interactions, not just interfaces. I’m Ishika, an Interaction Design student exploring the relationship between people, technology, and experiences. My work moves between UI/UX, immersive experiences, creative technology, and physical interactions. I’m interested in creating experiences that feel intuitive, playful, and a little unexpected. Still learning. Still experimenting. Always making.</p>' +
-            '<div class="contact-line"><span><a href="tel:+916377643638">+91 63776 43638</a></span><span><a href="https://mail.google.com/mail/?view=cm&fs=1&to=ishikabhansali7@gmail.com" target="_blank" rel="noopener">ishikabhansali7@gmail.com</a></span></div>' +
+        '<div class="ab-media">' +
+          '<div class="ab-photo-wrap tilt">' +
+            '<div class="ab-photo"><img src="about-photo.jpg" alt="Portrait of Ishika Bhansali"></div>' +
+            '<h2 class="ab-hello">Oh hi!</h2>' +
           '</div>' +
-          '<div class="traits-wrap">' + traits + '</div>' +
         '</div>' +
       '</div>'
     );
 
-    var tools = [
-      { name: "Figma", logo: "sw-figma.png" },
-      { name: "Adobe Illustrator", logo: "sw-illustrator.png" },
-      { name: "Adobe Photoshop", logo: "sw-photoshop.png" },
-      { name: "Adobe InDesign", logo: "sw-indesign.png" },
-      { name: "DaVinci Resolve", logo: "sw-davinci.png" },
-      { name: "CorelDRAW", logo: "sw-coreldraw.jpg" },
-      { name: "Blender", logo: "sw-blender.png" },
-      { name: "SketchUp", logo: "sw-sketchup.jpg" },
-      { name: "Unity", logo: "sw-unity.png" },
-      { name: "TouchDesigner", logo: "sw-touchdesigner.png" }
+    var experiences = [
+      { date: "Dec 2020 – Present", role: "Founder", detail: "Sequence and Beads" },
+      { date: "Mar 2023 – Jun 2023", role: "Graphic Designer", detail: "Vinayak Print O Graphic" },
+      { date: "Apr 2026 – Jun 2026", role: "UI/UX Design Intern", detail: "Calip.io" },
+      { date: "Jun 2026 – Jul 2026", role: "Social Media Marketing Intern", detail: "Digital Darbar" }
     ];
-    var swIcons = tools.map(function(t){
-      return '<div class="sw-icon" title="' + t.name + '"><img src="' + t.logo + '" alt="' + t.name + '"></div>';
+    var expRows = experiences.map(function(e){
+      return (
+        '<div class="ab-tl-row tilt">' +
+          '<span class="ab-tl-dot" aria-hidden="true"></span>' +
+          '<span class="ab-tl-date">' + e.date + '</span>' +
+          '<span class="ab-tl-title">' + e.role + '</span>' +
+          '<span class="ab-tl-detail">' + e.detail + '</span>' +
+        '</div>'
+      );
     }).join("");
 
-    // left column: education → experience → i like making (directly under experience)
-    var colLeft = (
-      '<div class="about-col">' +
-
-        '<div class="section-block reveal">' +
-          '<h3>education</h3>' +
-          '<ul class="timeline">' +
-            '<li><span class="tl-date">2023 – 2027</span><div><strong>Bachelor of Design</strong><span class="tl-detail">Major in Interaction Design, Minor in Product Design<br>Anant National University</span></div></li>' +
-          '</ul>' +
+    var timeline = (
+      '<div class="ab-timeline">' +
+        '<div class="ab-tl-group">' +
+          '<div class="ab-tl-label tilt">education →</div>' +
+          '<div class="ab-tl-rows">' +
+            '<div class="ab-tl-row tilt">' +
+              '<span class="ab-tl-dot" aria-hidden="true"></span>' +
+              '<span class="ab-tl-date">2023 – 2027</span>' +
+              '<span class="ab-tl-title">Bachelor of Design</span>' +
+              '<span class="ab-tl-detail">Major in Interaction Design, Minor in Product Design — Anant National University</span>' +
+            '</div>' +
+          '</div>' +
         '</div>' +
-
-        '<div class="section-block reveal">' +
-          '<h3>experience</h3>' +
-          '<ul class="timeline">' +
-            '<li><span class="tl-date">Dec 2020 – Present</span><div><strong>Founder</strong><span class="tl-detail">Sequence and Beads</span></div></li>' +
-            '<li><span class="tl-date">Mar 2023 – Jun 2023</span><div><strong>Graphic Designer</strong><span class="tl-detail">Vinayak Print O Graphic</span></div></li>' +
-            '<li><span class="tl-date">Apr 2026 – Jun 2026</span><div><strong>UI/UX Design Intern</strong><span class="tl-detail">Calip.io</span></div></li>' +
-            '<li><span class="tl-date">Jun 2026 – Jul 2026</span><div><strong>Social Media Marketing Intern</strong><span class="tl-detail">Digital Darbar</span></div></li>' +
-          '</ul>' +
+        '<div class="ab-tl-group">' +
+          '<div class="ab-tl-label tilt">experience →</div>' +
+          '<div class="ab-tl-rows">' + expRows + '</div>' +
         '</div>' +
-
-        '<div class="section-block reveal">' +
-          '<h3>i like making</h3>' +
-          '<ul class="interest-list">' +
-            '<li><span class="mark">✦</span>Digital experiences</li>' +
-            '<li><span class="mark">✦</span>Immersive installations</li>' +
-            '<li><span class="mark">✦</span>AR / VR</li>' +
-            '<li><span class="mark">✦</span>Interactive spaces</li>' +
-            '<li><span class="mark">✦</span>Games</li>' +
-            '<li><span class="mark">✦</span>UI/UX</li>' +
-            '<li><span class="mark">✦</span>Creative coding</li>' +
-            '<li><span class="mark">✦</span>Interface design</li>' +
-          '</ul>' +
-        '</div>' +
-
       '</div>'
     );
 
-    // right column: skills (design only — soft skills now live in the trait badges) → software
-    var colRight = (
-      '<div class="about-col">' +
+    function pillBox(headLabel, items){
+      var pills = items.map(function(p){ return '<span class="ab-pill tilt">' + p + '</span>'; }).join("");
+      return (
+        '<div class="ab-box">' +
+          '<div class="ab-box-head tilt">' + headLabel + '</div>' +
+          '<div class="ab-box-pills">' + pills + '</div>' +
+        '</div>'
+      );
+    }
 
-        '<div class="section-block reveal">' +
-          '<h3>skills</h3>' +
-          '<div class="pills">' +
-            '<span class="pill filled">UI/UX Design</span>' +
-            '<span class="pill filled">Wireframing</span>' +
-            '<span class="pill filled">Prototyping</span>' +
-            '<span class="pill filled">User Research</span>' +
-          '</div>' +
-        '</div>' +
-
-        '<div class="section-block reveal">' +
-          '<h3>software</h3>' +
-          '<div class="sw-card">' +
-            '<div class="sw-grid">' + swIcons + '</div>' +
-          '</div>' +
-        '</div>' +
-
+    var foot = (
+      '<div class="ab-foot">' +
+        pillBox("i like making", [
+          "Digital experiences", "Immersive installations", "AR / VR", "Interactive spaces",
+          "Games", "UI/UX", "Creative coding", "Interface design"
+        ]) +
+        pillBox("skills", [
+          "User research", "Wireframing", "Prototyping", "Interaction design", "Visual design",
+          "Branding", "3D modelling", "AR/VR development", "Physical computing", "Motion & video", "Social media marketing"
+        ]) +
       '</div>'
     );
 
-    var sections = '<div class="about-sections">' + colLeft + colRight + '</div>';
+    // soft blurred shapes + thin crossing lines, echoing the home screen's
+    // blob stage — purely decorative, sits behind the content, no interaction
+    var bg = (
+      '<div class="ab-blobs" aria-hidden="true">' +
+        '<span class="ab-blob b1"></span>' +
+        '<span class="ab-blob b2"></span>' +
+        '<span class="ab-blob b3"></span>' +
+        '<span class="ab-line l1"></span>' +
+        '<span class="ab-line l2"></span>' +
+      '</div>'
+    );
 
     return twoColShell(
       "about.",
       "Still learning. Still experimenting. Always making.",
       "Open to internships and collaborations.",
-      top + sections
+      '<div class="about-wrap">' + bg + hero + timeline + foot + '</div>'
     );
   }
 
@@ -551,7 +471,7 @@
 
   function contactTemplate(){
     var noteCard = (
-      '<div class="note-card reveal">' +
+      '<div class="note-card tilt">' +
         '<div class="note-top">' +
           '<span class="note-check">✓</span>' +
         '</div>' +
@@ -576,7 +496,7 @@
     var links = (
       '<div class="contact-links">' +
         '<div class="finder-label">or find me here — drag these</div>' +
-        '<button class="cv-banner reveal" id="cvBtn" type="button" data-bubble="download">' +
+        '<button class="cv-banner tilt" id="cvBtn" type="button" data-bubble="download">' +
           '<span class="cv-label">- resume -</span>' +
           '<span class="cv-title">Download resume</span>' +
           '<span class="cv-arrow">↓</span>' +
@@ -609,134 +529,493 @@
     );
   }
 
+  // Adalaj's own hand-fit layout: two paired columns, a numbered grid, a
+  // bullet list, a horizontal step tracker, and a tabbed problem/fix/result
+  // breakdown — all built from the same fonts and sizes as every other
+  // project, just laid out differently section by section
+  function adalajRowsHtml(project){
+    var s = project.sections;
+    function fbId(num){ return "fb-" + project.id + "-" + num; }
+    function rowHead(num, label){
+      return '<div class="pd-row-head"><span class="pd-row-num">' + num + '</span><span class="pd-row-label">' + label + '</span></div>';
+    }
+    // most of Adalaj's list items are their own "Lead: rest" or "Lead. rest" —
+    // split at the first colon or period so the lead-in can be set bold
+    function splitLead(text){
+      var m = text.match(/^([^:.]*[:.])\s*([\s\S]*)$/);
+      return m ? { lead: m[1].replace(/[:.]$/, ""), rest: m[2] } : { lead: "", rest: text };
+    }
+    function leadListHtml(items){
+      return '<ol class="ad-lead-list">' +
+        items.map(function(t, i){
+          var p = splitLead(t);
+          return '<li><span class="ad-lead-num">0' + (i + 1) + '</span><div><strong>' + p.lead + ':</strong> ' + p.rest + '</div></li>';
+        }).join('') +
+      '</ol>';
+    }
+    function monoListHtml(items){
+      return '<div class="ad-mono-list">' +
+        items.map(function(t, i){
+          var p = splitLead(t);
+          return '<div class="aml-item"><span class="aml-num">0' + (i + 1) + '</span><div><strong>' + p.lead + ':</strong> ' + p.rest + '</div></div>';
+        }).join('') +
+      '</div>';
+    }
+    function galleryHtml(images){
+      return '<div class="vcarousel" data-vcarousel' + (images.length >= 6 ? ' data-loop' : '') + ' role="region" aria-label="Project images" tabindex="0">' +
+          '<button type="button" class="vcarousel-arrow vcarousel-up" aria-label="Previous image" data-bubble="up"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg></button>' +
+          '<div class="vcarousel-viewport draggable" data-bubble="drag"><div class="vcarousel-container">' +
+            images.map(function(im, i){
+              return '<div class="vcarousel-slide"><button type="button" class="vcarousel-img-btn" data-index="' + i + '" data-src="' + im.src + '" data-alt="' + im.alt + '" aria-label="Open ' + im.alt + '" data-bubble="expand"><img class="vcarousel-img" src="' + im.src + '" alt="' + im.alt + '" loading="lazy"></button></div>';
+            }).join('') +
+          '</div></div>' +
+          '<button type="button" class="vcarousel-arrow vcarousel-down" aria-label="Next image" data-bubble="down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button>' +
+        '</div>';
+    }
+    function videoHtml(src, label){
+      return '<div class="case-video-wrap">' +
+          '<video class="case-video" preload="none" playsinline controls><source src="' + src + '" type="video/mp4"></video>' +
+          '<button class="case-video-play" type="button" aria-label="Play ' + label + '" data-bubble="play"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.5"/><path d="M9.5 7.5l8 4.5-8 4.5z"/></svg></button>' +
+        '</div>';
+    }
+
+    var r01 =
+      '<div class="pd-row ad-centered tilt" id="' + fbId("01") + '">' +
+        rowHead(s[0].num, s[0].heading) +
+        '<div class="pd-row-text ad-center-text">' + s[0].body.map(function(p){ return '<p>' + p + '</p>'; }).join('') + '</div>' +
+      '</div>';
+
+    var r0203 =
+      '<div class="pd-row tilt" id="' + fbId("02") + '">' +
+        '<div class="ad-pair-grid">' +
+          '<div class="ad-pair-col">' + rowHead(s[1].num, s[1].heading) + leadListHtml(s[1].list) + '</div>' +
+          '<div class="ad-pair-col" id="' + fbId("03") + '">' + rowHead(s[2].num, s[2].heading) + leadListHtml(s[2].list) + '</div>' +
+        '</div>' +
+      '</div>';
+
+    var r04 =
+      '<div class="pd-row tilt" id="' + fbId("04") + '">' +
+        rowHead(s[3].num, s[3].heading) +
+        '<div class="pd-row-body is-paired ad-reverse">' +
+          '<div class="pd-row-text"><p>' + s[3].body + '</p>' + leadListHtml(s[3].list) + '</div>' +
+          '<div class="ad-media">' + galleryHtml(s[3].images) + '</div>' +
+        '</div>' +
+      '</div>';
+
+    var r05 =
+      '<div class="pd-row tilt" id="' + fbId("05") + '">' +
+        rowHead(s[4].num, s[4].heading) +
+        '<div class="ad-stepper" id="adStepper">' +
+          s[4].list.map(function(t){
+            var p = splitLead(t);
+            return '<span class="as-step-data" data-label="' + p.lead + '" data-body="' + p.rest + '" hidden></span>';
+          }).join('') +
+          '<div class="as-content"><h5 id="asTitle"></h5><p id="asBody"></p></div>' +
+          '<div class="as-track">' +
+            s[4].list.map(function(t, i){
+              return '<button type="button" class="as-dot' + (i === 0 ? ' is-active' : '') + '" data-index="' + i + '" aria-label="Step ' + (i + 1) + '"></button>';
+            }).join('') +
+          '</div>' +
+        '</div>' +
+        '<div class="pd-row-wide">' + videoHtml(s[4].video, s[4].videoLabel) + '</div>' +
+      '</div>';
+
+    var r06 =
+      '<div class="pd-row tilt" id="' + fbId("06") + '">' +
+        rowHead(s[5].num, s[5].heading) +
+        '<div class="ad-grid">' +
+          s[5].list.map(function(t, i){
+            var p = splitLead(t);
+            return '<div class="ad-grid-item"><span class="ad-grid-num">0' + (i + 1) + '</span><h5>' + p.lead + '</h5><p>' + p.rest + '</p></div>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+
+    var r07 =
+      '<div class="pd-row tilt" id="' + fbId("07") + '">' +
+        rowHead(s[6].num, s[6].heading) +
+        '<ul class="ad-bullet-list">' +
+          s[6].list.map(function(t){
+            var p = splitLead(t);
+            return '<li><span class="ad-bullet" aria-hidden="true"></span><div><h5>' + p.lead + '</h5><p>' + p.rest + '</p></div></li>';
+          }).join('') +
+        '</ul>' +
+      '</div>';
+
+    var r08 =
+      '<div class="pd-row tilt" id="' + fbId("08") + '">' +
+        rowHead(s[7].num, s[7].heading) +
+        '<div class="pd-row-body is-paired">' +
+          '<div class="pd-row-text"><p>' + s[7].body + '</p></div>' +
+          '<div class="ad-media">' + galleryHtml(s[7].images) + '</div>' +
+        '</div>' +
+      '</div>';
+
+    // "Title — Problem: ... Fix: ... Result: ..." splits cleanly into its four parts
+    function parseFailure(entry){
+      var dashSplit = entry.split(" — ");
+      var title = dashSplit[0];
+      var rest = dashSplit.slice(1).join(" — ");
+      var problem = rest.match(/Problem:\s*([\s\S]*?)\s*Fix:/);
+      var fix = rest.match(/Fix:\s*([\s\S]*?)\s*Result:/);
+      var result = rest.match(/Result:\s*([\s\S]*)/);
+      return {
+        title: title,
+        problem: problem ? problem[1].trim() : "",
+        fix: fix ? fix[1].trim() : "",
+        result: result ? result[1].trim() : ""
+      };
+    }
+    var r09 =
+      '<div class="pd-row ad-centered tilt" id="' + fbId("09") + '">' +
+        rowHead(s[8].num, s[8].heading) +
+        '<div class="ad-failures" id="adFailures">' +
+          s[8].list.map(function(t){
+            var f = parseFailure(t);
+            return '<span class="af-item-data" data-title="' + f.title + '" data-problem="' + f.problem + '" data-fix="' + f.fix + '" data-result="' + f.result + '" hidden></span>';
+          }).join('') +
+          '<div class="af-tabs">' +
+            s[8].list.map(function(t, i){
+              return '<button type="button" class="af-tab' + (i === 0 ? ' is-active' : '') + '" data-index="' + i + '" aria-label="Failure ' + (i + 1) + '">' + (i + 1) + '</button>';
+            }).join('') +
+          '</div>' +
+          '<h5 class="af-title" id="afTitle"></h5>' +
+          '<div class="af-block"><span class="af-label">Problem</span><p id="afProblem"></p></div>' +
+          '<div class="af-block"><span class="af-label">Fix</span><p id="afFix"></p></div>' +
+          '<div class="af-block"><span class="af-label">Result</span><p id="afResult"></p></div>' +
+        '</div>' +
+      '</div>';
+
+    var r10 =
+      '<div class="pd-row ad-centered tilt" id="' + fbId("10") + '">' +
+        rowHead(s[9].num, s[9].heading) +
+        '<div class="pd-row-text ad-center-text"><p>' + s[9].body + '</p></div>' +
+      '</div>';
+
+    var r1112 =
+      '<div class="pd-row tilt" id="' + fbId("11") + '">' +
+        '<div class="ad-pair-grid">' +
+          '<div class="ad-pair-col">' +
+            rowHead(s[10].num, s[10].heading) +
+            '<div class="pd-row-text" style="margin-bottom:24px"><p>' + s[10].body + '</p></div>' +
+            monoListHtml(s[10].list) +
+          '</div>' +
+          '<div class="ad-pair-col" id="' + fbId("12") + '">' +
+            rowHead(s[11].num, s[11].heading) +
+            monoListHtml(s[11].list) +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    return r01 + r0203 + r04 + r05 + r06 + r07 + r08 + r09 + r10 + r1112;
+  }
+
+  // Red Spire's own hand-fit layout: a big serif concept statement, a
+  // draggable "delight vs professional" balance slider, a scale-legibility
+  // tester, and a filterable mosaic of the finished identity — all in the
+  // same fonts and sizes as every other project
+  function redSpireRowsHtml(project){
+    var s = project.sections;
+    function fbId(num){ return "fb-" + project.id + "-" + num; }
+    function rowHead(num, label){
+      return '<div class="pd-row-head"><span class="pd-row-num">' + num + '</span><span class="pd-row-label">' + label + '</span></div>';
+    }
+
+    var r01 =
+      '<div class="pd-row tilt" id="' + fbId("01") + '">' +
+        rowHead(s[0].num, s[0].heading) +
+        '<div class="pd-row-text"><p>' + s[0].body + '</p></div>' +
+      '</div>';
+
+    var r02 =
+      '<div class="pd-row tilt" id="' + fbId("02") + '">' +
+        rowHead(s[1].num, s[1].heading) +
+        '<div class="pd-row-body is-paired">' +
+          '<div class="pd-row-text"><p>' + s[1].body + '</p></div>' +
+          '<div class="rs-balance" id="rsBalance">' +
+            '<div class="rs-balance-labels"><em>delight</em><span>professional</span></div>' +
+            '<p class="rs-balance-hint">Drag to find the balance</p>' +
+            '<input type="range" class="rs-balance-slider" id="rsBalanceSlider" min="0" max="100" value="68" aria-label="Balance between delight and professional">' +
+            '<p class="rs-balance-caption">Charming enough for packaging, clean enough for staff uniforms.</p>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+    var swatches = [
+      { color: "#5E3F73", img: "redspire-mascot-1.png", name: "deepest" },
+      { color: "#8467A0", img: "redspire-mascot-2.png", name: "medium" },
+      { color: "#B9A6D0", img: "redspire-mascot-3.png", name: "light" },
+      { color: "#DCD2E8", img: "redspire-mascot-4.png", name: "palest" }
+    ];
+    var r03 =
+      '<div class="pd-row tilt" id="' + fbId("03") + '">' +
+        rowHead(s[2].num, s[2].heading) +
+        '<div class="pd-row-body is-paired">' +
+          '<div class="pd-row-text">' +
+            '<ol class="pd-list">' + s[2].list.map(function(li){ return '<li>' + li + '</li>'; }).join('') + '</ol>' +
+          '</div>' +
+          '<div class="rs-swatches-wrap">' +
+            '<div class="rs-swatches" id="rsSwatches">' +
+              swatches.map(function(c, i){
+                return '<button type="button" class="rs-swatch' + (i === 0 ? ' is-active' : '') + '" style="background:' + c.color + '" data-mascot="' + c.img + '" data-alt="The silhouette mark in its ' + c.name + ' purple tone" aria-label="Show the ' + c.name + ' purple mascot"></button>';
+              }).join('') +
+            '</div>' +
+            '<img class="pd-image" id="rsMascotStage" src="' + swatches[0].img + '" alt="The silhouette mark in its deepest purple tone">' +
+          '</div>' +
+        '</div>' +
+        '<div class="rs-scale" id="rsScale">' +
+          '<p class="rs-scale-label">Scale test — does it still read small?</p>' +
+          '<div class="rs-scale-tabs">' +
+            '<button type="button" class="rs-scale-tab is-active" data-size="100">100%</button>' +
+            '<button type="button" class="rs-scale-tab" data-size="50">50%</button>' +
+            '<button type="button" class="rs-scale-tab" data-size="25">25%</button>' +
+            '<button type="button" class="rs-scale-tab" data-size="10">10%</button>' +
+          '</div>' +
+          '<div class="rs-scale-stage"><img id="rsScaleImg" src="redspire-logo.png" alt="Red Spire logo, shown at a reduced scale"></div>' +
+          '<p class="rs-scale-caption">Checking the mark still reads at a glance, reduced for packaging or signage.</p>' +
+        '</div>' +
+        '<p class="rs-approach-tags">Personality &middot; Silhouette &middot; Wordmark</p>' +
+      '</div>';
+
+    var tiles = [
+      { cat: "logo", src: "redspire-final-logo-lockup.png", label: "Logo lockup" },
+      { cat: "logo", src: "redspire-final-mascot-dark.png", label: "Mascot mark" },
+      { cat: "packaging", src: "redspire-final-packaging-bags.png", label: "Packaging bags" },
+      { cat: "logo", src: "redspire-final-tones-row.png", label: "Silhouette, four tones" },
+      { cat: "packaging", src: "redspire-final-gift-box.png", label: "Gift box" },
+      { cat: "packaging", src: "redspire-final-cup-and-box.png", label: "Cup and bakery box" },
+      { cat: "apparel", src: "redspire-final-apron.png", label: "Staff apron" },
+      { cat: "signage", src: "redspire-final-signage.png", label: "Hanging signage" },
+      { cat: "all", src: "redspire-final-mascot-flour.png", label: "Mascot in the kitchen" },
+      { cat: "packaging", src: "redspire-final-pastry-box.png", label: "Pastry box" }
+    ];
+    var filters = ["All", "Logo", "Packaging", "Apparel", "Signage"];
+    var r04 =
+      '<div class="pd-row tilt" id="' + fbId("04") + '">' +
+        rowHead(s[3].num, s[3].heading) +
+        '<div class="rs-outcome-head">' +
+          '<div class="pd-row-text"><p>' + s[3].body + '</p></div>' +
+          '<div class="rs-filters" id="rsFilters">' +
+            filters.map(function(f, i){
+              return '<button type="button" class="rs-filter' + (i === 0 ? ' is-active' : '') + '" data-filter="' + f.toLowerCase() + '">' + f + '</button>';
+            }).join('') +
+          '</div>' +
+        '</div>' +
+        '<div class="rs-mosaic" id="rsMosaic">' +
+          tiles.map(function(t){
+            return '<div class="rs-tile" data-cat="' + t.cat + '">' +
+                '<img src="' + t.src + '" alt="' + t.label + '" loading="lazy">' +
+                '<span class="rs-tile-label">' + t.label + '</span>' +
+              '</div>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+
+    return r01 + r02 + r03 + r04;
+  }
+
   function detailTemplate(id){
     var idx = OPEN_PROJECTS.findIndex(function(p){ return p.id === id; });
     if (idx === -1) idx = 0;
     var project = OPEN_PROJECTS[idx];
     var prev = OPEN_PROJECTS[(idx - 1 + OPEN_PROJECTS.length) % OPEN_PROJECTS.length];
     var next = OPEN_PROJECTS[(idx + 1) % OPEN_PROJECTS.length];
-
-    var heroContent = project.heroImage
-      ? '<img class="detail-hero-image" src="' + project.heroImage + '" alt="' + (project.name + ' banner') + '">'
-      : project.wordmark
-      ? '<span class="hero-wordmark">' + project.wordmark + '</span>'
-      : 'Hero media placeholder';
-
-    var taglineHtml = project.tagline ? '<p class="case-tagline">' + project.tagline + '</p>' : '';
-
+    var sections = project.sections || [];
     var meta = project.meta || {};
+
+    function fbId(s){ return "fb-" + project.id + "-" + s.num; }
+
+    /* ---- header: a plain project photo beside the title, a short line, and a meta row ---- */
     var metaFields = [
-      { label: "Type", value: project.tag },
-      { label: "Team", value: meta.team || "[team size]" },
-      { label: "Timeline", value: meta.timeline || "[duration]" },
-      { label: "Tools", value: meta.tools || "[tools]" }
+      { label: "Team", value: meta.team || "—" },
+      { label: "Timeline", value: meta.timeline || "—" },
+      { label: "Tools", value: meta.tools || "—" }
     ];
-    var metaRowHtml =
-      '<div class="detail-meta-row reveal">' +
-        metaFields.map(function(f){
-          return '<div class="detail-meta-box"><span class="detail-meta-label">' + f.label + '</span><span class="detail-meta-value">' + f.value + '</span></div>';
-        }).join('') +
+    var headerHtml =
+      '<div class="pd-header">' +
+        '<div class="pd-header-media tilt"><img src="' + project.heroImage + '" alt="' + project.name + '"></div>' +
+        '<div class="pd-header-text">' +
+          '<p class="pd-kicker tilt">' + project.tag + '</p>' +
+          '<h1 class="pd-title tilt">' + project.name + '</h1>' +
+          (project.tagline ? '<p class="pd-desc tilt">' + project.tagline + '</p>' : '') +
+          '<div class="pd-meta tilt">' +
+            metaFields.map(function(f){
+              return '<div class="pd-meta-field"><span class="pd-meta-label">' + f.label + '</span><span class="pd-meta-value">' + f.value + '</span></div>';
+            }).join('') +
+          '</div>' +
+        '</div>' +
       '</div>';
 
-    var bodyContent;
-    if (project.sections){
-      bodyContent =
-        '<div class="case-sections">' +
-          project.sections.map(function(s){
-            var tagsHtml = s.tags
-              ? '<div class="case-tags">' + s.tags.map(function(t){ return '<span>' + t + '</span>'; }).join('') + '</div>'
-              : '';
-            var bodyParas = s.body ? (Array.isArray(s.body) ? s.body : [s.body]) : [];
-            var bodyHtml = bodyParas.map(function(p){ return '<p>' + p + '</p>'; }).join('');
-            var listHtml = s.list
-              ? '<ul class="case-list">' + s.list.map(function(li){ return '<li>' + li + '</li>'; }).join('') + '</ul>'
-              : '';
-            var imageHtml = s.image
-              ? '<img class="case-image" src="' + s.image + '" alt="' + (s.imageAlt || s.heading) + '">'
-              : '';
-            var imagesHtml = s.images
-              ? (s.images.length > 1
-                  ? '<div class="vcarousel" data-vcarousel' + (s.images.length >= 6 ? ' data-loop' : '') + ' role="region" aria-label="Project images" tabindex="0">' +
-                      '<button type="button" class="vcarousel-arrow vcarousel-up" aria-label="Previous image" data-bubble="up">' +
-                        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg>' +
-                      '</button>' +
-                      '<div class="vcarousel-viewport draggable" data-bubble="drag">' +
-                        '<div class="vcarousel-container">' +
-                          s.images.map(function(im, i){
-                            return (
-                              '<div class="vcarousel-slide">' +
-                                '<button type="button" class="vcarousel-img-btn" data-index="' + i + '" data-src="' + im.src + '" data-alt="' + im.alt + '" aria-label="Open ' + im.alt + '" data-bubble="expand">' +
-                                  '<img class="vcarousel-img" src="' + im.src + '" alt="' + im.alt + '" loading="lazy">' +
-                                '</button>' +
-                              '</div>'
-                            );
-                          }).join('') +
-                        '</div>' +
-                      '</div>' +
-                      '<button type="button" class="vcarousel-arrow vcarousel-down" aria-label="Next image" data-bubble="down">' +
-                        '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>' +
-                      '</button>' +
-                    '</div>'
-                  : s.images.map(function(im){ return '<img class="case-image" src="' + im.src + '" alt="' + im.alt + '">'; }).join(''))
-              : '';
-            var hasCarousel = s.images && s.images.length > 1;
-            var videoHtml = s.video
-              ? '<div class="case-video-wrap">' +
-                  '<video class="case-video" preload="none" playsinline controls' + (s.videoPoster ? ' poster="' + s.videoPoster + '"' : '') + '>' +
-                    '<source src="' + s.video + '" type="video/mp4">' +
-                  '</video>' +
-                  '<button class="case-video-play" type="button" aria-label="Play ' + (s.videoLabel || s.heading) + '" data-bubble="play">' +
-                    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.5"/><path d="M9.5 7.5l8 4.5-8 4.5z"/></svg>' +
-                  '</button>' +
+    /* ---- rows: every section, numbered and labeled. a section with exactly
+       one plain image sits side by side with its write-up; a list, a line
+       of tags, or a wider interactive piece (flow, tech, games, demo, a
+       gallery, video) runs its write-up full width, with the piece itself
+       underneath ---- */
+    var rowSrc = sections.length
+      ? sections
+      : [{ num: "01", heading: "Overview", body: "Placeholder case-study paragraph. Describe the problem, approach, and outcome here once real content is ready." }];
+    var rowsHtml = project.id === "04" ? adalajRowsHtml(project) : project.id === "02" ? redSpireRowsHtml(project) : rowSrc.map(function(s){
+      var tagsHtml = s.tags
+        ? '<div class="pd-tags">' + s.tags.map(function(t){ return '<span>' + t + '</span>'; }).join('') + '</div>'
+        : '';
+      var bodyParas = s.body ? (Array.isArray(s.body) ? s.body : [s.body]) : [];
+      // the tech section calls out its own click-a-pin hint inline
+      var bodyHtml = bodyParas.map(function(p){
+        var text = s.tech ? p.replace("Click a pin", "<u>Click a pin</u>") : p;
+        return '<p>' + text + '</p>';
+      }).join('');
+      var listHtml = s.list
+        ? '<ol class="pd-list">' + s.list.map(function(li){ return '<li>' + li + '</li>'; }).join('') + '</ol>'
+        : '';
+      var flowHtml = s.flow
+        ? '<div class="knoki-console" id="knokiFlow" role="group" aria-label="User flow simulation — rotate the dial or use arrow keys" tabindex="0">' +
+            s.flow.map(function(step){
+              return '<span class="kc-step-data" data-label="' + step.label + '" data-body="' + step.body + '" hidden></span>';
+            }).join('') +
+            '<div class="kc-screen">' +
+              '<span class="kc-step-count" id="flowStepCount">1 / ' + s.flow.length + '</span>' +
+              '<h5 id="flowStepTitle">' + s.flow[0].label + '</h5>' +
+              '<p id="flowStepBody">' + s.flow[0].body + '</p>' +
+            '</div>' +
+            '<button type="button" class="kc-dial draggable" id="knokiDial" aria-label="Rotate to browse, press to select the next step" data-bubble="turn">' +
+              '<span class="kc-dial-notch" aria-hidden="true"></span>' +
+            '</button>' +
+            '<p class="kc-hint">Drag the dial to browse, press to select — or use ← →</p>' +
+          '</div>'
+        : '';
+      var gamesHtml = s.games
+        ? '<div class="knoki-games">' +
+            s.games.map(function(g, i){
+              return (
+                '<div class="knoki-game-card">' +
+                  '<span class="knoki-game-num">0' + (i + 1) + '</span>' +
+                  '<h5>' + g.name + '</h5>' +
+                  '<p class="knoki-game-objective">' + g.objective + '</p>' +
+                  '<p class="knoki-game-body">' + g.body + '</p>' +
                 '</div>'
-              : '';
-            // no asset yet — a labeled dashed box marking where the real image goes
-            var placeholders = s.imagePlaceholder
-              ? [s.imagePlaceholder]
-              : (s.imagePlaceholders || []);
-            var placeholderHtml = placeholders.length
-              ? '<div class="case-image-placeholders">' +
-                  placeholders.map(function(t){ return '<div class="case-image-placeholder">' + t + '</div>'; }).join('') +
-                '</div>'
-              : '';
-            return (
-              '<div class="case-section reveal ' + (s.span || '') + '">' +
-                '<span class="case-num">' + s.num + '</span>' +
-                '<div class="case-section-body' + (hasCarousel ? ' has-vcarousel' : '') + '">' +
-                  (hasCarousel
-                    ? '<div class="case-section-text"><h4>' + s.heading + '</h4>' + bodyHtml + listHtml + tagsHtml + placeholderHtml + '</div>' + imagesHtml
-                    : '<h4>' + s.heading + '</h4>' + bodyHtml + listHtml + imageHtml + imagesHtml + videoHtml + tagsHtml + placeholderHtml) +
+              );
+            }).join('') +
+          '</div>'
+        : '';
+      var techHtml = s.tech
+        ? '<div class="knoki-tech" id="knokiTech">' +
+            '<div class="kt-photo">' +
+              '<div class="kt-photo-inner">' +
+                '<img src="knoki-tech-photo.png" alt="The Knoki console, with each hardware part marked by a numbered pin" class="kt-photo-img">' +
+                s.tech.map(function(t, i){
+                  return (
+                    '<button type="button" class="kt-pin' + (i === 0 ? ' is-active' : '') + '" style="left:' + t.x + '%;top:' + t.y + '%" ' +
+                      'data-index="' + i + '" data-name="' + t.name + '" data-body="' + t.body + '" aria-label="' + t.name + '" data-bubble="view">' +
+                      (i + 1) +
+                    '</button>'
+                  );
+                }).join('') +
+              '</div>' +
+            '</div>' +
+            '<div class="kt-detail">' +
+              '<span class="kt-detail-num" id="ktDetailNum">01 / ' + (s.tech.length < 10 ? '0' : '') + s.tech.length + '</span>' +
+              '<h5 id="ktDetailName">' + s.tech[0].name + '</h5>' +
+              '<p id="ktDetailBody">' + s.tech[0].body + '</p>' +
+              '<div class="kt-detail-nav">' +
+                '<button type="button" id="ktPrev" aria-label="Previous part">← prev</button>' +
+                '<button type="button" id="ktNext" aria-label="Next part">next →</button>' +
+              '</div>' +
+            '</div>' +
+          '</div>'
+        : '';
+      var demoHtml = s.demo === "rlgl"
+        ? '<div class="knoki-demo" id="knokiDemo">' +
+            '<button type="button" class="knoki-demo-light" id="knokiLight" data-state="idle" data-bubble="tap" aria-label="Tap the light">' +
+              '<span id="knokiLightLabel">Tap to start</span>' +
+            '</button>' +
+            '<div class="knoki-demo-info">' +
+              '<div class="kd-score-row">' +
+                '<span class="kd-score-label">Score</span>' +
+                '<div class="kd-score-main">' +
+                  '<span id="knokiScoreBig">0</span>' +
+                  '<span class="kd-score-best">best — <span id="knokiBest">0</span></span>' +
                 '</div>' +
+              '</div>' +
+              '<p class="knoki-demo-hint">Tap the circle to start. Tap while it is green, stop when it turns red.</p>' +
+              '<div class="knoki-demo-status" id="knokiStatus" role="status" aria-live="polite" hidden></div>' +
+            '</div>' +
+          '</div>'
+        : '';
+      var hasMultiImages = s.images && s.images.length > 1;
+      var galleryHtml = s.images
+        ? (hasMultiImages
+            ? '<div class="vcarousel" data-vcarousel' + (s.images.length >= 6 ? ' data-loop' : '') + ' role="region" aria-label="Project images" tabindex="0">' +
+                '<button type="button" class="vcarousel-arrow vcarousel-up" aria-label="Previous image" data-bubble="up">' +
+                  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15l7-7 7 7"/></svg>' +
+                '</button>' +
+                '<div class="vcarousel-viewport draggable" data-bubble="drag">' +
+                  '<div class="vcarousel-container">' +
+                    s.images.map(function(im, i){
+                      return (
+                        '<div class="vcarousel-slide">' +
+                          '<button type="button" class="vcarousel-img-btn" data-index="' + i + '" data-src="' + im.src + '" data-alt="' + im.alt + '" aria-label="Open ' + im.alt + '" data-bubble="expand">' +
+                            '<img class="vcarousel-img" src="' + im.src + '" alt="' + im.alt + '" loading="lazy">' +
+                          '</button>' +
+                        '</div>'
+                      );
+                    }).join('') +
+                  '</div>' +
+                '</div>' +
+                '<button type="button" class="vcarousel-arrow vcarousel-down" aria-label="Next image" data-bubble="down">' +
+                  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>' +
+                '</button>' +
               '</div>'
-            );
-          }).join('') +
-        '</div>';
-    } else {
-      bodyContent =
-        '<div class="case-sections">' +
-          '<div class="case-section reveal span-2">' +
-            '<span class="case-num">01</span>' +
-            '<div class="case-section-body"><h4>Overview</h4><p>Placeholder case-study paragraph. Describe the problem, approach, and outcome here once real content is ready.</p></div>' +
+            : s.images.map(function(im){ return '<img class="pd-image" src="' + im.src + '" alt="' + im.alt + '">'; }).join(''))
+        : '';
+      var videoHtml = s.video
+        ? '<div class="case-video-wrap">' +
+            '<video class="case-video" preload="none" playsinline controls' + (s.videoPoster ? ' poster="' + s.videoPoster + '"' : '') + '>' +
+              '<source src="' + s.video + '" type="video/mp4">' +
+            '</video>' +
+            '<button class="case-video-play" type="button" aria-label="Play ' + (s.videoLabel || s.heading) + '" data-bubble="play">' +
+              '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.5"/><path d="M9.5 7.5l8 4.5-8 4.5z"/></svg>' +
+            '</button>' +
+          '</div>'
+        : '';
+      // no asset yet — a labeled dashed box marking where the real image goes
+      var placeholders = s.imagePlaceholder ? [s.imagePlaceholder] : (s.imagePlaceholders || []);
+      var placeholderHtml = placeholders.length
+        ? '<div class="case-image-placeholders">' +
+            placeholders.map(function(t){ return '<div class="case-image-placeholder">' + t + '</div>'; }).join('') +
+          '</div>'
+        : '';
+
+      var singleImageHtml = (s.image && !hasMultiImages)
+        ? '<img class="pd-image" src="' + s.image + '" alt="' + (s.imageAlt || s.heading) + '">'
+        : '';
+      var wideVisualHtml = flowHtml + galleryHtml + videoHtml + techHtml + gamesHtml + demoHtml;
+      var isPaired = !!singleImageHtml;
+      // a heading like "Try It — Red Light, Green Light" keeps only its
+      // short lead-in as the eyebrow label; the rest lives in the body copy
+      var eyebrowLabel = s.heading.split(" — ")[0];
+
+      return (
+        '<div class="pd-row tilt" id="' + fbId(s) + '">' +
+          '<div class="pd-row-head">' +
+            '<span class="pd-row-num">' + s.num + '</span>' +
+            '<span class="pd-row-label">' + eyebrowLabel + '</span>' +
           '</div>' +
-          '<div class="case-section reveal span-2">' +
-            '<span class="case-num">02</span>' +
-            '<div class="case-section-body"><h4>Process</h4><p>Placeholder paragraph two, for additional process detail or a supporting image caption.</p></div>' +
+          '<div class="pd-row-body' + (isPaired ? ' is-paired' : '') + '">' +
+            '<div class="pd-row-text">' + bodyHtml + listHtml + tagsHtml + placeholderHtml + '</div>' +
+            singleImageHtml +
           '</div>' +
-        '</div>';
-    }
+          (wideVisualHtml ? '<div class="pd-row-wide">' + wideVisualHtml + '</div>' : '') +
+        '</div>'
+      );
+    }).join('');
 
     return (
-      '<div class="detail-hero">' + heroContent + '</div>' +
-      '<div class="detail-body">' +
-        '<div class="cat">' + project.tag + '</div>' +
-        '<h1>' + project.name + '</h1>' +
-        taglineHtml +
-        metaRowHtml +
-        bodyContent +
-      '</div>' +
-      '<div class="detail-nav">' +
-        '<a href="#/work/' + prev.id + '" class="prev" data-bubble="open">' + prev.name + '</a>' +
-        '<a href="#/work/' + next.id + '" class="next" data-bubble="open">' + next.name + '</a>' +
+      headerHtml +
+      '<div class="pd-rows">' + rowsHtml + '</div>' +
+      '<div class="pd-foot">' +
+        '<a href="#/work/' + prev.id + '" class="tilt" data-bubble="open">← ' + prev.name + '</a>' +
+        '<a href="#/work" class="tilt" data-bubble="open">All Projects</a>' +
+        '<a href="#/work/' + next.id + '" class="tilt" data-bubble="open">' + next.name + ' →</a>' +
       '</div>'
     );
   }
@@ -781,6 +1060,9 @@
   // torn down at the top of every render() so a stale rAF loop from a
   // previous visit to the home page never keeps animating a detached canvas
   var heroDotsCleanup = null;
+  var homeStageCleanup = null;
+  var aboutToolsCleanup = null;
+  var knokiDemoTimer = 0;
 
   // quick crossfade: the outgoing page fades up and out, the page swaps
   // underneath, then the incoming page fades up and in from just below
@@ -836,29 +1118,42 @@
     }
 
     function updateDOM(){
-      if (heroDotsCleanup) heroDotsCleanup();
-      if (window.HeroIntro) window.HeroIntro.destroy();
+      if (homeStageCleanup) homeStageCleanup();
+      if (aboutToolsCleanup) aboutToolsCleanup();
       if (window.Playground) window.Playground.destroy();
+      clearTimeout(knokiDemoTimer); // the demo's light-cycle loop is about to lose its DOM
       closeLightbox(); // the page behind it is about to be replaced
       if (window.CursorBubble) window.CursorBubble.reset(); // the hovered element is about to be removed without a pointerout
       app.innerHTML = html;
       setActiveNav(routeBase);
-      document.body.classList.toggle("figma-bg", routeBase !== "/");
+      document.body.classList.remove("figma-bg"); // every page now shares the home screen's plain background
       // the playground is a single pinned screen, not a scrolling page — the shared site footer would otherwise add extra height below it
       document.body.classList.toggle("no-footer", routeBase === "/playground");
+      // Knoki keeps its own purple-and-white branding, distinct from the rest of the site
+      document.body.classList.toggle("theme-purple", routeBase === "/work" && parts[1] === "01");
+      // Adalaj's case study runs on its own warm, dark night-time palette
+      document.body.classList.toggle("theme-adalaj", routeBase === "/work" && parts[1] === "04");
+      // Red Spire gets its own pale-lavender case study, distinct from the rest of the site
+      document.body.classList.toggle("theme-redspire", routeBase === "/work" && parts[1] === "02");
       window.scrollTo(0, 0);
       updateHeader();
-      if (routeBase === "/about") bindPageInteractions();
+      if (routeBase === "/about") { bindPageInteractions(); initAboutTools(); }
       if (routeBase === "/contact") bindPageInteractions();
       if (routeBase === "/playground" && window.Playground) window.Playground.init();
-      if (routeBase === "/"){
-        initHeroDots();
-        if (window.HeroIntro) window.HeroIntro.init();
-      }
+      if (routeBase === "/") requestAnimationFrame(function(){ requestAnimationFrame(initHomeStage); }); // let the loading screen get its first paint before the blob measuring/rAF setup runs
       bindWorkTiles();
       bindCaseVideos();
       initVerticalCarousels();
-      initScrollReveal();
+      initKnokiDemo();
+      initKnokiFlow();
+      initKnokiTech();
+      initAdalajStepper();
+      initAdalajFailures();
+      initRedSpireBalance();
+      initRedSpireMascot();
+      initRedSpireScale();
+      initRedSpireFilters();
+      initTiltReveal();
     }
 
     playFadeTransition(updateDOM);
@@ -968,6 +1263,38 @@
     });
   }
 
+  // About page's software grid: every few seconds, two random cells swap
+  // which tool they show (a brief fade hides the content swap), so the
+  // grid stays the same set of logos but keeps quietly reshuffling itself.
+  // the "tools i know ( … )" badge cycles through a different software
+  // logo every few seconds, fading out/in across the swap
+  function initAboutTools(){
+    var badge = document.getElementById("toolBadge");
+    if (!badge) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var i = 0;
+    function next(){
+      badge.classList.add("is-flip");
+      setTimeout(function(){
+        i = (i + 1) % ABOUT_TOOLS.length;
+        var t = ABOUT_TOOLS[i];
+        var img = badge.querySelector("img");
+        img.src = t.logo; img.alt = t.name;
+        badge.title = t.name;
+      }, 180);
+      setTimeout(function(){
+        badge.classList.remove("is-flip");
+      }, 380);
+    }
+
+    var timer = setInterval(next, 2200);
+    aboutToolsCleanup = function(){
+      clearInterval(timer);
+      aboutToolsCleanup = null;
+    };
+  }
+
   function bindPageInteractions(){
     document.querySelectorAll("#app .draggable").forEach(makeDraggable);
     bindContactForm();
@@ -978,18 +1305,6 @@
       });
     }
   }
-  
-  /* ---------- scroll interactions: parallax ---------- */
-  function updateParallax(){
-    if (reduceMotion) return;
-    var scrolled = window.scrollY;
-    
-    var detailHero = document.querySelector('.detail-hero-image');
-    if (detailHero) {
-      detailHero.style.setProperty('--parallax-y', (scrolled * 0.3) + 'px');
-    }
-  }
-  window.addEventListener("scroll", updateParallax, { passive: true });
 
   function bindWorkTiles(){
     var tiles = document.querySelectorAll(".work-tile:not(.is-soon)");
@@ -1013,6 +1328,272 @@
       video.addEventListener("play", function(){ wrap.classList.add("is-playing"); });
       video.addEventListener("pause", function(){ wrap.classList.remove("is-playing"); });
       video.addEventListener("ended", function(){ wrap.classList.remove("is-playing"); });
+    });
+  }
+
+  // a tiny playable version of Knoki's "Red Light, Green Light" mini-game: tap
+  // the light while it's green, tapping while it's red ends the game
+  function initKnokiDemo(){
+    var light = document.getElementById("knokiLight");
+    if (!light) return;
+    var label = document.getElementById("knokiLightLabel");
+    var status = document.getElementById("knokiStatus");
+    var scoreBig = document.getElementById("knokiScoreBig");
+    var bestEl = document.getElementById("knokiBest");
+    var playing = false, score = 0, best = 0;
+
+    function schedule(){
+      var toGreen = light.getAttribute("data-state") !== "green";
+      var delay = toGreen ? (900 + Math.random() * 900) : (700 + Math.random() * 900);
+      knokiDemoTimer = setTimeout(function(){
+        if (!playing) return;
+        light.setAttribute("data-state", toGreen ? "green" : "red");
+        label.textContent = toGreen ? "Tap!" : "Wait…";
+        schedule();
+      }, delay);
+    }
+
+    function startGame(){
+      playing = true; score = 0;
+      scoreBig.textContent = "0";
+      light.setAttribute("data-state", "green");
+      label.textContent = "Tap!";
+      schedule();
+    }
+
+    function endGame(){
+      playing = false;
+      clearTimeout(knokiDemoTimer);
+      light.setAttribute("data-state", "over");
+      label.textContent = "Tap to retry";
+      status.textContent = "Game over — score: " + score;
+    }
+
+    light.addEventListener("click", function(){
+      if (!playing){ startGame(); return; }
+      var state = light.getAttribute("data-state");
+      if (state === "green"){
+        score++;
+        scoreBig.textContent = String(score);
+        if (score > best){ best = score; bestEl.textContent = String(best); }
+        light.classList.remove("is-pulse");
+        void light.offsetWidth; // restart the pulse animation on every tap
+        light.classList.add("is-pulse");
+      } else if (state === "red"){
+        endGame();
+      }
+    });
+  }
+
+  // a tiny recreation of Knoki's own LCD + rotary dial: drag the dial to
+  // rotate through the flow (one step per ~28deg of real rotation), press it
+  // to select the next step, or use the left/right arrow keys
+  function initKnokiFlow(){
+    var root = document.getElementById("knokiFlow");
+    if (!root) return;
+    var steps = Array.prototype.slice.call(root.querySelectorAll(".kc-step-data"));
+    var title = document.getElementById("flowStepTitle");
+    var body = document.getElementById("flowStepBody");
+    var count = document.getElementById("flowStepCount");
+    var dial = document.getElementById("knokiDial");
+    var notch = dial.querySelector(".kc-dial-notch");
+    var active = 0;
+    var ANGLE_SPAN = 150, STEP_DEG = ANGLE_SPAN / (steps.length - 1), DRAG_DEG_PER_STEP = 28;
+
+    function render(){
+      title.textContent = steps[active].getAttribute("data-label");
+      body.textContent = steps[active].getAttribute("data-body");
+      count.textContent = (active + 1) + " / " + steps.length;
+      notch.style.transform = "rotate(" + (-ANGLE_SPAN / 2 + active * STEP_DEG) + "deg)";
+    }
+    function go(i){ active = (i + steps.length) % steps.length; render(); }
+    render();
+
+    var dragging = false, moved = false, centerX = 0, centerY = 0, lastAngle = 0, accum = 0;
+    function angleAt(x, y){ return Math.atan2(y - centerY, x - centerX) * 180 / Math.PI; }
+
+    dial.addEventListener("pointerdown", function(e){
+      var r = dial.getBoundingClientRect();
+      centerX = r.left + r.width / 2; centerY = r.top + r.height / 2;
+      lastAngle = angleAt(e.clientX, e.clientY);
+      accum = 0; moved = false; dragging = true;
+      try { dial.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    dial.addEventListener("pointermove", function(e){
+      if (!dragging) return;
+      var a = angleAt(e.clientX, e.clientY);
+      var delta = a - lastAngle;
+      if (delta > 180) delta -= 360;
+      if (delta < -180) delta += 360;
+      lastAngle = a;
+      accum += delta;
+      if (Math.abs(delta) > 0.5) moved = true;
+      while (accum >= DRAG_DEG_PER_STEP){ go(active + 1); accum -= DRAG_DEG_PER_STEP; }
+      while (accum <= -DRAG_DEG_PER_STEP){ go(active - 1); accum += DRAG_DEG_PER_STEP; }
+    });
+    function endDrag(){ dragging = false; }
+    dial.addEventListener("pointerup", endDrag);
+    dial.addEventListener("pointercancel", endDrag);
+
+    dial.addEventListener("click", function(){
+      if (moved) return; // a drag that just ended still fires a click — ignore it
+      go(active + 1);
+    });
+
+    root.addEventListener("keydown", function(e){
+      if (e.key === "ArrowRight"){ e.preventDefault(); go(active + 1); }
+      else if (e.key === "ArrowLeft"){ e.preventDefault(); go(active - 1); }
+    });
+  }
+
+  // numbered pins placed directly on Knoki's product photo: click one to
+  // load its name and description into the detail card beside the image
+  function initKnokiTech(){
+    var root = document.getElementById("knokiTech");
+    if (!root) return;
+    var pins = Array.prototype.slice.call(root.querySelectorAll(".kt-pin"));
+    var num = document.getElementById("ktDetailNum");
+    var name = document.getElementById("ktDetailName");
+    var body = document.getElementById("ktDetailBody");
+    var prevBtn = document.getElementById("ktPrev");
+    var nextBtn = document.getElementById("ktNext");
+    var pad2 = function(n){ return (n < 10 ? "0" : "") + n; };
+    var active = 0;
+
+    function show(i){
+      active = i;
+      pins.forEach(function(p, idx){ p.classList.toggle("is-active", idx === i); });
+      num.textContent = pad2(i + 1) + " / " + pad2(pins.length);
+      name.textContent = pins[i].getAttribute("data-name");
+      body.textContent = pins[i].getAttribute("data-body");
+    }
+    pins.forEach(function(p, i){
+      p.addEventListener("click", function(){ show(i); });
+    });
+    prevBtn.addEventListener("click", function(){ show((active - 1 + pins.length) % pins.length); });
+    nextBtn.addEventListener("click", function(){ show((active + 1) % pins.length); });
+  }
+
+  // Adalaj's walkthrough stepper: a row of dots standing in for the
+  // night's five beats — click one (or the dots step through in order)
+  // to read that beat's title and description above
+  function initAdalajStepper(){
+    var root = document.getElementById("adStepper");
+    if (!root) return;
+    var steps = Array.prototype.slice.call(root.querySelectorAll(".as-step-data"));
+    var title = document.getElementById("asTitle");
+    var body = document.getElementById("asBody");
+    var dots = Array.prototype.slice.call(root.querySelectorAll(".as-dot"));
+
+    function show(i){
+      dots.forEach(function(d, idx){ d.classList.toggle("is-active", idx === i); });
+      title.textContent = steps[i].getAttribute("data-label");
+      body.textContent = steps[i].getAttribute("data-body");
+    }
+    dots.forEach(function(d, i){
+      d.addEventListener("click", function(){ show(i); });
+    });
+    show(0);
+  }
+
+  // Adalaj's "what failed" breakdown: numbered tabs switch between the
+  // five problem/fix/result write-ups
+  function initAdalajFailures(){
+    var root = document.getElementById("adFailures");
+    if (!root) return;
+    var items = Array.prototype.slice.call(root.querySelectorAll(".af-item-data")).map(function(el){
+      return {
+        title: el.getAttribute("data-title"), problem: el.getAttribute("data-problem"),
+        fix: el.getAttribute("data-fix"), result: el.getAttribute("data-result")
+      };
+    });
+    var tabs = Array.prototype.slice.call(root.querySelectorAll(".af-tab"));
+    var title = document.getElementById("afTitle");
+    var problem = document.getElementById("afProblem");
+    var fix = document.getElementById("afFix");
+    var result = document.getElementById("afResult");
+
+    function show(i){
+      tabs.forEach(function(t, idx){ t.classList.toggle("is-active", idx === i); });
+      title.textContent = items[i].title;
+      problem.textContent = items[i].problem;
+      fix.textContent = items[i].fix;
+      result.textContent = items[i].result;
+    }
+    tabs.forEach(function(t, i){
+      t.addEventListener("click", function(){ show(i); });
+    });
+    show(0);
+  }
+
+  // Red Spire's delight/professional balance slider: as it moves, the label
+  // it's leaning toward lights up, so dragging it visibly does something
+  function initRedSpireBalance(){
+    var slider = document.getElementById("rsBalanceSlider");
+    if (!slider) return;
+    // range inputs don't fill themselves — paint the filled portion as the
+    // input's own background, a hard-stop gradient at the current value
+    function render(){
+      var v = slider.value;
+      slider.style.background = "linear-gradient(to right, var(--accent) " + v + "%, var(--line) " + v + "%)";
+    }
+    slider.addEventListener("input", render);
+    render();
+  }
+
+  // Red Spire's four purple tones: tap a swatch, that tone's mascot opens
+  function initRedSpireMascot(){
+    var root = document.getElementById("rsSwatches");
+    var stage = document.getElementById("rsMascotStage");
+    if (!root || !stage) return;
+    var swatches = Array.prototype.slice.call(root.querySelectorAll(".rs-swatch"));
+    swatches.forEach(function(sw){
+      sw.addEventListener("click", function(){
+        swatches.forEach(function(x){ x.classList.remove("is-active"); });
+        sw.classList.add("is-active");
+        stage.src = sw.getAttribute("data-mascot");
+        stage.alt = sw.getAttribute("data-alt");
+      });
+    });
+  }
+
+  // Red Spire's scale-legibility tester: shrinks the mark to the clicked percentage
+  function initRedSpireScale(){
+    var root = document.getElementById("rsScale");
+    if (!root) return;
+    var tabs = Array.prototype.slice.call(root.querySelectorAll(".rs-scale-tab"));
+    var img = document.getElementById("rsScaleImg");
+    var BASE_WIDTH = 180; // the logo's "100%" reference size, in px
+    tabs.forEach(function(t){
+      t.addEventListener("click", function(){
+        tabs.forEach(function(x){ x.classList.remove("is-active"); });
+        t.classList.add("is-active");
+        // a plain % width is relative to the stage's own (much wider) box, so
+        // it kept getting clamped back down by the image's max-width — work
+        // in px against the 100% reference size instead, so every step is
+        // visibly smaller than the last
+        var pct = parseInt(t.getAttribute("data-size"), 10);
+        img.style.width = Math.round(BASE_WIDTH * pct / 100) + "px";
+      });
+    });
+  }
+
+  // Red Spire's outcome mosaic: filters tiles by which part of the identity they show
+  function initRedSpireFilters(){
+    var root = document.getElementById("rsFilters");
+    var mosaic = document.getElementById("rsMosaic");
+    if (!root || !mosaic) return;
+    var btns = Array.prototype.slice.call(root.querySelectorAll(".rs-filter"));
+    var tiles = Array.prototype.slice.call(mosaic.querySelectorAll(".rs-tile"));
+    btns.forEach(function(b){
+      b.addEventListener("click", function(){
+        btns.forEach(function(x){ x.classList.remove("is-active"); });
+        b.classList.add("is-active");
+        var f = b.getAttribute("data-filter");
+        tiles.forEach(function(tile){
+          tile.hidden = !(f === "all" || tile.getAttribute("data-cat") === f);
+        });
+      });
     });
   }
 
@@ -1211,32 +1792,217 @@
     });
   }
 
-  // the prev/next project links at the bottom of a case study: a small "Open"
-  // tag follows the cursor while it's over either title
-  // fade + rise each .reveal block into place as it scrolls into view,
-  // staggering the first few by index so a row/column cascades in together
-  function initScrollReveal(){
-    var els = document.querySelectorAll("#app .reveal");
+  // "tilt up" scroll reveal: each .tilt element tips upright + fades in once,
+  // the first time it crosses into view. The stagger delay (--d) resets per
+  // parent element, so each little group — a row of pills, a list of timeline
+  // rows, a section's heading+paragraph — cascades on its own instead of the
+  // delay climbing the whole way down the page.
+  function initTiltReveal(){
+    var els = document.querySelectorAll("#app .tilt");
     if (!els.length) return;
 
-    if (!("IntersectionObserver" in window)){
-      els.forEach(function(el){ el.classList.add("is-visible"); });
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || !("IntersectionObserver" in window)){
+      els.forEach(function(el){ el.classList.add("in"); });
       return;
     }
+
+    els.forEach(function(el){
+      var parent = el.parentElement;
+      var n = parent.hasAttribute("data-tilt-n") ? parseInt(parent.getAttribute("data-tilt-n"), 10) : 0;
+      el.style.setProperty("--d", Math.min(n * 0.07, 0.4) + "s");
+      parent.setAttribute("data-tilt-n", n + 1);
+    });
 
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if (entry.isIntersecting){
-          entry.target.classList.add("is-visible");
+          entry.target.classList.add("in");
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px -12% 0px" });
 
-    els.forEach(function(el, i){
-      el.style.transitionDelay = (Math.min(i, 6) * 70) + "ms";
-      io.observe(el);
+    els.forEach(function(el){ io.observe(el); });
+  }
+
+  // the home page's "exhibition poster": draggable soft blobs that react to
+  // the cursor, a crosshair cursor-follower, word-cycling, a then/now photo
+  // slider, and a tiny ambient tone per blob. Window/document-level listeners
+  // and the rAF loop are the only things that need explicit teardown — every
+  // other listener lives on an element inside #app and is GC'd with it.
+  function initHomeStage(){
+    var st = document.getElementById("st");
+    if (!st) return;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var P = { x: -999, y: -999, in: false };
+    var blobs = Array.prototype.slice.call(st.querySelectorAll(".blob")).map(function(el, i){
+      return { el: el, i: i, ox: 0, oy: 0, dx: 0, dy: 0, ph: i * 1.7, bx: 0, by: 0, r: 0 };
     });
+    function measure(){
+      blobs.forEach(function(b){
+        b.bx = b.el.offsetLeft + b.el.offsetWidth / 2;
+        b.by = b.el.offsetTop + b.el.offsetHeight / 2;
+        b.r = b.el.offsetWidth / 2;
+      });
+    }
+
+    // ambient tone per blob — silent until the visitor opts in via the button
+    var AC = null, sound = false;
+    var notes = [261.6, 293.7, 329.6, 392, 440, 523.3, 587.3];
+    function tone(f){
+      if (!sound || !AC) return;
+      try {
+        var o = AC.createOscillator(), g = AC.createGain(), t = AC.currentTime;
+        o.type = "sine"; o.frequency.value = f;
+        g.gain.setValueAtTime(.0001, t);
+        g.gain.exponentialRampToValueAtTime(.07, t + .35);
+        g.gain.exponentialRampToValueAtTime(.0001, t + 2.4);
+        o.connect(g).connect(AC.destination);
+        o.start(t); o.stop(t + 2.5);
+      } catch (e) {}
+    }
+    var sndBtn = document.getElementById("snd");
+    if (sndBtn) sndBtn.addEventListener("click", function(e){
+      try { if (!AC) AC = new (window.AudioContext || window.webkitAudioContext)(); AC.resume(); } catch (_) {}
+      sound = !sound;
+      e.target.textContent = sound ? "sound on" : "sound off";
+      if (sound) tone(392);
+    });
+
+    // custom crosshair cursor + coordinate readout, scoped to this stage only
+    var cur = document.getElementById("cur");
+    var curT = cur ? cur.querySelector("em") : null;
+    if (window.matchMedia("(pointer: fine)").matches) document.documentElement.classList.add("fine");
+    function rel(e){ var r = st.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+    var drag = null;
+    st.addEventListener("pointermove", function(e){
+      var xy = rel(e), x = xy[0], y = xy[1];
+      P.x = x; P.y = y; P.in = true;
+      if (cur){
+        cur.style.transform = "translate(" + (e.clientX - cur.offsetWidth / 2) + "px," + (e.clientY - cur.offsetHeight / 2) + "px)";
+        if (curT) curT.textContent = "x " + (x / st.clientWidth).toFixed(2) + "  y " + (y / st.clientHeight).toFixed(2);
+        cur.classList.toggle("big", !!e.target.closest(".blob,.ph,.lw,.hi,a,button,label"));
+      }
+      if (drag){ drag.b.ox = drag.ox + (x - drag.x); drag.b.oy = drag.oy + (y - drag.y); }
+    });
+    st.addEventListener("pointerleave", function(){ P.in = false; });
+    st.addEventListener("pointerdown", function(e){
+      var el = e.target.closest(".blob");
+      if (!el) return;
+      var b = blobs.filter(function(q){ return q.el === el; })[0];
+      var xy = rel(e), x = xy[0], y = xy[1];
+      drag = { b: b, x: x, y: y, ox: b.ox, oy: b.oy };
+      el.classList.add("drag");
+      try { el.setPointerCapture(e.pointerId); } catch (_) {}
+      tone(notes[b.i] * .5);
+    });
+    function onPointerUp(){ if (drag) drag.b.el.classList.remove("drag"); drag = null; }
+    window.addEventListener("pointerup", onPointerUp);
+
+    // "people to things" word-cycling
+    function cyc(el, list){
+      if (!el) return;
+      var k = 0, busy = false;
+      el.addEventListener("pointerenter", go);
+      el.addEventListener("click", go);
+      function go(){
+        if (busy) return;
+        busy = true;
+        el.classList.add("out");
+        setTimeout(function(){ k = (k + 1) % list.length; el.textContent = list[k]; el.classList.remove("out"); busy = false; }, 250);
+      }
+    }
+    cyc(st.querySelector(".w1"), ["people", "ideas", "stories", "hands"]);
+    cyc(st.querySelector(".w2"), ["things", "screens", "spaces", "games"]);
+    var pl = st.querySelector(".pl");
+    var plr = 0;
+    Array.prototype.forEach.call(st.querySelectorAll(".w1,.w2"), function(el){
+      el.addEventListener("pointerenter", function(){ plr += 90; if (pl) pl.style.rotate = plr + "deg"; });
+    });
+
+    // then / now photo slider — drag across the frame, or upload your own to preview
+    var ph = document.getElementById("ph");
+    var split = 50, tSplit = 50;
+    if (ph){
+      ph.addEventListener("pointermove", function(e){
+        var r = ph.getBoundingClientRect();
+        tSplit = Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100));
+      });
+      ph.addEventListener("pointerleave", function(){ tSplit = 50; });
+    }
+    [["fThen", "imThen"], ["fNow", "imNow"]].forEach(function(pair){
+      var f = document.getElementById(pair[0]), i = document.getElementById(pair[1]);
+      if (!f || !i) return;
+      f.addEventListener("change", function(e){
+        var file = e.target.files && e.target.files[0];
+        if (!file) return;
+        i.src = URL.createObjectURL(file);
+        if (i.nextElementSibling) i.nextElementSibling.hidden = true;
+      });
+    });
+
+    // big crosshair magnet
+    var cross = document.getElementById("cross");
+    var cxo = 0, cyo = 0;
+
+    var hovB = null, raf = 0;
+    function loop(now){
+      var t = now / 1000;
+      blobs.forEach(function(b){
+        var k = b.r / 60;
+        var fx = reduce ? 0 : Math.sin(t * .32 + b.ph) * 5 * k;
+        var fy = reduce ? 0 : Math.cos(t * .26 + b.ph * 1.3) * 7 * k;
+        var tx = 0, ty = 0;
+        var cx = b.bx + b.ox + b.dx, cy = b.by + b.oy + b.dy;
+        if (P.in && (!drag || drag.b !== b)){
+          var vx = cx - P.x, vy = cy - P.y, d = Math.hypot(vx, vy) || 1, R = b.r * 1.15 + 60;
+          if (d < R){ var f = (1 - d / R) * 28; tx = vx / d * f; ty = vy / d * f; }
+        }
+        b.dx += (tx - b.dx) * .06; b.dy += (ty - b.dy) * .06;
+        b.el.style.transform = "translate(" + (b.ox + b.dx + fx).toFixed(1) + "px," + (b.oy + b.dy + fy).toFixed(1) + "px)";
+      });
+      var h = null;
+      if (P.in){
+        var bd = 1e9;
+        blobs.forEach(function(b){
+          var d = Math.hypot(b.bx + b.ox + b.dx - P.x, b.by + b.oy + b.dy - P.y);
+          if (d < b.r * .75 + 20 && d < bd){ bd = d; h = b; }
+        });
+      }
+      if (drag) h = drag.b;
+      if (h !== hovB){
+        if (hovB) hovB.el.classList.remove("hov");
+        if (h){ h.el.classList.add("hov"); if (!drag) tone(notes[h.i]); }
+        hovB = h;
+      }
+      if (cross){
+        var ccx = cross.offsetLeft + cross.offsetWidth / 2, ccy = cross.offsetTop + cross.offsetHeight / 2;
+        var dd = Math.hypot(P.x - ccx, P.y - ccy), near = P.in && dd < cross.offsetWidth * 1.4;
+        cross.classList.toggle("near", near);
+        cxo += ((near ? (P.x - ccx) * .18 : 0) - cxo) * .1;
+        cyo += ((near ? (P.y - ccy) * .18 : 0) - cyo) * .1;
+        cross.style.translate = cxo.toFixed(1) + "px " + cyo.toFixed(1) + "px";
+      }
+      if (ph){
+        split += (tSplit - split) * .15;
+        ph.style.setProperty("--split", split.toFixed(2) + "%");
+      }
+      raf = requestAnimationFrame(loop);
+    }
+    measure();
+    raf = requestAnimationFrame(loop);
+    var rt;
+    function onResize(){ clearTimeout(rt); rt = setTimeout(measure, 150); }
+    window.addEventListener("resize", onResize);
+
+    homeStageCleanup = function(){
+      cancelAnimationFrame(raf);
+      window.removeEventListener("pointerup", onPointerUp);
+      window.removeEventListener("resize", onResize);
+      document.documentElement.classList.remove("fine");
+      homeStageCleanup = null;
+    };
   }
 
   // scattered dots on the hero background that sketch a wobbly hand-drawn

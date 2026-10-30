@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,9 @@
 <title>Ishika Bhansali — Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Special+Elite&family=Noto+Rashi+Hebrew:wght@400..700&family=Italianno&family=Mrs+Saint+Delafield&family=Silkscreen&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=GFS+Neohellenic:ital,wght@0,400;0,700;1,400;1,700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Special+Elite&family=Noto+Rashi+Hebrew:wght@400..700&family=Italianno&family=Mrs+Saint+Delafield&family=Silkscreen&family=Hanken+Grotesk:wght@300;400;500;600&family=DM+Mono:wght@400&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<script>try{if(sessionStorage.getItem("loaderSeen")==="1"&&!/[?&]loader=1(&|$)/.test(location.search))document.documentElement.classList.add("loader-skip")}catch(e){}</script>
+<script>try{var ls=sessionStorage.getItem("loaderSeen")==="1"&&!/[?&]loader=1(&|$)/.test(location.search);document.documentElement.classList.add(ls?"loader-skip":"is-loading")}catch(e){}</script>
 </head>
 <body>
 
@@ -21,14 +21,13 @@
     <div class="logo roll-hover">ishika</div>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" data-bubble="menu">☰</button>
     <nav class="primary" id="primaryNav">
-      <a href="#/" data-route="/">Home</a>
-      <a href="#/about" data-route="/about">About</a>
-      <a href="#/work" data-route="/work">Work</a>
-      <a href="#/playground" data-route="/playground">Playground</a>
-      <a href="#/contact" data-route="/contact">Contact</a>
+      <a href="#/" data-route="/">Home<em class="cap" aria-hidden="true">back to start</em></a>
+      <a href="#/about" data-route="/about">About<em class="cap" aria-hidden="true">who's this</em></a>
+      <a href="#/work" data-route="/work">Work<em class="cap" aria-hidden="true">selected projects</em></a>
+      <a href="#/playground" data-route="/playground">Playground<em class="cap" aria-hidden="true">experiments &amp; toys</em></a>
+      <a href="#/contact" data-route="/contact">Contact<em class="cap" aria-hidden="true">say hi</em></a>
     </nav>
     <div class="header-right">
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" data-bubble="dark mode">◐</button>
       <button class="btn-resume roll-hover" id="resumeBtn" data-bubble="download">Resume</button>
     </div>
   </header>
