@@ -382,10 +382,7 @@
         '<div class="cred a rv" style="--x:52%;--y:48%;--px:54%;--py:36%;--d:1.9s">Ishika Bhansali — Interaction Design<br>Portfolio 2026</div>' +
 
         '<div class="ph a rv" id="ph" style="--x:52%;--y:60%;--px:6%;--py:55%;--d:2.1s">' +
-          '<div class="lay then"><img id="imThen" src="" alt="Ishika as a child"><em>your childhood photo</em></div>' +
-          '<div class="lay now"><img id="imNow" src="" alt="Ishika today"><em>you, now</em></div>' +
-          '<i class="sp"></i><span class="tl">then</span><span class="tr">now</span>' +
-          '<div class="up">preview yours: <label>then<input type="file" id="fThen" accept="image/*"></label> · <label>now<input type="file" id="fNow" accept="image/*"></label></div>' +
+          [1,2,3,4,5,6].map(function(n){ return '<img class="slide' + (n === 1 ? ' on' : '') + '" src="frame-food-' + n + '.webp" alt="Food photo ' + n + '">'; }).join('') +
         '</div>' +
 
         '<p class="nt a rv" style="--x:4%;--y:85%;--px:6%;--py:84%;--d:2.4s">est. 2023 · interaction designer</p>' +
@@ -398,34 +395,28 @@
     );
   }
 
+  // the work page is an index list: name + big number on the left, the banner
+  // in the middle, and on the right a short meta line that swaps for the
+  // description when the row is hovered
+  var WORK_SHORT = { "01": "Physical", "02": "Logo", "04": "XR", "05": "Data", "06": "AR" };
   function workTemplate(){
-    var entries = PROJECTS.filter(function(p){ return !p.hidden; }).map(function(p, i){
-      var displayNum = String(i + 1).padStart(2, "0");
-      var note = p.tagline || (p.sections && p.sections[0] && p.sections[0].body) || "";
-      var contentHtml = p.thumb
-        ? (
-            '<div class="wl-content">' +
-              '<div class="wl-media" style="--ar:' + p.ar + '"><img src="' + p.thumb + '" alt=""></div>' +
-              (note
-                ? '<div class="wl-note"><span class="wl-note-label">/ project notes /</span><p>' + note + '</p></div>'
-                : '') +
-            '</div>'
-          )
-        : '';
+    var list = PROJECTS.filter(function(p){ return !p.hidden; });
+    var rows = list.map(function(p, i){
+      var num = String(i + 1).padStart(2, "0");
+      var short = WORK_SHORT[p.id] || p.tag;
+      var media = p.soon
+        ? '<div class="wk-media is-empty"><span aria-hidden="true">+</span></div>'
+        : '<div class="wk-media"' + (p.ar ? ' style="aspect-ratio:' + p.ar + '"' : '') + '><img src="' + p.thumb + '" alt="' + p.name + '"></div>';
+      var ticks = '<span class="wk-ticks" aria-hidden="true">' + new Array(i % 4 + 2).join("<i></i>") + '<i></i></span>';
       return (
-        '<div class="work-tile tilt' + (p.soon ? ' is-soon' : '') + '"' +
-          (p.soon ? ' aria-disabled="true"' : ' data-id="' + p.id + '" data-bubble="view project"') + '>' +
-          '<div class="wl-row">' +
-            '<span class="wl-num">' + displayNum + '</span>' +
-            '<div class="wl-headline">' +
-              '<h2 class="wl-name">' + p.name + '</h2>' +
-              '<span class="wl-tag">' + p.tag + '</span>' +
-            '</div>' +
-            (p.soon
-              ? '<span class="wl-soon">Coming soon</span>'
-              : '<span class="wl-arrow" aria-hidden="true">↗</span>') +
+        '<div class="wk-item' + (p.soon ? ' is-soon' : '') + '"' +
+          (p.soon ? ' aria-disabled="true"' : ' role="link" tabindex="0" data-id="' + p.id + '" aria-label="' + p.name + '"') + '>' +
+          '<div class="wk-title"><span class="wk-name">' + (p.soon ? 'Coming Soon' : p.name) + '</span><span class="wk-num">' + num + '</span></div>' +
+          media +
+          '<div class="wk-side">' +
+            '<div class="wk-meta"><span class="wk-cat">' + (p.soon ? 'Next' : short) + '</span>' + ticks + '</div>' +
+            (p.soon ? '' : '<div class="wk-desc"><p>' + (p.tagline || "") + '</p><span class="wk-more">View project <span aria-hidden="true">↗</span></span></div>') +
           '</div>' +
-          contentHtml +
         '</div>'
       );
     }).join("");
@@ -433,7 +424,7 @@
       "work.",
       "A small collection of ideas I had to build.",
       OPEN_PROJECTS.length + " selected projects, more coming soon.",
-      '<div class="work-list">' + entries + '</div>'
+      '<div class="wk-list" id="wkCanvas">' + rows + '</div>'
     );
   }
 
@@ -1574,10 +1565,12 @@
   }
 
   function bindWorkTiles(){
-    var tiles = document.querySelectorAll(".work-tile:not(.is-soon)");
-    tiles.forEach(function(t){
-      t.addEventListener("click", function(e){
-        navigate("#/work/" + t.getAttribute("data-id"));
+    var list = document.getElementById("wkCanvas");
+    if (!list) return;
+    list.querySelectorAll(".wk-item:not(.is-soon)").forEach(function(t){
+      t.addEventListener("click", function(){ navigate("#/work/" + t.getAttribute("data-id")); });
+      t.addEventListener("keydown", function(e){
+        if (e.key === "Enter") navigate("#/work/" + t.getAttribute("data-id"));
       });
     });
   }
@@ -2246,26 +2239,17 @@
       el.addEventListener("pointerenter", function(){ plr += 90; if (pl) pl.style.rotate = plr + "deg"; });
     });
 
-    // then / now photo slider — drag across the frame, or upload your own to preview
+    // photo frame — food photos fade through one by one
     var ph = document.getElementById("ph");
-    var split = 50, tSplit = 50;
     if (ph){
-      ph.addEventListener("pointermove", function(e){
-        var r = ph.getBoundingClientRect();
-        tSplit = Math.max(0, Math.min(100, (e.clientX - r.left) / r.width * 100));
-      });
-      ph.addEventListener("pointerleave", function(){ tSplit = 50; });
+      var slides = ph.querySelectorAll(".slide"), cur = 0;
+      var slideTimer = setInterval(function(){
+        if (!document.body.contains(ph)){ clearInterval(slideTimer); return; }
+        slides[cur].classList.remove("on");
+        cur = (cur + 1) % slides.length;
+        slides[cur].classList.add("on");
+      }, 2800);
     }
-    [["fThen", "imThen"], ["fNow", "imNow"]].forEach(function(pair){
-      var f = document.getElementById(pair[0]), i = document.getElementById(pair[1]);
-      if (!f || !i) return;
-      f.addEventListener("change", function(e){
-        var file = e.target.files && e.target.files[0];
-        if (!file) return;
-        i.src = URL.createObjectURL(file);
-        if (i.nextElementSibling) i.nextElementSibling.hidden = true;
-      });
-    });
 
     // big crosshair magnet
     var cross = document.getElementById("cross");
@@ -2308,10 +2292,6 @@
         cxo += ((near ? (P.x - ccx) * .18 : 0) - cxo) * .1;
         cyo += ((near ? (P.y - ccy) * .18 : 0) - cyo) * .1;
         cross.style.translate = cxo.toFixed(1) + "px " + cyo.toFixed(1) + "px";
-      }
-      if (ph){
-        split += (tSplit - split) * .15;
-        ph.style.setProperty("--split", split.toFixed(2) + "%");
       }
       raf = requestAnimationFrame(loop);
     }
